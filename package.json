@@ -1,6 +1,6 @@
 {
-  "homepage": ".",
-  "name": "react-typescript-starter-pack",
+  "homepage": "https://fe-oct22-tech-divas.github.io/phone-catalog-fe/",
+  "name": "phone-catalog-fe",
   "version": "0.1.0",
   "dependencies": {
     "@testing-library/jest-dom": "^5.12.0",
