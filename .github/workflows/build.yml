@@ -28,4 +28,5 @@ jobs:
           target_branch: gh-pages
           build_dir: build
         env:
-          GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}\
+          GH_PATH: fynkzia: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
