@@ -1,5 +1,5 @@
 name: Lint
-on: puch
+on: push
 
 jobs:
   run_linter:
