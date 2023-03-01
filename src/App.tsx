@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.scss';
+import { Header } from './modules/shared/Header';
 
 export const App: React.FC = () => {
   return (
-    <div className="starter">
-    </div>
+    <Header />
   );
 };
