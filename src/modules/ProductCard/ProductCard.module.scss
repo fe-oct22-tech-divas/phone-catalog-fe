@@ -1,0 +1,139 @@
+.card {
+  width: 272px;
+  height: 506px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px;
+  gap: 8px;
+
+  position: absolute;
+  left: 16px;
+  top: 16px;
+
+  background: #161827;
+
+  &_image {
+    height: 196px;
+    width: 208px;
+
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  &_name {
+    font-family: 'Mont-Regular', sans-serif;;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 8px;
+
+    color: $color-white;
+  }
+
+  &_price {
+    font-family: 'Mont-Bold', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 31px;
+    text-align: center;
+    margin-bottom: 8px;
+
+    color: $color-white;
+  }
+
+  &_divide-line {
+    width: 100%;
+    height: 1px;
+
+    margin-bottom: 16px;
+    border: 1px solid #3B3E4A;
+  }
+
+  &_description {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    
+    &_title {
+      display: flex;
+      text-align: center;
+      font-family: 'Mont-SemiBold', sans-serif;
+      font-size: 12px;
+      // line-height: 15px;
+
+      color: #75767F;
+    }
+
+    &_value {
+      display: flex;
+      font-family: 'Mont-SemiBold', sans-serif;
+      font-size: 12px;
+      // line-height: 16px;
+      text-align: center;
+
+      color: $color-white;
+    }
+
+    &:last-child {
+      margin-bottom: 16px;
+    }
+  }
+
+  &_buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    &-add-button {
+      height: 40px;
+  
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 160px;
+      height: 40px;
+  
+      background-color: #905BFF;
+  
+      font-family: 'Mont-Regular', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+
+      text-align: center;
+
+      color: $color-white;
+  
+      transition: 0.3s, background-color 0.3s;
+    }
+  
+    &-add-button:hover {
+      background-color: #A378FF;
+    }
+
+    &-like-button {
+      padding: 0;
+      height: 40px;
+      width: 40px;
+      border-color: #323542;
+      background-color: #323542;
+      background-image: url('../../img/icon/heart.png');
+      background-size: auto;
+      background-repeat: no-repeat;
+      background-position: 50%;
+      border: none;
+
+      transition: 0.3s, background-color 0.3s;
+    }
+    &-like-button:hover {
+      background-color: #4A4D58;
+      border-color: #4A4D58;
+    }
+  }
+}
