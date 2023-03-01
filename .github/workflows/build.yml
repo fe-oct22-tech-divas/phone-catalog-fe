@@ -1,32 +1,29 @@
-name: build
-on: 
+name: Build and deploy 
+
+on:
   push:
-    branches: 
-      - master
+    branches:
+      - main
 
 jobs:
-  run_linter:
-
+  build:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x]
-
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Checkout 🛎️
+        uses: actions/checkout@master
         with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
-      - run: npm run predeploy
-      - name: Deploy
-        if: success()
-        uses: crazy-max/ghaction-github-pages@v3
+          persist-credentials: false
+
+      - name: Install 🔧
+        run: npm install
+
+      - name: Build 🏗️
+        run: npm run build
+      - name: Deploy to GH Pages 🚀
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          target_branch: gh-pages
-          build_dir: build
-        env:
-          GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
-          GH_PATH: ${{ secrets.personal-token }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build
