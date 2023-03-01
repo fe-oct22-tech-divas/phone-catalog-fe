@@ -3,6 +3,7 @@ import logo from '../../../img/logo.png';
 import favourites from '../../../img/icon/heart.png';
 import cart from '../../../img/icon/cart.png';
 import menu from '../../../img/icon/menu.png';
+import { Nav } from './Nav';
 
 export const Header: React.FC = () => (
   <header className="header">
@@ -14,26 +15,7 @@ export const Header: React.FC = () => (
       />
     </a>
 
-    <nav className="nav">
-      <ul className="nav__list">
-        {['home', 'phones', 'tablets', 'accessories'].map(
-          category => (
-            <li
-              key={category}
-              className="nav__item"
-            >
-              <a
-                href={`#${category}`}
-                className="nav__link"
-              >
-                {category}
-              </a>
-            </li>
-          ),
-        )}
-      </ul>
-    </nav>
-
+    <Nav />
     <div className="header__icons">
       <a href="#favorites" className="header__icon header__icon--favourites">
         <img src={favourites} alt="Favourites" />
