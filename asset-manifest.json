@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/phone-catalog-fe/static/css/main.c8d0285f.chunk.css",
+    "main.css": "/phone-catalog-fe/static/css/main.5b131896.chunk.css",
     "main.js": "/phone-catalog-fe/static/js/main.a9560793.chunk.js",
     "main.js.map": "/phone-catalog-fe/static/js/main.a9560793.chunk.js.map",
     "runtime-main.js": "/phone-catalog-fe/static/js/runtime-main.f9d40057.js",
@@ -8,13 +8,13 @@
     "static/js/2.dfc9cd96.chunk.js": "/phone-catalog-fe/static/js/2.dfc9cd96.chunk.js",
     "static/js/2.dfc9cd96.chunk.js.map": "/phone-catalog-fe/static/js/2.dfc9cd96.chunk.js.map",
     "index.html": "/phone-catalog-fe/index.html",
-    "static/css/main.c8d0285f.chunk.css.map": "/phone-catalog-fe/static/css/main.c8d0285f.chunk.css.map",
+    "static/css/main.5b131896.chunk.css.map": "/phone-catalog-fe/static/css/main.5b131896.chunk.css.map",
     "static/js/2.dfc9cd96.chunk.js.LICENSE.txt": "/phone-catalog-fe/static/js/2.dfc9cd96.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f9d40057.js",
     "static/js/2.dfc9cd96.chunk.js",
-    "static/css/main.c8d0285f.chunk.css",
+    "static/css/main.5b131896.chunk.css",
     "static/js/main.a9560793.chunk.js"
   ]
 }
