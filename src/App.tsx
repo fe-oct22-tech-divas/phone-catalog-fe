@@ -3,11 +3,14 @@ import { Route, Routes } from 'react-router-dom';
 import './App.scss';
 import { PhonesPage } from './modules/PhonesPage';
 import { Header } from './modules/shared/Header';
+import { ProductCard } from './modules/ProductCard/ProductCard';
 
 export const App: React.FC = () => {
   return (
     <>
       <Header />
+      <ProductCard />
+
       <Routes>
         <Route
           path="home"
