@@ -7,7 +7,9 @@ export const App: React.FC = () => {
   return (
     <>
       <Header />
-      <ProductCard />
+      <div className="container">
+        <ProductCard />
+      </div>
     </>
   );
 };
