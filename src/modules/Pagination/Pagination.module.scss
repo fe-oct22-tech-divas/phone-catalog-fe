@@ -1,0 +1,41 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+
+  &__button {
+    height: 32px;
+
+    &:disabled {
+      background-color: #161827;
+      color: white;
+      box-shadow: none;
+    }
+
+    &:first-of-type {
+      background-color: #323542;
+      color: white;
+      margin-right: 16px;
+    }
+
+    &:last-of-type {
+      background-color: #323542;
+      color: white;
+      margin-left: 16px;
+    }
+  }
+
+  &__links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+    width: 32px;
+    height: 32px;
+
+    &-isActive {
+      background-color: #905BFF;
+      color: white;
+    }
+  }
+}
