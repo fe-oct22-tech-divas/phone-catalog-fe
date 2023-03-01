@@ -32,20 +32,20 @@ export const Header: React.FC = () => (
           ),
         )}
       </ul>
-
-      <div className="nav__icons">
-        <a href="#favorites" className="nav__icon nav__icon--favourites">
-          <img src={favourites} alt="Favourites" />
-        </a>
-
-        <a href="#cart" className="nav__icon nav__icon--cart">
-          <img src={cart} alt="Cart" />
-        </a>
-
-        <a href="#menu" className="nav__icon nav__icon--menu">
-          <img src={menu} alt="Menu" />
-        </a>
-      </div>
     </nav>
+
+    <div className="header__icons">
+      <a href="#favorites" className="header__icon header__icon--favourites">
+        <img src={favourites} alt="Favourites" />
+      </a>
+
+      <a href="#cart" className="header__icon header__icon--cart">
+        <img src={cart} alt="Cart" />
+      </a>
+
+      <a href="#menu" className="header__icon header__icon--menu">
+        <img src={menu} alt="Menu" />
+      </a>
+    </div>
   </header>
 );
