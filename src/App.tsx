@@ -3,26 +3,26 @@ import { Route, Routes } from 'react-router-dom';
 import './App.scss';
 import { PhonesPage } from './modules/PhonesPage';
 import { Header } from './modules/shared/Header';
-import { ProductCard } from './modules/ProductCard/ProductCard';
+import { HomePage } from './modules/HomePage';
+import { PhonesList } from './modules/PhonesList';
 
 export const App: React.FC = () => {
   return (
     <>
       <Header />
-      <ProductCard />
 
       <Routes>
         <Route
           path="home"
           element={
-            <h1>Home Page</h1>
+            <HomePage />
           }
         />
 
         <Route
           path="phones"
           element={
-            <h1>Phones</h1>
+            <PhonesList />
           }
         />
 
