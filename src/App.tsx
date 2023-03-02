@@ -4,12 +4,12 @@ import './App.scss';
 import { PhonesPage } from './modules/PhonesPage';
 import { Header } from './modules/shared/Header';
 import { ProductCard } from './modules/ProductCard/ProductCard';
+import { NotFoundPage } from './modules/NotFoundPage';
 
 export const App: React.FC = () => {
   return (
     <>
       <Header />
-      <ProductCard />
 
       <Routes>
         <Route
@@ -22,7 +22,7 @@ export const App: React.FC = () => {
         <Route
           path="phones"
           element={
-            <h1>Phones</h1>
+            <ProductCard />
           }
         />
 
@@ -50,7 +50,7 @@ export const App: React.FC = () => {
         <Route
           path="*"
           element={
-            <h1>Page not found</h1>
+            <NotFoundPage />
           }
         />
       </Routes>
