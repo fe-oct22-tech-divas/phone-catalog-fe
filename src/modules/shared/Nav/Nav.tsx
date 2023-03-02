@@ -1,24 +1,36 @@
+import classNames from 'classnames';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const Nav: React.FC = () => {
+type Props = {
+  isForBurgerMenu?: boolean,
+};
+
+export const Nav: React.FC<Props> = ({ isForBurgerMenu }) => {
   return (
     <>
-      <nav className="nav">
-        <ul className="nav__list">
+      <nav className={classNames({
+        nav: !isForBurgerMenu,
+        nav__menu: isForBurgerMenu,
+      })}
+      >
+        <ul className={classNames({
+          nav__list: !isForBurgerMenu,
+          nav__menu__list: isForBurgerMenu,
+        })}
+        >
           {['home', 'phones', 'tablets', 'accessories'].map(
             category => (
-              <li
+              <Link
                 key={category}
-                className="nav__item"
+                to={category}
+                className={classNames({
+                  nav__link: !isForBurgerMenu,
+                  nav__menu__link: isForBurgerMenu,
+                })}
               >
-                <Link
-                  to={category}
-                  className="nav__link"
-                >
-                  {category}
-                </Link>
-              </li>
+                {category}
+              </Link>
             ),
           )}
         </ul>
