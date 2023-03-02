@@ -4,6 +4,8 @@ module.exports = {
     'plugin:react/recommended',
   ],
   rules: {
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': 'warn',
     // React
     'react/prop-types': 0,
     'react/self-closing-comp': 0,

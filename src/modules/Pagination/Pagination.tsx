@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import cn from 'classnames';
 import { Link, useSearchParams } from 'react-router-dom';
 import { searchBy } from '../../helpers/searchBy';
+import './Pagination.scss';
 
 type Props = {
   total: number;
@@ -49,7 +50,6 @@ export const Pagination: FC<Props> = ({
         <button
           type="button"
           className="pagination__button"
-          aria-disabled={isFirstPage}
           onClick={() => PrevNextPage('prev')}
           disabled={isFirstPage}
         >
@@ -80,14 +80,12 @@ export const Pagination: FC<Props> = ({
         <button
           type="button"
           className="pagination__button"
-          aria-disabled={isLastPage}
           onClick={() => PrevNextPage('next')}
           disabled={isLastPage}
         >
           {'>'}
         </button>
       </li>
-
     </ul>
   );
 };

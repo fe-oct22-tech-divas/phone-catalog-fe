@@ -4,6 +4,8 @@ import './App.scss';
 import { PhonesPage } from './modules/PhonesPage';
 import { BurgerMenu } from './modules/shared/BurgerMenu';
 import { Header } from './modules/shared/Header';
+import { ProductCard } from './modules/ProductCard/ProductCard';
+import { NotFoundPage } from './modules/NotFoundPage';
 
 export const App: React.FC = () => {
   const { hash } = useLocation();
@@ -14,6 +16,7 @@ export const App: React.FC = () => {
     <>
       <Header />
       <BurgerMenu isBurgerVisible={isBurgerMenuOpen} />
+
       <Routes>
         <Route
           path="home"
@@ -25,7 +28,7 @@ export const App: React.FC = () => {
         <Route
           path="phones"
           element={
-            <h1>Phones</h1>
+            <ProductCard />
           }
         />
 
@@ -53,10 +56,11 @@ export const App: React.FC = () => {
         <Route
           path="*"
           element={
-            <h1>Page not found</h1>
+            <NotFoundPage />
           }
         />
       </Routes>
     </>
+
   );
 };
