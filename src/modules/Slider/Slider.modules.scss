@@ -1,13 +1,13 @@
 .slider {
   position: relative;
-  height: 400px;
+  height: $slider-heght;
   display: flex;
   justify-content: center;
   align-items: center;
 
   &--previous-button {
-    width: 32px;
-    height: 400px;
+    width: $slider-bottom-width;
+    height: $slider-heght;
     background: #2A2932;
     background-image: url('../../img/icon/arrow_left.png');
     background-size: auto;
@@ -24,8 +24,8 @@
     }
   }
   &--next-button {
-    width: 32px;
-    height: 400px;
+    width: $slider-bottom-width;
+    height: $slider-heght;
     background: #2A2932;
     background-image: url('../../img/icon/arrow_right.png');
     background-size: auto;
@@ -78,8 +78,8 @@
   transition-duration: 1s;
 
   &__image {
-    width: 1040px;
-    height: 400px;
+    width: $slider-image-width;
+    height: $slider-heght;
   }
 }
 
@@ -104,6 +104,6 @@
   transition: background-color 0.3s ease-in-out;
 
   &-active {
-    background: #F1F2F9;
+    background: $color-white;
   }
 }
