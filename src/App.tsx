@@ -5,7 +5,6 @@ import { PhonesPage } from './modules/PhonesPage';
 import { Header } from './modules/shared/Header';
 import { ProductCard } from './modules/ProductCard/ProductCard';
 import { NotFoundPage } from './modules/NotFoundPage';
-import { Footer } from './components/Footer';
 
 export const App: React.FC = () => {
   return (
@@ -55,8 +54,6 @@ export const App: React.FC = () => {
           }
         />
       </Routes>
-      
-      <Footer />
     </>
 
   );

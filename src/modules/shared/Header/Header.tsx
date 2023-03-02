@@ -3,7 +3,7 @@ import logo from '../../../img/logo.png';
 import favourites from '../../../img/icon/heart.png';
 import cart from '../../../img/icon/cart.png';
 import menu from '../../../img/icon/menu.png';
-import { Nav } from './Nav';
+import { Nav } from '../Nav';
 
 export const Header: React.FC = () => (
   <header className="header">
