@@ -1,15 +1,19 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.scss';
 import { PhonesPage } from './modules/PhonesPage';
 import { BurgerMenu } from './modules/shared/BurgerMenu';
 import { Header } from './modules/shared/Header';
 
 export const App: React.FC = () => {
+  const { hash } = useLocation();
+
+  const isBurgerMenuOpen = hash.includes('#menu');
+
   return (
     <>
       <Header />
-      <BurgerMenu />
+      <BurgerMenu isBurgerVisible={isBurgerMenuOpen} />
       <Routes>
         <Route
           path="home"

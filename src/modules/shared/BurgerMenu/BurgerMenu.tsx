@@ -12,7 +12,7 @@ type Props = {
 export const BurgerMenu: React.FC<Props> = ({ isBurgerVisible }) => (
   <div className={classNames(
     'burger',
-    { 'burger-visible': isBurgerVisible },
+    { 'burger--visible': isBurgerVisible },
   )}
   >
     <Nav isForBurgerMenu />
