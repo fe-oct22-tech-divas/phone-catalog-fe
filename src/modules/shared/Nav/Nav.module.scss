@@ -1,0 +1,75 @@
+.nav,
+.nav__menu {  
+  &__link,
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $medium-size;
+
+    font-family: 'Mont-Bold', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    color: $color-gray;
+
+    text-align: center;    
+    
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    @include onDesktop {
+    height: $big-size;
+    }
+    
+      &:hover {
+        position: relative;
+        color: $color-white;
+
+        &::before {
+          display: block;
+          content: '';
+          bottom: 0%;
+          position: absolute;
+
+          height: 3px;
+          width: 100%;
+
+          background-color: $color-white;
+        }
+      }
+    }
+}
+
+.nav {
+  display: none;
+
+  @include onTablet {
+    display: flex;
+    margin-right: auto;
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__link {
+    margin-right: $big-size;
+  }
+}
+
+.nav__menu {
+  display: flex;
+  justify-content: center;
+
+  &__link {
+    position: relative;
+    height: 32px;
+    
+    &:hover {
+      &::before {
+        height: 2px;
+        width: 100%;
+      }
+    }
+  }
+}

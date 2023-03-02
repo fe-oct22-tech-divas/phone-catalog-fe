@@ -1,0 +1,84 @@
+.icons {
+  display: flex;
+  justify-content: flex-end;
+  white-space: nowrap;
+
+  &__burger--footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    height: $big-size;
+
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    border-top: 1px solid $color-gray;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      height: 100%;
+
+      background-color: $color-gray;
+    }
+  }
+}
+
+.icon {
+  padding: 17px;
+  height: $medium-size;
+
+  border-left: 1px solid $color-gray;
+
+  background-repeat: no-repeat;
+  background-position: center;
+
+  cursor: pointer;
+
+  @include onDesktop {
+  padding: 24px;
+
+  height: $big-size;
+  }
+
+  &__burger--footer {
+    position: relative;
+    display: inline-block;
+
+    background-repeat: no-repeat;
+    background-position: center;
+
+    cursor: pointer;
+
+    transition: all 0.3 ease-in-out;
+    width: 50%;
+    text-align: center;
+    
+  }
+
+  &--favourites,
+  &--cart {
+    display: none;
+
+    @include onTablet {
+      display: block;
+    }
+  }
+
+  &--menu,
+  &--cross {
+    display: block;
+
+    @include onTablet {
+      display: none;
+    }
+  }
+}

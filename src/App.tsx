@@ -2,12 +2,14 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.scss';
 import { PhonesPage } from './modules/PhonesPage';
+import { BurgerMenu } from './modules/shared/BurgerMenu';
 import { Header } from './modules/shared/Header';
 
 export const App: React.FC = () => {
   return (
     <>
       <Header />
+      <BurgerMenu />
       <Routes>
         <Route
           path="home"

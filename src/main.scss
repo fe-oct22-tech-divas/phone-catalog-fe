@@ -4,4 +4,8 @@
 @import './utils/reset';
 @import './utils/grid';
 
-@import './modules/shared/Header/Header.scss';
+@import './modules/shared/Header/Header.module.scss';
+@import './modules/shared/BurgerMenu/BurgerMenu.scss';
+@import './modules/shared/Logo/Logo.modules.scss';
+@import './modules/shared/Nav/Nav.module.scss';
+@import './modules/shared/Icons/Icons.module.scss';

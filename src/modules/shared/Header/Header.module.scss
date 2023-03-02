@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: $medium-size;
+
+  padding: 19px 0 19px 24px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid $color-gray;
+
+  @include onDesktop {
+    height: $big-size;
+    margin-bottom: 56px;
+  }
+}
+
