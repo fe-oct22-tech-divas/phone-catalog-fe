@@ -1,4 +1,4 @@
-export interface Product {
+export interface Phone {
   id: number;
   category: string;
   phoneId: string;

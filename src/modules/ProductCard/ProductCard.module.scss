@@ -7,6 +7,7 @@
   align-items: flex-start;
   padding: 32px;
   gap: 8px;
+  margin-bottom: 5px;
 
   left: 16px;
   top: 16px;
@@ -60,7 +61,7 @@
       font-size: 12px;
       line-height: 15px;
 
-      color: #75767F;
+      color: $color-gray;
     }
 
     &__value {
@@ -99,12 +100,32 @@
       font-weight: 700;
       font-size: 14px;
       line-height: 21px;
-
       text-align: center;
 
       color: $color-white;
   
       transition: 0.3s, background-color 0.3s;
+
+      &--is-added {
+        height: 40px;
+  
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 160px;
+        height: 40px;
+    
+        font-family: 'Mont-Regular', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 21px;
+
+        text-align: center;
+
+        color: $color-white;
+        background-color: #323542;
+      }
     }
   
     &--add-button:hover {
@@ -112,7 +133,6 @@
     }
 
     &--like-button {
-      padding: 0;
       height: 40px;
       width: 40px;
       border-color: #323542;
@@ -124,10 +144,23 @@
       border: none;
 
       transition: 0.3s, background-color 0.3s;
+
+      &--is-added {
+        height: 40px;
+        width: 40px;
+        border-color: #323542;
+        background-color: #323542;
+        background-image: url('../../img/icon/heart_filled.png');
+        background-size: auto;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        border: none;
+      }
     }
     &--like-button:hover {
       background-color: #4A4D58;
       border-color: #4A4D58;
     }
+
   }
 }
