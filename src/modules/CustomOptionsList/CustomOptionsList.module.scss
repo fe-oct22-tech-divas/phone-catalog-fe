@@ -1,0 +1,80 @@
+.selectors{
+  display:flex;
+  flex-direction:row;
+
+  &__container {
+    margin-right: 16px;
+  }
+
+  &__sort-by {
+    font-family: 'Mont-SemiBold', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: $color-gray;
+
+    &__name {
+      display: flex;
+  
+      font-family: 'Mont-SemiBold', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15px;
+  
+      color: $color-gray;
+  
+      align-items: center;
+      width: 176px;
+      height: 40px;
+      background-color: #323542;
+      border-color: #323542;
+      background-image: url('../../img/icon/arrow_down.png');
+      background-size: auto;
+      background-repeat: no-repeat;
+      background-position: 90% 50%;
+      color: #F1F2F9;
+      border: none;
+      padding-left: 15px;
+  
+      transform: 0.3s, background-color 0.3s;
+  
+        &:hover {
+            background-color: #4A4D58;
+          }
+    }
+  
+  }
+
+
+  &__table {
+    width: 176px;
+
+    &__option {
+      display: flex;
+      align-items: center;
+      width: 176px;
+      height: 40px;
+      background-color: #0F1121;
+      color: #F1F2F9;
+      border: none;
+      padding-left: 15px;
+      font-family: 'Mont-SemiBold', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15px;
+
+      color: $color-gray;
+  
+      transform: 0.3s, background-color 0.3s;
+  
+        &:hover {
+            background-color: #4A4D58;
+            color: $color-white;
+          }
+    }
+  }
+}

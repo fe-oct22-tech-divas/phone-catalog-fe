@@ -19,7 +19,8 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
   const [isAdded, setIsAdded] = useState(false);
   const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
 
-  const handleAdd = () => {
+  const handleAdd = (event) => {
+    event.preventDefault();
     setIsAdded(!isAdded);
   };
 
@@ -29,7 +30,7 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
 
   return (
 
-    <div className="card grid__item--desktop-1-6" key={id}>
+    <div className="card" key={id}>
       <img
         className="card__image"
         alt="Apple iPhone Xs 64GB Silver (iMT9G2FS/A)"
