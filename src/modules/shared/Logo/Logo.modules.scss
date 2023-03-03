@@ -1,0 +1,13 @@
+.logo {
+  width: $big-size;
+  margin-right: $medium-size;
+
+  @include onDesktop {
+  width: 80px;
+  }
+
+  &__img {
+    display: block;
+    height: 26px;
+  }
+}
