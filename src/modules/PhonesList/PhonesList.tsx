@@ -23,7 +23,9 @@ export const PhonesList: React.FC = () => {
     <>
       <div className="phones">
         <div className="phones__redirect">
-          <div className="phones__redirect--homeIcon" />
+          <a className="phones__redirect-link" href="/">
+            <div className="phones__redirect--homeIcon" />
+          </a>
           <div className="phones__redirect--arrowIcon" />
           <p className="phones__redirect--title">Phones</p>
         </div>
@@ -54,7 +56,7 @@ export const PhonesList: React.FC = () => {
           </span>
         </div>
 
-        <div className="phone__container grid grid--desktop">
+        <div className="phones__container grid grid--desktop">
           {phones.map((phone => (
             <ProductCard phone={phone} key={phone.id} />
           )))}
