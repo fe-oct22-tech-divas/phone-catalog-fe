@@ -1,22 +1,41 @@
-@mixin onDesktop {
-  @media (min-width: 1200px) {
-    @content;
-  }
-}
-
-@mixin onTablet {
-  @media (min-width: 640px) {
-    @content;
-  }
-}
-
-@mixin onMobile {
-  @media (min-width: 320px) and (max-width: 639px) {
-    @content;
-  }
-}
-
 .slider {
+  margin-bottom: 100px;
+
+  &__title {
+    font-family: 'Mont_Bold', sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+    font-weight: 800; 
+    letter-spacing: -2px;
+    color: $color-white;
+    width: 288px;
+    margin-bottom: 16px;
+
+    @include onTablet {
+      margin: 32px 0 32px 0;
+      font-size: 48px;
+      line-height: 56px;
+      width: 500px;
+    }
+
+    @include onDesktop {
+      margin: 56px 16px 56px 0;
+      letter-spacing: -2px;
+
+      width: 100%;
+    }
+  }
+
+  &-container {
+    @include onTablet {
+      padding: 0 24px;
+    }
+
+    @include onDesktop {
+      padding: 0 32px;
+    }
+  }
+
   &__image {
     display: block;
     object-fit: cover;
@@ -36,66 +55,47 @@
 
       display: block;
 
-      width: 32px;
       height: 100%;
 
-      padding: 14px;
+      width: 32px;
 
       -ms-transform: translate(0, -50%);
       transform: translate(0, -50%);
 
-      cursor: pointer;
+      transition: 0.3s, background-color 0.3s;
 
-      transition: border 0.3s;
-
-      color: transparent;
-      outline: none;
-      background: #2A2932;
+      border-color: transparent;
+      background: #323542;
 
       &:hover {
-        background-color: #323542;
+        background: #4A4D58;
       }
     }
+
     &-prev {
       left: -45px;
       position: absolute;
-      z-index: 1;
-
-      &::after {
-        content: '';
-        display: block;
-
-        width: 6px;
-        height: 10px;
-
-        background-image: url('../../img/icon/arrow_left.png');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-      }
+      background-image: url('../../img/icon/arrow_left.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 20px;
     }
+    
     &-next {
       right: -45px;
 
-      &::before {
-        content: '';
-        display: block;
-
-        width: 6px;
-        height: 10px;
-
-        background-image: url('../../img/icon/arrow_right.png');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-      }
+      background-image: url('../../img/icon/arrow_right.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 20px;
     }
+
     &-dot {
       background: #3B3E4A;
       transition: opacity 0.3s, background 0.3s;
   
       &:hover {
-        background: #F1F2F9;
+        background: $color-white;
         opacity: 0.3;
       }
     }
@@ -110,15 +110,13 @@
       margin: 0;
   
       list-style: none;
-  
       text-align: center;
+
       & li {
         position: relative;
-  
         display: inline-block;
-  
         margin-right: 14px;
-  
+
         cursor: pointer;
   
         & button {
@@ -130,10 +128,7 @@
           width: 20px;
           height: 20px;
   
-          cursor: pointer;
-  
           color: transparent;
-          border: 0;
           outline: none;
           background: transparent;
         }
@@ -141,7 +136,7 @@
     }
     &-active {
       .slick-dot {
-        background: #F1F2F9;
+        background: $color-white;
       }
     }
     &-slider {
@@ -151,3 +146,4 @@
       box-sizing: border-box;
     }
   }
+
