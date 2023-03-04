@@ -1,10 +1,17 @@
 .pagination {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  margin: 40px 0 80px 0;
 
   &__button {
     height: 32px;
+    width: 32px;
+    border: none;
+    background-color: #323542;
+
+    &:hover {
+      background-color: #4A4D58;
+    }
 
     &:disabled {
       background-color: #161827;
@@ -32,10 +39,20 @@
     margin-right: 8px;
     width: 32px;
     height: 32px;
+    background-color: #161827;
+    color: $color-white;
+
+    &:hover {
+      background-color: #4A4D58;
+    }
+
+    &::after {
+      background-color: #905BFF;
+    }
 
     &-isActive {
       background-color: #905BFF;
-      color: white;
+      color: $color-white;
     }
   }
 }

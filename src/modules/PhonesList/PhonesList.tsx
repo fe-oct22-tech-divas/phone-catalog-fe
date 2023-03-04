@@ -1,12 +1,14 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { Phone } from '../../types/Phone';
 import { ProductCard } from '../ProductCard';
+import { Pagination } from '../Pagination';
 import phonesFromApi from '../../data/phones.json';
 
 export const PhonesList: React.FC = () => {
   const [phones] = useState<Phone[]>(phonesFromApi);
   const [chosenOption, setChosenOption] = useState('Newest');
   const [choosenQuantity, setChosenQuantity] = useState(16);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const options = [
     { value: 'Newest', label: 'Newest' },
@@ -30,7 +32,9 @@ export const PhonesList: React.FC = () => {
     setChosenQuantity(option);
   }, []);
 
-  const currentCards = phones.slice(0, choosenQuantity);
+  const lastIndex = currentPage * choosenQuantity;
+  const firstIndex = lastIndex - choosenQuantity;
+  const currentCards = phones.slice(firstIndex, lastIndex);
 
   const getSortedCards = useMemo(() => {
     return currentCards.sort((card1: Phone, card2: Phone) => {
@@ -119,6 +123,13 @@ export const PhonesList: React.FC = () => {
             />
           )))}
         </div>
+
+        <Pagination
+          total={phones.length}
+          perPage={choosenQuantity}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+        />
       </div>
     </>
   );
