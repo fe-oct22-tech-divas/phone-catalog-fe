@@ -1,13 +1,34 @@
 .categories {
-  display: block;
-  width: 100%;
-  margin: 0 auto;
+  margin-bottom: 56px;
+
+  @include onTablet {
+    margin-bottom: $big-size;
+  }
+
+  @include onDesktop {
+    margin-bottom: 80px;
+  }
 
   &__title {
+    margin-bottom: $small-size;
 
+    font-family: 'Mont-Bold', sans-serif;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    color: $color-white;
+
+    @include onTablet {
+      font-size: 32px;
+    }
   }
 
   &__item {
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
 
+    @include onTablet {
+      margin-bottom: 0;
+    }
   }
 }

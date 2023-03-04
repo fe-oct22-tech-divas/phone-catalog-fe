@@ -3,6 +3,7 @@ import Phones from '../../img/categoriesCards/Phones.jpg';
 import Tablets from '../../img/categoriesCards/Tablets.jpg';
 import Accessories from '../../img/categoriesCards/Accessories.jpg';
 import { CategoryCard } from '../CategoryCard';
+import phonesCount from '../../data/phones.json';
 
 export const Categories: React.FC = () => {
   return (
@@ -22,7 +23,7 @@ export const Categories: React.FC = () => {
             categoryImgAlt="Phones"
             categoryLink="#phones"
             categoryTitle="Phones"
-            categoryDesc="95 items"
+            categoryDesc={`${phonesCount.length} phones`}
           />
         </div>
 
@@ -36,7 +37,7 @@ export const Categories: React.FC = () => {
             categoryImgAlt="Tablets"
             categoryLink="#tablets"
             categoryTitle="Tablets"
-            categoryDesc="95 items"
+            categoryDesc={`${phonesCount.length} phones`}
           />
         </div>
 
@@ -50,7 +51,7 @@ export const Categories: React.FC = () => {
             categoryImgAlt="Accessories"
             categoryLink="#accessories"
             categoryTitle="Accessories"
-            categoryDesc="95 items"
+            categoryDesc={`${phonesCount.length} phones`}
           />
         </div>
       </div>

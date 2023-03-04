@@ -4,25 +4,25 @@
   column-gap: $gap;
 
   @include onTablet {
-    grid-template-columns: repeat($tablet-columns, 1fr);
   }
-
+  
   @include onDesktop {
-    grid-template-columns: repeat($desktop-columns, 1fr);
   }
-
+  
   &--tablet {
-    display: block;
-
+    
     @include onTablet {
+      grid-template-columns: repeat($tablet-columns, 1fr);
+      column-gap: 24px;
       display: grid;
     }
   }
-
+  
   &--desktop {
-    display: block;
-
+    
     @include onDesktop {
+      grid-template-columns: repeat($desktop-columns, 1fr);
+      column-gap: $gap;
       display: grid;
     }
   }
