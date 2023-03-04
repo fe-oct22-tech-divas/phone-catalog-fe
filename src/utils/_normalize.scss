@@ -19,6 +19,19 @@
 
 html {
   background-color: $bc-color;
+}
 
-  cursor: i
+.main-container {
+  margin: 0 auto;
+  padding: 0 16px;
+
+  max-width: 1200px;
+
+  @include onTablet {
+    padding: 0 24px;
+  }
+
+  @include onDesktop {
+    padding: 0 32px;
+  }
 }
