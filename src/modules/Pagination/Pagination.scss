@@ -7,6 +7,7 @@
     width: 32px;
     height: 32px;
     border: none;
+    cursor: pointer;
 
     &--left {
       background: no-repeat center/auto url('../../icons/arow-left.svg');
@@ -44,9 +45,13 @@
     background-color: #161827;
     color: white;
 
+    &:hover {
+      background-color: #3B3E4A;
+    }
+
     &-isActive {
       background-color: #905BFF;
-      color: white;
+      pointer-events: none;
     }
   }
 }

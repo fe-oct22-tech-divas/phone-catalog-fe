@@ -1,5 +1,5 @@
 .footer {
-  position: absolute;
+  position: static;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -41,7 +41,7 @@
     display: flex;
     width: 89px;
     height: 31px;
-    background-image: url('../../../icons/logo.svg');
+    background-image: url('../../../icons/Logo.svg');
   }
 
   &__link {
