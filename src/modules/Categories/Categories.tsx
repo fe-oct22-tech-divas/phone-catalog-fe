@@ -15,8 +15,8 @@ export const Categories: React.FC = () => {
       <div className="grid grid--tablet grid--desktop">
         <div className="
         categories__item
-        grid__item--tablet--1-4
-        grid__item--desktop--1-8"
+        grid__item--tablet-1-4
+        grid__item--desktop-1-8"
         >
           <CategoryCard
             categoryImg={Phones}
@@ -29,8 +29,8 @@ export const Categories: React.FC = () => {
 
         <div className="
         categories__item
-        grid__item--tablet--5-8
-        grid__item--desktop--9-16"
+        grid__item--tablet-5-8
+        grid__item--desktop-9-16"
         >
           <CategoryCard
             categoryImg={Tablets}
@@ -43,8 +43,8 @@ export const Categories: React.FC = () => {
 
         <div className="
         categories__item
-        grid__item--tablet--9-12
-        grid__item--desktop--17-24"
+        grid__item--tablet-9-12
+        grid__item--desktop-17-24"
         >
           <CategoryCard
             categoryImg={Accessories}

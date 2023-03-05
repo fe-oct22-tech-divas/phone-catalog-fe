@@ -1,5 +1,5 @@
 .categories {
-  margin-bottom: 56px;
+  margin: 0 auto 56px;
 
   @include onTablet {
     margin-bottom: $big-size;
@@ -10,7 +10,7 @@
   }
 
   &__title {
-    margin-bottom: $small-size;
+    margin: 0 0 $small-size;
 
     font-family: 'Mont-Bold', sans-serif;
     font-size: 22px;

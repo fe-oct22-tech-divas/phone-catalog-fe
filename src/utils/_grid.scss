@@ -2,15 +2,10 @@
   display: grid;
   grid-template-columns: repeat($mobile-columns, 1fr);
   column-gap: $gap;
-
-  @include onTablet {
-  }
-  
-  @include onDesktop {
-  }
   
   &--tablet {
-    
+    display: block;
+
     @include onTablet {
       grid-template-columns: repeat($tablet-columns, 1fr);
       column-gap: 24px;
