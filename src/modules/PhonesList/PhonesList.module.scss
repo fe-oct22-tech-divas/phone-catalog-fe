@@ -1,0 +1,150 @@
+.phones{
+  display: grid;
+    grid-template-columns: auto;
+    justify-content: center;
+    margin: 0 auto 80px;
+    padding: 0 32px;
+
+  &__redirect {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+
+    &--homeIcon {
+      height: 14px;
+      width: 14px;
+      background-image: url('../../img/icon/home.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin-right: 13px;
+      padding-bottom: 5px;
+
+      &:hover {
+        transform: scale(1.2);
+        transition: transform 0.3s ease-in-out;
+      }
+    }
+    &--arrowIcon {
+      height: 14px;
+      width: 14px;
+      background-image: url('../../img/icon/arrow_right.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin-right: 13px;
+    }
+
+    &--title {
+      font-family: 'Mont-SemiBold', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15px;
+
+      color: $color-gray;
+    }
+  }
+  &__title {
+    font-family: 'Mont', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 56px;
+    margin-bottom: 8px;
+
+    color: $color-white;
+  }
+
+  &__amount {
+    font-family: 'Mont-Regular', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: $color-gray;
+  }
+
+  &__sort {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 24px;
+
+    &__by {
+      &:first-child {
+        margin-right: 16px;
+      }
+
+      &--name {
+        font-family: 'Mont-SemiBold', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 15px;
+
+        color: $color-gray;
+      }
+
+      &--dropdown-1 {
+        box-sizing: border-box;
+        width: 176px;
+        height: 40px;
+        background-color: #323542;
+        appearance: none;
+        border-color: #323542;
+        background-image: url('../../img/icon/arrow_down.png');
+        background-size: auto;
+        background-repeat: no-repeat;
+        background-position: 90% 50%;
+        color: #F1F2F9;
+        padding: 0 10px;
+        border: none;
+
+        transform: 0.3s, background-color 0.3s;
+
+        &:hover {
+          background-color: #4A4D58;
+        }
+      }
+
+      &--dropdown-2 {
+        box-sizing: border-box;
+        width: 128px;
+        height: 40px;
+        background: #323542;;
+        appearance: none;
+        border-color: #323542;
+        background-image: url('../../img/icon/arrow_down.png');
+        background-size: auto;
+        background-repeat: no-repeat;
+        background-position: 90% 50%;
+        color: #F1F2F9;
+        padding: 0 10px;
+
+        transform: 0.3s, background-color 0.3s;
+
+        &:hover {
+          background-color: #4A4D58;
+        }
+      }
+    }
+  }
+  &__container {
+    gap: 48px;
+  
+    @each $cards, $size in $sizes {
+      @media (min-width:#{$size}) {
+        grid-template-columns: repeat(#{$cards}, $card-width);
+      }
+    }
+  }
+  
+}
+
+.option-value {
+  display: flex;
+  background: #0F1121;
+  height: 32px;
+  padding: 0 16px;
+
+  
+}

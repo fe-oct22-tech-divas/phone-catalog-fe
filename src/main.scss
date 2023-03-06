@@ -1,10 +1,20 @@
-@import './utils/variables';
-@import './utils/normalize';
-@import './utils/mixins';
 @import './utils/reset';
+@import './utils/variables';
+@import './utils/mixins';
+@import './utils/normalize';
 @import './utils/grid';
 
-@import './modules/shared/Header/Header.scss';
+@import './modules/shared/Header/Header.module.scss';
+@import './modules/shared/BurgerMenu/BurgerMenu.scss';
+@import './modules/shared/Logo/Logo.modules.scss';
+@import './modules/shared/Nav/Nav.module.scss';
+@import './modules/shared/Icons/Icons.module.scss';
 @import './modules/ProductCard/ProductCard.module.scss';
 @import './modules/NotFoundPage/NotFoundPage.module.scss';
 @import './modules/shared/Footer/Footer.scss';
+@import './modules/PhonesList/PhonesList.module.scss';
+@import './modules/CategoryCard/CategoryCard.module.scss';
+@import './modules/Categories/Categories.module.scss';
+@import './modules/CustomOptionsList/CustomOptionsList.module.scss';
+@import './modules/PageSlider/PageSlider.modules.scss';
+@import './modules/Pagination/Pagination.scss';

@@ -1,12 +1,8 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { PhonesList } from '../PhonesList';
 
 export const PhonesPage: React.FC = () => {
-  const { phoneId } = useParams();
-
   return (
-    <h1>
-      {`PhonesPage ${phoneId}`}
-    </h1>
+    <PhonesList />
   );
 };
