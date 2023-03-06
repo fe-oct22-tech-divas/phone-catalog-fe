@@ -7,7 +7,7 @@ import phonesFromApi from '../../data/phones.json';
 export const PhonesList: React.FC = () => {
   const [phones] = useState<Phone[]>(phonesFromApi);
   const [chosenOption, setChosenOption] = useState('Newest');
-  const [choosenQuantity, setChosenQuantity] = useState(16);
+  const [choosenQuantity, setChosenQuantity] = useState('16');
   const [currentPage, setCurrentPage] = useState(1);
 
   const options = [
@@ -28,12 +28,12 @@ export const PhonesList: React.FC = () => {
     setChosenOption(option);
   }, []);
 
-  const handleChangeSelectorQuantity = useCallback((option: number) => {
+  const handleChangeSelectorQuantity = useCallback((option: string) => {
     setChosenQuantity(option);
   }, []);
 
-  const lastIndex = currentPage * choosenQuantity;
-  const firstIndex = lastIndex - choosenQuantity;
+  const lastIndex = currentPage * +choosenQuantity;
+  const firstIndex = lastIndex - +choosenQuantity;
   const currentCards = phones.slice(firstIndex, lastIndex);
 
   const getSortedCards = useMemo(() => {
@@ -118,17 +118,17 @@ export const PhonesList: React.FC = () => {
             <ProductCard
               phone={phone}
               key={phone.id}
-              chosenOption={chosenOption}
-              choosenQuantity={choosenQuantity}
+              // chosenOption={chosenOption}
+              // choosenQuantity={choosenQuantity}
             />
           )))}
         </div>
 
         <Pagination
           total={phones.length}
-          perPage={choosenQuantity}
+          perPage={+choosenQuantity}
           currentPage={currentPage}
-          onPageChange={setCurrentPage}
+          onPageChange={() => setCurrentPage}
         />
       </div>
     </>
