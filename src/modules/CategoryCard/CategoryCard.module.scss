@@ -1,0 +1,42 @@
+.category {
+  &__img {
+    display: block;
+    width: 100%;
+    min-width: 288px;
+    height: auto;
+    margin: 0 auto 24px;
+    
+    @include onTablet {
+      min-width: 184px;
+    }
+
+    @include onDesktop {
+      min-width: 368px;
+    }
+
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: $hover-scale;
+    }
+  }
+
+  &__title {
+    margin-bottom: 4px;
+
+  }
+  
+  &__link {
+    font-family: 'Mont-SemiBold', sans-serif;
+    font-size: 20px;
+    color: $color-white;
+
+  }
+  
+  &__desc {
+    font-family: 'Mont-Regular', sans-serif;
+    font-size: 14px;
+    color: $color-gray;
+
+  }
+}

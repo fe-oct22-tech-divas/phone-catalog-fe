@@ -7,7 +7,7 @@ import phonesFromApi from '../../data/phones.json';
 export const PhonesList: React.FC = () => {
   const [phones] = useState<Phone[]>(phonesFromApi);
   const [chosenOption, setChosenOption] = useState('Newest');
-  const [choosenQuantity, setChosenQuantity] = useState(16);
+  const [choosenQuantity, setChosenQuantity] = useState('16');
   const [currentPage, setCurrentPage] = useState(1);
 
   const options = [
