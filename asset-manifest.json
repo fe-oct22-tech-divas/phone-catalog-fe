@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/phone-catalog-fe/static/css/main.b2738ed1.chunk.css",
-    "main.js": "/phone-catalog-fe/static/js/main.f2d32d96.chunk.js",
-    "main.js.map": "/phone-catalog-fe/static/js/main.f2d32d96.chunk.js.map",
+    "main.css": "/phone-catalog-fe/static/css/main.dd27c0cc.chunk.css",
+    "main.js": "/phone-catalog-fe/static/js/main.df2e29a1.chunk.js",
+    "main.js.map": "/phone-catalog-fe/static/js/main.df2e29a1.chunk.js.map",
     "runtime-main.js": "/phone-catalog-fe/static/js/runtime-main.f9d40057.js",
     "runtime-main.js.map": "/phone-catalog-fe/static/js/runtime-main.f9d40057.js.map",
-    "static/js/2.a1670ba3.chunk.js": "/phone-catalog-fe/static/js/2.a1670ba3.chunk.js",
-    "static/js/2.a1670ba3.chunk.js.map": "/phone-catalog-fe/static/js/2.a1670ba3.chunk.js.map",
+    "static/css/2.abcd5c43.chunk.css": "/phone-catalog-fe/static/css/2.abcd5c43.chunk.css",
+    "static/js/2.9cd425c2.chunk.js": "/phone-catalog-fe/static/js/2.9cd425c2.chunk.js",
+    "static/js/2.9cd425c2.chunk.js.map": "/phone-catalog-fe/static/js/2.9cd425c2.chunk.js.map",
     "index.html": "/phone-catalog-fe/index.html",
-    "static/css/main.b2738ed1.chunk.css.map": "/phone-catalog-fe/static/css/main.b2738ed1.chunk.css.map",
-    "static/js/2.a1670ba3.chunk.js.LICENSE.txt": "/phone-catalog-fe/static/js/2.a1670ba3.chunk.js.LICENSE.txt",
-    "static/media/Banner1.ca78b2e6.jpg": "/phone-catalog-fe/static/media/Banner1.ca78b2e6.jpg",
-    "static/media/Banner2.ca78b2e6.jpg": "/phone-catalog-fe/static/media/Banner2.ca78b2e6.jpg",
-    "static/media/Banner3.ca78b2e6.jpg": "/phone-catalog-fe/static/media/Banner3.ca78b2e6.jpg",
+    "static/css/2.abcd5c43.chunk.css.map": "/phone-catalog-fe/static/css/2.abcd5c43.chunk.css.map",
+    "static/css/main.dd27c0cc.chunk.css.map": "/phone-catalog-fe/static/css/main.dd27c0cc.chunk.css.map",
+    "static/js/2.9cd425c2.chunk.js.LICENSE.txt": "/phone-catalog-fe/static/js/2.9cd425c2.chunk.js.LICENSE.txt",
     "static/media/main.scss": "/phone-catalog-fe/static/media/vektor.e492ff21.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.f9d40057.js",
-    "static/js/2.a1670ba3.chunk.js",
-    "static/css/main.b2738ed1.chunk.css",
-    "static/js/main.f2d32d96.chunk.js"
+    "static/css/2.abcd5c43.chunk.css",
+    "static/js/2.9cd425c2.chunk.js",
+    "static/css/main.dd27c0cc.chunk.css",
+    "static/js/main.df2e29a1.chunk.js"
   ]
 }
