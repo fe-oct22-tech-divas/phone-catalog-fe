@@ -1,0 +1,149 @@
+.slider {
+  margin-bottom: 100px;
+
+  &__title {
+    font-family: 'Mont_Bold', sans-serif;
+    font-size: 32px;
+    line-height: 41px;
+    font-weight: 800; 
+    letter-spacing: -2px;
+    color: $color-white;
+    width: 288px;
+    margin-bottom: 16px;
+
+    @include onTablet {
+      margin: 32px 0 32px 0;
+      font-size: 48px;
+      line-height: 56px;
+      width: 500px;
+    }
+
+    @include onDesktop {
+      margin: 56px 16px 56px 0;
+      letter-spacing: -2px;
+
+      width: 100%;
+    }
+  }
+
+  &-container {
+    @include onTablet {
+      padding: 0 24px;
+    }
+
+    @include onDesktop {
+      padding: 0 32px;
+    }
+  }
+
+  &__image {
+    display: block;
+    object-fit: cover;
+
+    content: url('./Banner1.jpg');
+  }
+}
+
+.slick {
+    &-prev,
+    &-next {
+      font-size: 0;
+      line-height: 0;
+
+      position: absolute;
+      top: 50%;
+
+      display: block;
+
+      height: 100%;
+
+      width: 32px;
+
+      -ms-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+
+      transition: 0.3s, background-color 0.3s;
+
+      border-color: transparent;
+      background: #323542;
+
+      &:hover {
+        background: #4A4D58;
+      }
+    }
+
+    &-prev {
+      left: -45px;
+      position: absolute;
+      background-image: url('../../img/icon/arrow_left.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 20px;
+    }
+    
+    &-next {
+      right: -45px;
+
+      background-image: url('../../img/icon/arrow_right.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 20px;
+    }
+
+    &-dot {
+      background: #3B3E4A;
+      transition: opacity 0.3s, background 0.3s;
+  
+      &:hover {
+        background: $color-white;
+        opacity: 0.3;
+      }
+    }
+  
+    &-dots {
+      position: absolute;
+  
+      display: block;
+  
+      width: 100%;
+      padding: 18px 0 0 0;
+      margin: 0;
+  
+      list-style: none;
+      text-align: center;
+
+      & li {
+        position: relative;
+        display: inline-block;
+        margin-right: 14px;
+
+        cursor: pointer;
+  
+        & button {
+          font-size: 0;
+          line-height: 0;
+  
+          display: block;
+  
+          width: 20px;
+          height: 20px;
+  
+          color: transparent;
+          outline: none;
+          background: transparent;
+        }
+      }
+    }
+    &-active {
+      .slick-dot {
+        background: $color-white;
+      }
+    }
+    &-slider {
+      position: relative;
+  
+      display: block;
+      box-sizing: border-box;
+    }
+  }
+
