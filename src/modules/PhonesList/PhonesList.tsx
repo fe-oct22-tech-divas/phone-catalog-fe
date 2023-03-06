@@ -24,12 +24,16 @@ export const PhonesList: React.FC = () => {
     { value: '48', label: '48' },
   ];
 
+  const handlePageChange = (page:number) => {
+    setCurrentPage(page);
+  };
+
   const handleChangeSelectorOption = useCallback((option: string) => {
     setChosenOption(option);
   }, []);
 
   const handleChangeSelectorQuantity = useCallback((option: string) => {
-    setChosenQuantity(option);
+    setChosenQuantity(+option);
   }, []);
 
   const lastIndex = currentPage * +choosenQuantity;
@@ -53,7 +57,7 @@ export const PhonesList: React.FC = () => {
           return 0;
       }
     });
-  }, [chosenOption, phones, choosenQuantity]);
+  }, [chosenOption, phones, choosenQuantity, currentPage, firstIndex, lastIndex, currentCards]);
 
   return (
     <>
@@ -118,8 +122,8 @@ export const PhonesList: React.FC = () => {
             <ProductCard
               phone={phone}
               key={phone.id}
-              // chosenOption={chosenOption}
-              // choosenQuantity={choosenQuantity}
+              chosenOption={chosenOption}
+              choosenQuantity={+choosenQuantity}
             />
           )))}
         </div>
@@ -127,8 +131,8 @@ export const PhonesList: React.FC = () => {
         <Pagination
           total={phones.length}
           perPage={+choosenQuantity}
-          currentPage={currentPage}
-          onPageChange={() => setCurrentPage}
+          currentPage={+currentPage}
+          onPageChange={handlePageChange}
         />
       </div>
     </>
