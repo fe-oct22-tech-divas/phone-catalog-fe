@@ -48,11 +48,10 @@ export const Pagination: FC<Props> = ({
       <li>
         <button
           type="button"
-          className="pagination__button"
+          className="pagination__button pagination__button--left"
           onClick={() => PrevNextPage('prev')}
           disabled={isFirstPage}
         >
-          {'<'}
         </button>
       </li>
 
@@ -78,11 +77,10 @@ export const Pagination: FC<Props> = ({
       <li>
         <button
           type="button"
-          className="pagination__button"
+          className="pagination__button pagination__button--right"
           onClick={() => PrevNextPage('next')}
           disabled={isLastPage}
         >
-          {'>'}
         </button>
       </li>
     </ul>

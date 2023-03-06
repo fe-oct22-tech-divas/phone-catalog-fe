@@ -1,0 +1,56 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: none;
+    cursor: pointer;
+
+    &--left {
+      background: no-repeat center/auto url('../../icons/arow-left.svg');
+      background-color: #323542;
+      margin-right: 16px;
+
+      &:disabled {
+        background: no-repeat center/auto url('../../icons/arrow_left_disabled.svg');
+        border: 1px solid #3B3E4A;
+      }
+    }
+
+    &--right {
+      background: no-repeat center/auto url('../../icons/arow-right.svg');
+      background-color: #323542;
+      margin-left: 8px;
+
+      &:disabled {
+        background: no-repeat center/auto url('../../icons/vektor_right_disabled.svg');
+        border: 1px solid #3B3E4A;
+      }
+    }
+  }
+
+  &__links {
+    font-family: 'Mont-Regular', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+    width: 32px;
+    height: 32px;
+    background-color: #161827;
+    color: white;
+
+    &:hover {
+      background-color: #3B3E4A;
+    }
+
+    &-isActive {
+      background-color: #905BFF;
+      pointer-events: none;
+    }
+  }
+}
