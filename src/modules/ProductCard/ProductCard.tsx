@@ -19,7 +19,7 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
   const [isAdded, setIsAdded] = useState(false);
   const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
 
-  const handleAdd = (event) => {
+  const handleAdd = (event: React.MouseEvent) => {
     event.preventDefault();
     setIsAdded(!isAdded);
   };
