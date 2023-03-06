@@ -7,7 +7,6 @@
   align-items: flex-start;
   padding: 32px;
   gap: 8px;
-  margin-bottom: 5px;
 
   left: 16px;
   top: 16px;
@@ -155,6 +154,8 @@
         background-repeat: no-repeat;
         background-position: 50%;
         border: none;
+
+        transition: 0.3s, background-image 0.3s;
       }
     }
     &--like-button:hover {

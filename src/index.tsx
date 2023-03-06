@@ -6,8 +6,8 @@ import {
 import './index.scss';
 import { App } from './App';
 import { NotFoundPage } from './modules/NotFoundPage';
-import { HomePage } from './modules/HomePage';
 import { PhonesPage } from './modules/PhonesPage';
+import { HomePage } from './modules/HomePage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import './main.scss';
 

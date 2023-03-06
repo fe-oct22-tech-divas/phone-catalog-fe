@@ -1,5 +1,9 @@
 .phones{
-  padding: 0 32px;
+  display: grid;
+    grid-template-columns: auto;
+    justify-content: center;
+    margin: 0 auto 80px;
+    padding: 0 32px;
 
   &__redirect {
     display: flex;
@@ -13,6 +17,12 @@
       background-size: cover;
       background-repeat: no-repeat;
       margin-right: 13px;
+      padding-bottom: 5px;
+
+      &:hover {
+        transform: scale(1.2);
+        transition: transform 0.3s ease-in-out;
+      }
     }
     &--arrowIcon {
       height: 14px;
@@ -87,6 +97,7 @@
         background-position: 90% 50%;
         color: #F1F2F9;
         padding: 0 10px;
+        border: none;
 
         transform: 0.3s, background-color 0.3s;
 
@@ -117,6 +128,16 @@
       }
     }
   }
+  &__container {
+    gap: 48px;
+  
+    @each $cards, $size in $sizes {
+      @media (min-width:#{$size}) {
+        grid-template-columns: repeat(#{$cards}, $card-width);
+      }
+    }
+  }
+  
 }
 
 .option-value {
@@ -124,5 +145,6 @@
   background: #0F1121;
   height: 32px;
   padding: 0 16px;
+
   
 }
