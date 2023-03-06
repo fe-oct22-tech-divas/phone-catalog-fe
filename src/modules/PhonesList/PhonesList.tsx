@@ -24,16 +24,20 @@ export const PhonesList: React.FC = () => {
     { value: '48', label: '48' },
   ];
 
+  const handlePageChange = (page:number) => {
+    setCurrentPage(page);
+  };
+
   const handleChangeSelectorOption = useCallback((option: string) => {
     setChosenOption(option);
   }, []);
 
-  const handleChangeSelectorQuantity = useCallback((option: number) => {
-    setChosenQuantity(option);
+  const handleChangeSelectorQuantity = useCallback((option: string) => {
+    setChosenQuantity(+option);
   }, []);
 
-  const lastIndex = currentPage * choosenQuantity;
-  const firstIndex = lastIndex - choosenQuantity;
+  const lastIndex = currentPage * +choosenQuantity;
+  const firstIndex = lastIndex - +choosenQuantity;
   const currentCards = phones.slice(firstIndex, lastIndex);
 
   const getSortedCards = useMemo(() => {
@@ -53,7 +57,7 @@ export const PhonesList: React.FC = () => {
           return 0;
       }
     });
-  }, [chosenOption, phones, choosenQuantity]);
+  }, [chosenOption, phones, choosenQuantity, currentPage, firstIndex, lastIndex, currentCards]);
 
   return (
     <>
@@ -119,16 +123,16 @@ export const PhonesList: React.FC = () => {
               phone={phone}
               key={phone.id}
               chosenOption={chosenOption}
-              choosenQuantity={choosenQuantity}
+              choosenQuantity={+choosenQuantity}
             />
           )))}
         </div>
 
         <Pagination
           total={phones.length}
-          perPage={choosenQuantity}
-          currentPage={currentPage}
-          onPageChange={setCurrentPage}
+          perPage={+choosenQuantity}
+          currentPage={+currentPage}
+          onPageChange={handlePageChange}
         />
       </div>
     </>

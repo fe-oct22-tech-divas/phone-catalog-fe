@@ -16,7 +16,7 @@ export const Pagination: FC<Props> = ({
   currentPage,
   onPageChange,
 }) => {
-  const [searchParams] = useSearchParams();
+  const [searchParams] = useSearchParams(currentPage);
 
   const getPageNumber = (start: number, end: number) => {
     const numbers = [];
