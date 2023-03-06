@@ -10,6 +10,7 @@ import { PhonesPage } from './modules/PhonesPage';
 import { HomePage } from './modules/HomePage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import './main.scss';
+import { CartPage } from './modules/CartPage';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -28,6 +29,8 @@ ReactDOM.render(
           <Route path="tablets" element={<h1>Tablets</h1>} />
           <Route path="accessories" element={<h1>Accessories</h1>} />
           <Route path="*" element={<NotFoundPage />} />
+
+          <Route path="cart" element={<CartPage />} />
 
         </Route>
       </Routes>

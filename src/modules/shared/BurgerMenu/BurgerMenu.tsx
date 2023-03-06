@@ -19,14 +19,14 @@ export const BurgerMenu: React.FC<Props> = ({ isBurgerVisible }) => (
 
     <div className="icons__burger--footer">
       <Link
-        to="#favorites"
+        to="favorites"
         className="icon__burger--footer icon__burger--footer--favourites"
       >
         <img src={favourites} alt="Favourites" />
       </Link>
 
       <Link
-        to="#cart"
+        to="cart"
         className="icon__burger--footer icon__burger--footer--cart"
       >
         <img src={cart} alt="Cart" />

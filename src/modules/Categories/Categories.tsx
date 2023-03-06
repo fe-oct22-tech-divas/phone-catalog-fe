@@ -15,6 +15,7 @@ export const Categories: React.FC = () => {
       <div className="grid grid--tablet grid--desktop">
         <div className="
         categories__item
+        grid__item--1-4
         grid__item--tablet-1-4
         grid__item--desktop-1-8"
         >
@@ -29,6 +30,7 @@ export const Categories: React.FC = () => {
 
         <div className="
         categories__item
+        grid__item--1-4
         grid__item--tablet-5-8
         grid__item--desktop-9-16"
         >
@@ -43,6 +45,7 @@ export const Categories: React.FC = () => {
 
         <div className="
         categories__item
+        grid__item--1-4
         grid__item--tablet-9-12
         grid__item--desktop-17-24"
         >
