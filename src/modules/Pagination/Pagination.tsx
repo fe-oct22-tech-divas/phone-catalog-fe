@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import cn from 'classnames';
 import { Link, useSearchParams } from 'react-router-dom';
 import { searchBy } from '../../helpers/searchBy';
-import './Pagination.scss';
 
 type Props = {
   total: number;
