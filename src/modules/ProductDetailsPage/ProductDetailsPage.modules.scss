@@ -1,9 +1,15 @@
 .product {
-  padding: 0 32px;
   display: flex;
   flex-direction: column;
   margin-bottom: 200px;
-  justify-content: center;
+  width: 238px;
+
+  @include onTablet {
+    width: 592px;
+  }
+  @include onDesktop {
+    width: 1184px
+  }
 
   &__direction {
     display: flex;
@@ -86,34 +92,90 @@
 
   &__container {
     display:flex;
-    // flex-direction: row;
+    flex-direction: column;
+    // justify-content: space-between;  ??
+    width: 288px;
+    margin-top: 40px;
+    margin-bottom: 80px;
+
+    @include onTablet {
+      display:flex;
+    flex-direction: row;
+    // justify-content: space-between;  ??
+    width: 237px;
+    margin-top: 40px;
+    margin-bottom: 80px;
+    }
+
+    @include onDesktop {
+      display:flex;
+    flex-direction: row;
     // justify-content: space-between;  ??
     width: 320px;
     margin-top: 40px;
     margin-bottom: 80px;
+    }
   }
 
   &__photo-block {
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
+
+    @include onTablet {
+      flex-direction: row;
+    }
+
+    @include onDesktop {
+      flex-direction: row;
+      padding-right: 50px;
+    }
 
     &__small-images {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       padding-right: 16px;
 
+      @include onTablet {
+        flex-direction: column;
+      }
+  
+      @include onDesktop {
+        flex-direction: column;
+      }
+
+
       &__image {
-        width: 66px;
-        height: 66px;
-        padding: 14px;
-        border: 1px solid #C4C4C4;
+        height: 40px;
+        width: 40px;
+        padding: 5px;
+        border: 1px solid #3B3E4A;
         margin-bottom: 16px;
+
+        @include onTablet {
+          height: 34px;
+          width: 34px;
+        }
+    
+        @include onDesktop {
+          height: 66px;
+          width: 66px;
+        }
+
+        &:hover {
+          border: 1px solid $color-white;
+        }
       }
 
     &__enlargeg-photo {
-      width: 442px;
-      height: 442px;
-      padding: 42px;
+      width: 274px;
+      height: 274px;
+      margin-bottom: 24px;
+  
+      @include onDesktop {
+        width: 442px;
+        height: 442px;
+        padding: 11px;
+      }
     }
     }
   }
@@ -121,7 +183,23 @@
   &__available-variant {
     display: flex;
     flex-direction: column;
-    width: 320px;
+    width: 287px;
+
+    @include onTablet {
+      width: 237px;
+    }
+    @include onDesktop {
+      width: 320px;
+     }
+
+     &--wrap {
+      display:flex;
+      justify-content: space-between;
+
+      @include onDesktop {
+        width: 512px;
+       }
+     }
 
     &__container {
       display: flex;
@@ -257,7 +335,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 263px;;
+        width: 231px;
         height: 48px;
     
         background-color: #905BFF;
@@ -272,6 +350,16 @@
         color: $color-white;
     
         transition: 0.3s, background-color 0.3s;
+
+        @include onTablet {
+          width: 180px;
+          height: 48px;
+        }
+
+        @include onDesktop {
+          width: 263px;
+          height: 48px;
+        }
   
         &--is-added {
           height: 40px;
@@ -336,12 +424,27 @@
   }
   &__about {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+
+    @include onTablet {
+      flex-direction: column;
+    }
+     @include onDesktop {
+      flex-direction: row;
+     }
 
     &__container {
       display:flex;
       flex-direction: column;
-      width: 560px;
+      width: 287px;
+
+      @include onTablet {
+        width: 592px;
+      }
+  
+      @include onDesktop {
+        width: 560px;
+      }
 
        &:first-of-type {
         margin-right: 64px;
