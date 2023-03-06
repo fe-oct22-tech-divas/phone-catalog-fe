@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/phone-catalog-fe/static/css/main.6d8bcab3.chunk.css",
-    "main.js": "/phone-catalog-fe/static/js/main.afc9784b.chunk.js",
-    "main.js.map": "/phone-catalog-fe/static/js/main.afc9784b.chunk.js.map",
+    "main.css": "/phone-catalog-fe/static/css/main.d0ef2a6f.chunk.css",
+    "main.js": "/phone-catalog-fe/static/js/main.da8fae9b.chunk.js",
+    "main.js.map": "/phone-catalog-fe/static/js/main.da8fae9b.chunk.js.map",
     "runtime-main.js": "/phone-catalog-fe/static/js/runtime-main.f9d40057.js",
     "runtime-main.js.map": "/phone-catalog-fe/static/js/runtime-main.f9d40057.js.map",
     "static/css/2.abcd5c43.chunk.css": "/phone-catalog-fe/static/css/2.abcd5c43.chunk.css",
@@ -10,10 +10,10 @@
     "static/js/2.ac1ab6ce.chunk.js.map": "/phone-catalog-fe/static/js/2.ac1ab6ce.chunk.js.map",
     "index.html": "/phone-catalog-fe/index.html",
     "static/css/2.abcd5c43.chunk.css.map": "/phone-catalog-fe/static/css/2.abcd5c43.chunk.css.map",
-    "static/css/main.6d8bcab3.chunk.css.map": "/phone-catalog-fe/static/css/main.6d8bcab3.chunk.css.map",
+    "static/css/main.d0ef2a6f.chunk.css.map": "/phone-catalog-fe/static/css/main.d0ef2a6f.chunk.css.map",
     "static/js/2.ac1ab6ce.chunk.js.LICENSE.txt": "/phone-catalog-fe/static/js/2.ac1ab6ce.chunk.js.LICENSE.txt",
     "static/media/Accessories.be856a19.jpg": "/phone-catalog-fe/static/media/Accessories.be856a19.jpg",
-    "static/media/main.scss": "/phone-catalog-fe/static/media/vektor.e492ff21.svg",
+    "static/media/main.scss": "/phone-catalog-fe/static/media/vektor_right_disabled.90170297.svg",
     "static/media/Phones.78762c83.jpg": "/phone-catalog-fe/static/media/Phones.78762c83.jpg",
     "static/media/Tablets.809e8a3c.jpg": "/phone-catalog-fe/static/media/Tablets.809e8a3c.jpg"
   },
@@ -21,7 +21,7 @@
     "static/js/runtime-main.f9d40057.js",
     "static/css/2.abcd5c43.chunk.css",
     "static/js/2.ac1ab6ce.chunk.js",
-    "static/css/main.6d8bcab3.chunk.css",
-    "static/js/main.afc9784b.chunk.js"
+    "static/css/main.d0ef2a6f.chunk.css",
+    "static/js/main.da8fae9b.chunk.js"
   ]
 }
