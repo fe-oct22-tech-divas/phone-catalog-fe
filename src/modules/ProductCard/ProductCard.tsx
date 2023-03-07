@@ -12,6 +12,7 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
     name,
     ram,
     capacity,
+    price,
     fullPrice,
     screen,
     image,
@@ -42,8 +43,9 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
         {name}
       </p>
 
-      <div className="card__price">
-        <h3>{`$${fullPrice}`}</h3>
+      <div className="card__prices">
+        <h3 className="card__price">{`$${price}`}</h3>
+        <h3 className="card__fullPrice">{`$${fullPrice}`}</h3>
       </div>
 
       <div className="card__divide-line" />
