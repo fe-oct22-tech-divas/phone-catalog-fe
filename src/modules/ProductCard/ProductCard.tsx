@@ -6,7 +6,7 @@ import { Phone } from '../../types/Phone';
 
 type Props = {
   phone: Phone,
-  onClick: (phoneId: string) => void,
+  onClick?: (phoneId: string) => void,
 };
 
 export const ProductCard: React.FC<Props> = React.memo(({ phone }, onClick) => {
