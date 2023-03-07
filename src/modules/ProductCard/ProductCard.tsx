@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import classNames from 'classnames';
 import React, { useState } from 'react';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { Phone } from '../../types/Phone';
@@ -34,12 +33,18 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }, onClick) => {
 
   const handleRemove = (event: React.MouseEvent) => {
     event.preventDefault();
-    setIsAdded(true);
-    removeFromLocalStorage('cart', id, 1);
+    setIsAdded(false);
+    removeFromLocalStorage('cart', phone.id, 1);
   };
 
-  const hadleAddToFavourite = () => {
-    setIsAddedToFavorite(!isAddedToFavorite);
+  const handleAddToFavourite = () => {
+    setIsAddedToFavorite(true);
+    addToLocalStorage('favorites', { ...phone });
+  };
+
+  const handleRemoveFromFavourite = () => {
+    setIsAddedToFavorite(false);
+    removeFromLocalStorage('favorites', phone.id, 1);
   };
 
   // eslint-disable-next-line no-console
@@ -97,14 +102,21 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }, onClick) => {
           </a>
         )}
 
-        <button
-          type="button"
-          className={classNames(!isAddedToFavorite
-            ? 'card__buttons--like-button'
-            : 'card__buttons--like-button--is-added')}
-          onClick={hadleAddToFavourite}
-        >
-        </button>
+        {!isAddedToFavorite ? (
+          <button
+            type="button"
+            className="card__buttons--like-button"
+            onClick={handleAddToFavourite}
+          >
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="card__buttons--like-button--is-added"
+            onClick={handleRemoveFromFavourite}
+          >
+          </button>
+        )}
       </div>
     </div>
   );

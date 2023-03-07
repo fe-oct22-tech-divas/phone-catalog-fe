@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import arrow from '../../img/icon/arrow_right__white.png';
