@@ -10,6 +10,7 @@ import { PhonesPage } from './modules/PhonesPage';
 import { HomePage } from './modules/HomePage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import './main.scss';
+import { TabletsPage } from './modules/TabletsPage/TabletsPage';
 import { CartPage } from './modules/CartPage';
 
 ReactDOM.render(
@@ -23,15 +24,13 @@ ReactDOM.render(
 
           <Route path="phones">
             <Route index element={<PhonesPage />} />
-            <Route path=":phoneId" element={<ProductDetailsPage />} />
+            <Route path=":phoneId" element={<h1>Tablets</h1>} />
           </Route>
 
-          <Route path="tablets" element={<h1>Tablets</h1>} />
-          <Route path="accessories" element={<h1>Accessories</h1>} />
-          <Route path="*" element={<NotFoundPage />} />
-
+          <Route path="tablets" element={<TabletsPage />} />
+          <Route path="accessories" element={<ProductDetailsPage />} />
           <Route path="cart" element={<CartPage />} />
-
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </HashRouter>

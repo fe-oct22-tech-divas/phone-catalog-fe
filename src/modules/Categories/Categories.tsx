@@ -22,7 +22,7 @@ export const Categories: React.FC = () => {
           <CategoryCard
             categoryImg={Phones}
             categoryImgAlt="Phones"
-            categoryLink="#phones"
+            categoryLink="/phones"
             categoryTitle="Phones"
             categoryDesc={`${phonesCount.length} phones`}
           />
@@ -37,7 +37,7 @@ export const Categories: React.FC = () => {
           <CategoryCard
             categoryImg={Tablets}
             categoryImgAlt="Tablets"
-            categoryLink="#tablets"
+            categoryLink="/tablets"
             categoryTitle="Tablets"
             categoryDesc={`${phonesCount.length} phones`}
           />
@@ -52,7 +52,7 @@ export const Categories: React.FC = () => {
           <CategoryCard
             categoryImg={Accessories}
             categoryImgAlt="Accessories"
-            categoryLink="#accessories"
+            categoryLink="/accessories"
             categoryTitle="Accessories"
             categoryDesc={`${phonesCount.length} phones`}
           />

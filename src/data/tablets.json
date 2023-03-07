@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "category": "tablets",
+    "phoneId": "ipad-air-10-5-inch-64gb-wifi-space-gray",
+    "itemId": "ipad-air-10-5-inch-64gb-wifi-space-gray",
+    "name": "iPad Air 10.5-inch 64GB WiFi - Space Gray",
+    "fullPrice": 499.00,
+    "price": 449.00,
+    "screen": "10.5 inches",
+    "capacity": "64GB",
+    "color": "Space Gray",
+    "ram": "3GB",
+    "year": 2019,
+    "image": "img/phones/ipad-air-10-5-inch/space-gray/00.jpg"
+  },
+  {
+    "id": "2",
+    "category": "tablets",
+    "phoneId": "ipad-pro-11-inch-128gb-wifi-space-gray",
+    "itemId": "ipad-pro-11-inch-128gb-wifi-space-gray",
+    "name": "iPad Pro 11-inch 128GB WiFi - Space Gray",
+    "fullPrice": 799.00,
+    "price": 749.00,
+    "screen": "11 inches",
+    "capacity": "128GB",
+    "color": "Space Gray",
+    "ram": "4GB",
+    "year": 2020,
+    "image": "img/phones/ipad-pro-11-inch/space-gray/00.jpg"
+  },
+  {
+    "id": "3",
+    "category": "tablets",
+    "phoneId": "ipad-mini-5th-generation-64gb-wifi-space-gray",
+    "itemId": "ipad-mini-5th-generation-64gb-wifi-space-gray",
+    "name": "iPad mini 5th Generation 64GB WiFi - Space Gray",
+    "fullPrice": 399.00,
+    "price": 349.00,
+    "screen": "7.9 inches",
+    "capacity": "64GB",
+    "color": "Space Gray",
+    "ram": "3GB",
+    "year": 2019,
+    "image": "img/phones/ipad-mini-5th-generation/space-gray/00.jpg"
+  },
+  {
+    "id": "4",
+    "category": "tablets",
+    "phoneId": "ipad-10-2-inch-128gb-wifi-space-gray",
+    "itemId": "ipad-10-2-inch-128gb-wifi-space-gray",
+    "name": "iPad 10.2-inch 128GB WiFi - Space Gray",
+    "fullPrice": 429.00,
+    "price": 379.00,
+    "screen": "10.2 inches",
+    "capacity": "128GB",
+    "color": "Space Gray",
+    "ram": "3GB",
+    "year": 2020,
+    "image": "img/phones/ipad-10-2-inch/space-gray/00.jpg"
+  }
+]

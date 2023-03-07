@@ -12,8 +12,9 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
     name,
     ram,
     capacity,
-    price,
+    fullPrice,
     screen,
+    image,
   } = phone;
 
   const [isAdded, setIsAdded] = useState(false);
@@ -34,6 +35,7 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
       <img
         className="card__image"
         alt="Apple iPhone Xs 64GB Silver (iMT9G2FS/A)"
+        src={image}
       />
 
       <p className="card__name">
@@ -41,7 +43,7 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
       </p>
 
       <div className="card__price">
-        <h3>{`$${price}`}</h3>
+        <h3>{`$${fullPrice}`}</h3>
       </div>
 
       <div className="card__divide-line" />

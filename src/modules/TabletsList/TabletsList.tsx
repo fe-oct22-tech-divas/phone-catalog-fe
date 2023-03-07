@@ -1,14 +1,13 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { Phone } from '../../types/Phone';
 import { ProductCard } from '../ProductCard';
-import { Pagination } from '../Pagination';
-import phonesFromApi from '../../data/phones.json';
+import tabletsFromApi from '../../data/tablets.json';
 
-export const PhonesList: React.FC = () => {
-  const [phones] = useState<Phone[]>(phonesFromApi);
+export const TabletsList: React.FC = () => {
+  const [phones] = useState<Phone[]>(tabletsFromApi);
   const [chosenOption, setChosenOption] = useState('Newest');
   const [choosenQuantity, setChosenQuantity] = useState('16');
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage] = useState(1);
 
   const options = [
     { value: 'Newest', label: 'Newest' },
@@ -24,16 +23,12 @@ export const PhonesList: React.FC = () => {
     { value: '48', label: '48' },
   ];
 
-  const handlePageChange = (page:number) => {
-    setCurrentPage(page);
-  };
-
   const handleChangeSelectorOption = useCallback((option: string) => {
     setChosenOption(option);
   }, []);
 
   const handleChangeSelectorQuantity = useCallback((option: string) => {
-    setChosenQuantity(+option);
+    setChosenQuantity(option);
   }, []);
 
   const lastIndex = currentPage * +choosenQuantity;
@@ -57,20 +52,20 @@ export const PhonesList: React.FC = () => {
           return 0;
       }
     });
-  }, [chosenOption, phones, choosenQuantity, currentPage, firstIndex, lastIndex, currentCards]);
+  }, [chosenOption, phones, choosenQuantity]);
 
   return (
     <>
       <div className="phones grid grid--tablet grid--desktop">
         <div className="phones__redirect">
-          <a className="phones__redirect-link" href="/#/">
+          <a className="phones__redirect-link" href="/">
             <div className="phones__redirect--homeIcon" />
           </a>
           <div className="phones__redirect--arrowIcon" />
-          <p className="phones__redirect--title">Phones</p>
+          <p className="phones__redirect--title">Tablets</p>
         </div>
 
-        <h1 className="phones__title">Mobile phones</h1>
+        <h1 className="phones__title">Tablets</h1>
 
         <p className="phones__amount">
           {`${phones.length} models`}
@@ -122,18 +117,9 @@ export const PhonesList: React.FC = () => {
             <ProductCard
               phone={phone}
               key={phone.id}
-              chosenOption={chosenOption}
-              choosenQuantity={+choosenQuantity}
             />
           )))}
         </div>
-
-        <Pagination
-          total={phones.length}
-          perPage={+choosenQuantity}
-          currentPage={+currentPage}
-          onPageChange={handlePageChange}
-        />
       </div>
     </>
   );

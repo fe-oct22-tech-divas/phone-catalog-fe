@@ -1,17 +1,24 @@
 .card {
-  width: $card-width;
+  width: 287;
   height: $card-height;
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 32px;
-  gap: 8px;
 
   left: 16px;
   top: 16px;
 
   background: #161827;
+
+  @include onTablet {
+    min-width: 229px;
+    max-width: 288px;
+  }
+  @include onDesktop {
+    width: $card-width;
+  }
 
   &__image {
     height: $card-image-height;
@@ -35,6 +42,7 @@
     font-weight: 800;
     font-size: 22px;
     line-height: 31px;
+    margin-bottom: 8px;
 
     color: $color-white;
   }
@@ -45,6 +53,7 @@
 
     margin-bottom: 16px;
     border: 1px solid #3B3E4A;
+    
   }
 
   &__description {
@@ -52,13 +61,13 @@
     width: 100%;
     justify-content: space-between;
 
-    
     &__title {
       display: flex;
       text-align: center;
       font-family: 'Mont-SemiBold', sans-serif;
       font-size: 12px;
       line-height: 15px;
+      margin-bottom:8px;
 
       color: $color-gray;
     }
@@ -69,6 +78,7 @@
       font-size: 12px;
       line-height: 16px;
       text-align: center;
+      margin-bottom:8px;
 
       color: $color-white;
     }
