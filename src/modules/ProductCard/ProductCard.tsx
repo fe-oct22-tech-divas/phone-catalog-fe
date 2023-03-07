@@ -1,14 +1,17 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import classNames from 'classnames';
 import React, { useState } from 'react';
 import { Phone } from '../../types/Phone';
 
 type Props = {
-  phone: Phone
+  phone: Phone,
+  onClick: (phoneId: string) => void,
 };
 
-export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
+export const ProductCard: React.FC<Props> = React.memo(({ phone }, onClick) => {
   const {
-    id,
+    phoneId,
     name,
     ram,
     capacity,
@@ -29,13 +32,16 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
     setIsAddedToFavorite(!isAddedToFavorite);
   };
 
+  // eslint-disable-next-line no-console
+
   return (
 
-    <div className="card" key={id}>
+    <div className="card" key={phoneId}>
       <img
         className="card__image"
-        alt="Apple iPhone Xs 64GB Silver (iMT9G2FS/A)"
+        alt={name}
         src={image}
+        onClick={() => onClick(phoneId)}
       />
 
       <p className="card__name">
