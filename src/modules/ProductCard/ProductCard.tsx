@@ -35,7 +35,7 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }, onClick) => {
   const handleRemove = (event: React.MouseEvent) => {
     event.preventDefault();
     setIsAdded(true);
-    removeFromLocalStorage('cart', id, 1);
+    removeFromLocalStorage('cart', phoneId, 1);
   };
 
   const hadleAddToFavourite = () => {

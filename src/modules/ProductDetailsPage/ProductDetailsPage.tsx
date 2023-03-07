@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import classNames from 'classnames';
 import React, { useState } from 'react';
 import fullInfo from './iphoneData.json';
@@ -9,7 +10,7 @@ export const ProductDetailsPage: React.FC = () => {
   const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
   // const [setAvailableMemory] = useState(0);
 
-  const handleAdd = (event) => {
+  const handleAdd = (event: any) => {
     event.preventDefault();
     setIsAdded(!isAdded);
   };
