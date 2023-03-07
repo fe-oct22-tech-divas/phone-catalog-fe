@@ -1,0 +1,419 @@
+.product {
+  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 200px;
+  justify-content: center;
+
+  &__direction {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    margin-bottom: 41px;
+
+    &__link {
+      text-decoration:none;
+
+      &--home-icon {
+        width: 14px;
+        height: 14px;
+        background-image: url('../../img/icon/home.png');
+        background-size: cover;
+        transition: 0.3s;
+
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+    &--arrow {
+      width: 14px;
+      height: 14px;
+      background-image: url('../../img/icon/arrow_right.png');
+      background-size: cover;
+      margin: 0 13px;
+    }
+
+    &--category {
+      font-family: 'Mont-SemiBold', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15px;
+
+      color: $color-white;
+      transition: 0.3s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    &--item {
+      font-family: 'Mont-SemiBold', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15px;
+
+      color: $color-gray;
+    }
+  }
+  &__redirect {
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    margin-bottom: 16px;
+
+    &--arrow {
+      width: 14px;
+      height: 14px;
+      background-image: url('../../img/icon/arrow_left.png');
+      background-size: cover;
+      margin-right: 9px;
+    }
+  }
+  &__title {
+    display: block;
+    font-family: 'Mont-Bold', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+
+    color: $color-white;
+  }
+
+  &__container {
+    display:flex;
+    // flex-direction: row;
+    // justify-content: space-between;  ??
+    width: 320px;
+    margin-top: 40px;
+    margin-bottom: 80px;
+  }
+
+  &__photo-block {
+    display: flex;
+    flex-direction: row;
+
+    &__small-images {
+      display: flex;
+      flex-direction: column;
+      padding-right: 16px;
+
+      &__image {
+        width: 66px;
+        height: 66px;
+        padding: 14px;
+        border: 1px solid #C4C4C4;
+        margin-bottom: 16px;
+      }
+
+    &__enlargeg-photo {
+      width: 442px;
+      height: 442px;
+      padding: 42px;
+    }
+    }
+  }
+
+  &__available-variant {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+
+    &__container {
+      display: flex;
+      flex-direction: row;
+      }
+
+    &__color {
+      display:flex;
+      flex-direction: column;
+      margin-bottom:24px;
+
+      &:after {
+        content:"";
+        margin-top:24px;
+        height: 1px;
+        width: 100%;
+        background-color:#3B3E4A;
+      }
+
+      &--1 {
+        width:30px;
+        height:30px;
+        background: #FCDBC1;
+        border: 1px solid #0F1121;
+        border-radius: 50%;
+        padding:3px;
+        margin-right: 8px;
+
+          &:hover {
+            border: 1px solid $color-white;
+        }
+      }
+
+      &--2 {
+        width:30px;
+        height:30px;
+        background: #5F7170;
+        border: 1px solid #0F1121;
+        padding:3px;
+        border-radius: 50%;
+        margin-right: 8px;
+
+        &:hover {
+          border: 1px solid $color-white;
+      }
+      }
+      &--3 {
+        width:30px;
+        height:30px;
+        background: #4C4C4C;
+        border: 1px solid #0F1121;
+        border-radius: 50%;
+        padding:3px;
+        margin-right: 8px;
+
+        &:hover {
+          border: 1px solid $color-white;
+      }
+      }
+
+      &--4 {
+        width:30px;
+        height:30px;
+        background: #F0F0F0;
+        border: 2px solid #0F1121;
+        border-radius: 50%;
+
+        &:hover {
+          border: 1px solid $color-white;
+      }
+      }
+    }
+
+    &__capacity {
+      display: flex;
+      flex-direction: column;
+
+      &:after {
+        content:"";
+        margin-top:24px;
+        height: 1px;
+        width: 100%;
+        background-color:#3B3E4A;
+        margin-bottom: 32px;
+      }
+
+      &--button {
+        width: 56px;
+        height: 32px;
+        border: 1px solid #4A4D58;
+        background-color: transparent;
+        color: $color-white;
+        margin-right: 8px;
+
+        transition:0.3s, background-color 0.3s;
+
+        &:hover {
+          background-color: $color-white;
+          color: #0F1121;
+        }
+      }
+    }
+
+    &__prices {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+
+      &--full-price {
+        display: block;
+        margin: 0 8px;
+
+        font-family: 'Mont-SemiBold', sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 28px;
+        text-decoration-line: line-through;
+
+        color: #75767F;
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom:32px;
+  
+      &--add-button {
+        height: 40px;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 263px;;
+        height: 48px;
+    
+        background-color: #905BFF;
+    
+        font-family: 'Mont-Regular', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 21px;
+        text-align: center;
+  
+        color: $color-white;
+    
+        transition: 0.3s, background-color 0.3s;
+  
+        &--is-added {
+          height: 40px;
+    
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 263px;
+          height: 48px;
+      
+          font-family: 'Mont-Regular', sans-serif;
+          font-style: normal;
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 21px;
+  
+          text-align: center;
+  
+          color: $color-white;
+          background-color: #323542;
+        }
+      }
+    
+      &--add-button:hover {
+        background-color: #A378FF;
+      }
+  
+      &--like-button {
+        height: 48px;
+        width: 48px;
+        border-color: #323542;
+        background-color: #323542;
+        background-image: url('../../img/icon/heart.png');
+        background-size: auto;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        border: none;
+  
+        transition: 0.3s, background-color 0.3s;
+  
+        &--is-added {
+          height: 48px;
+          width: 48px;
+          border-color: #323542;
+          background-color: #323542;
+          background-image: url('../../img/icon/heart_filled.png');
+          background-size: auto;
+          background-repeat: no-repeat;
+          background-position: 50%;
+          border: none;
+  
+          transition: 0.3s, background-image 0.3s;
+        }
+      }
+
+      &--like-button:hover {
+        background-color: #4A4D58;
+        border-color: #4A4D58;
+      }
+    }
+    
+  }
+  &__about {
+    display: flex;
+    flex-direction: row;
+
+    &__container {
+      display:flex;
+      flex-direction: column;
+      width: 560px;
+
+       &:first-of-type {
+        margin-right: 64px;
+       }
+    }
+
+    &__title {
+      font-family: 'Mont-Bold', sans-serif;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 31px;
+      display: flex;
+      flex-direction: column;
+
+      color: $color-white;
+
+      &:after {
+        content:"";
+        margin:16px 0 32px 0;
+        height: 1px;
+        width: 100%;
+        background-color:#3B3E4A;
+      }
+
+      &--about {
+        font-family: 'Mont-SemiBold', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 26px;
+        margin-bottom:16px;
+
+        color: $color-white;
+      }
+      &--description {
+        font-family: 'Mont-Regular', sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        margin-bottom: 32px;
+
+        color: #75767F;
+      }
+    }
+
+    &__characteristic {
+      display: flex;
+      justify-content: space-between;
+      // gap: 8px;
+
+      &--title {
+        font-family: 'Mont-SemiBold', sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        margin-bottom: 8px;
+
+        color: #75767F;
+      }
+      &--value {
+        font-family: 'Mont-SemiBold', sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        margin-bottom: 8px;
+
+        color: $color-white;
+      }
+    }
+  }
+}
