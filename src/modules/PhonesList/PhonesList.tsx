@@ -9,6 +9,7 @@ export const PhonesList: React.FC = () => {
   const [chosenOption, setChosenOption] = useState('Newest');
   const [choosenQuantity, setChosenQuantity] = useState('16');
   const [currentPage, setCurrentPage] = useState(1);
+  const [phoneSlug, setPhoneSlug] = useState('');
 
   const options = [
     { value: 'Newest', label: 'Newest' },
@@ -24,6 +25,13 @@ export const PhonesList: React.FC = () => {
     { value: '48', label: '48' },
   ];
 
+  const hadleClick = (id: string) => {
+    setPhoneSlug(id);
+  };
+
+  // eslint-disable-next-line no-console
+  console.log(phoneSlug);
+
   const handlePageChange = (page:number) => {
     setCurrentPage(page);
   };
@@ -33,7 +41,7 @@ export const PhonesList: React.FC = () => {
   }, []);
 
   const handleChangeSelectorQuantity = useCallback((option: string) => {
-    setChosenQuantity(+option);
+    setChosenQuantity(option);
   }, []);
 
   const lastIndex = currentPage * +choosenQuantity;
@@ -121,9 +129,10 @@ export const PhonesList: React.FC = () => {
           {getSortedCards.map((phone => (
             <ProductCard
               phone={phone}
-              key={phone.id}
+              key={phone.phoneId}
               chosenOption={chosenOption}
               choosenQuantity={+choosenQuantity}
+              onClick={() => hadleClick}
             />
           )))}
         </div>
