@@ -21,7 +21,7 @@ export const Icons: React.FC<Props> = ({ isForBurgerMenu }) => {
         ? (
           // eslint-disable-next-line jsx-a11y/anchor-is-valid
           <Link
-            to="#"
+            to=""
             className="icon icon--cross"
             onClick={() => (
               setIsBurgerMenuOpen(!isBurgerMenuOpen)
@@ -45,14 +45,14 @@ export const Icons: React.FC<Props> = ({ isForBurgerMenu }) => {
       {!isForBurgerMenu && (
         <>
           <Link
-            to="#favorites"
+            to="favorites"
             className="icon icon--favourites"
           >
             <img src={favourites} alt="Favourites" />
           </Link>
 
           <Link
-            to="#cart"
+            to="cart"
             className="icon icon--cart"
           >
             <img src={cart} alt="Cart" />
