@@ -36,35 +36,33 @@ export const PageSlider: React.FC = () => {
 
   return (
     <section className="slider">
-      <div className="slider-container">
-        <div className="grid grid--tablet grid--desktop">
-          <h1 className="slider__title grid__item grid__item--tablet-1-9 grid__item--desktop-1-24">
-            Welcome to Nice Gadgets store!
-          </h1>
+      <div className="grid grid--tablet grid--desktop">
+        <h1 className="slider__title grid__item grid__item--tablet-1-9 grid__item--desktop-1-24">
+          Welcome to Nice Gadgets store!
+        </h1>
 
-          <Slider
-            className="grid__item grid__item--tablet-2-11 grid__item--desktop-2-23"
-            {...settings}
-          >
-            <img
-              className="slider__image"
-              src={banner1}
-              alt="Banner"
-            />
+        <Slider
+          className="grid__item grid__item--tablet-2-11 grid__item--desktop-2-23"
+          {...settings}
+        >
+          <img
+            className="slider__image"
+            src={banner1}
+            alt="Banner"
+          />
 
-            <img
-              className="slider__image"
-              src={banner1}
-              alt="Banner"
-            />
+          <img
+            className="slider__image"
+            src={banner1}
+            alt="Banner"
+          />
 
-            <img
-              className="slider__image"
-              src={banner1}
-              alt="Banner"
-            />
-          </Slider>
-        </div>
+          <img
+            className="slider__image"
+            src={banner1}
+            alt="Banner"
+          />
+        </Slider>
       </div>
     </section>
   );

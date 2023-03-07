@@ -14,6 +14,7 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
     capacity,
     fullPrice,
     screen,
+    image,
   } = phone;
 
   const [isAdded, setIsAdded] = useState(false);
@@ -34,6 +35,7 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
       <img
         className="card__image"
         alt="Apple iPhone Xs 64GB Silver (iMT9G2FS/A)"
+        src={image}
       />
 
       <p className="card__name">
