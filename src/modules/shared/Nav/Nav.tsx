@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 type Props = {
   isForBurgerMenu?: boolean,
@@ -21,16 +21,17 @@ export const Nav: React.FC<Props> = ({ isForBurgerMenu }) => {
         >
           {['home', 'phones', 'tablets', 'accessories'].map(
             category => (
-              <Link
+              <NavLink
                 key={category}
                 to={category}
-                className={classNames({
+                className={({ isActive }) => classNames({
                   nav__link: !isForBurgerMenu,
                   nav__menu__link: isForBurgerMenu,
+                  nav__link__active: isActive,
                 })}
               >
                 {category}
-              </Link>
+              </NavLink>
             ),
           )}
         </ul>
