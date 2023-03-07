@@ -12,10 +12,10 @@ type Props = {
 export const CartItem: React.FC<Props> = ({ phone }) => {
   return (
     <div className="item">
-      <div className="item__container__top">
+      <div className="item__container item__container__top">
         <button
           type="button"
-          className="item__cross"
+          className="item__btn item__btn__cross"
         >
           <img src={cross} alt="Cross" />
         </button>
@@ -26,14 +26,14 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
           className="item__img"
         />
 
-        <Link to=":phoneId" className="item__title">
+        <Link to=":phoneId" className="item__text item__title">
           {phone.name}
         </Link>
       </div>
 
-      <div className="item__container__bottom">
+      <div className="item__container item__container__bottom">
         <div className="item__counter">
-          <button type="button" className="item__counter__btn__minus">
+          <button type="button" className="item__btn item__counter__btn__minus">
             <img
               src={minus}
               alt="Minus"
@@ -41,11 +41,11 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
             />
           </button>
 
-          <p className="item__counter__num">
+          <p className="item__text item__counter__num">
             1
           </p>
 
-          <button type="button" className="item__counter__btn__plus">
+          <button type="button" className="item__btn item__counter__btn__plus">
             <img
               src={plus}
               alt="Plus"
@@ -55,7 +55,7 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
         </div>
 
         <p className="item__price">
-          {phone.price}
+          {`$${phone.price}`}
         </p>
       </div>
     </div>

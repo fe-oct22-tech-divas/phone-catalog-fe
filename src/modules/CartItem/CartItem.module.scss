@@ -1,43 +1,116 @@
 .item {
-  &__container__top {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  
+  margin-bottom: 16px;
+  padding: 16px;
 
+  width: 100%;
+  height: 160px;
+
+  border: $border;
+  background-color: #161827;
+
+  &:last-child {
+    margin-bottom: 32px;
   }
 
-  &__cross {
 
+  @include onTablet {
+    flex-direction: row;
+    height: 128px;
   }
 
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: 100%;
+    gap: 24px;
+
+    @include onTablet {
+      justify-content: space-between;
+      min-width: 220px;
+      gap: 36px;
+    }
+
+    &__top {
+      justify-content: flex-start;
+    }
+
+    &__bottom {
+      justify-content: space-between;
+    }
+  }
+
+  
   &__img {
+    display: block;
+    margin-right: 23px;
+    object-fit: scale-down;
+    width: 66px;
+    height: 66px;
 
+    @include onTablet {
+      height: 100%;
+    }
+  }
+
+  &__text {
+    font-family: 'Mont-Regular';
+    font-size: 14px;
+    line-height: 21px;
+
+    color: $color-white;
   }
 
   &__title {
+    text-align: left;
 
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
-  &__container__bottom {
-
+  &__btn {
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    
+    &__cross {
+      height: 16px;
+      width: 16px;
+      border: none;
+    }
   }
 
   &__counter {
-    &__btn__minus {
-      &__img {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 96px;
 
-      }
-    }
-
-    &__num {
-
-    }
-
+    &__btn__minus,
     &__btn__plus {
-      &__img {
+      border: $border;
 
+      &:hover {
+        background-color: $color-gray;
+      }
+
+      &:active {
+        background-color: #905BFF;
       }
     }
   }
 
   &__price {
-    
+    font-family: 'Mont-Bold';
+    font-size: 22px;
+    line-height: 140%;
+
+    color: $color-white;
   }
 }
