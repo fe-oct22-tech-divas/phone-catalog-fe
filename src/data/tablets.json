@@ -12,7 +12,7 @@
     "color": "Space Gray",
     "ram": "3GB",
     "year": 2019,
-    "image": "img/phones/ipad-air-10-5-inch/space-gray/00.jpg"
+    "image": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-air-select-wifi-spacegray-202203?wid=940&hei=1112&fmt=png-alpha&.v=1645066742664"
   },
   {
     "id": "2",
@@ -27,7 +27,7 @@
     "color": "Space Gray",
     "ram": "4GB",
     "year": 2020,
-    "image": "img/phones/ipad-pro-11-inch/space-gray/00.jpg"
+    "image": "https://my-apple.com.ua/image/cache/catalog/iphone-12-new/iphade11pro/u46ny44uy7nguk-500x500.png"
   },
   {
     "id": "3",
@@ -42,7 +42,7 @@
     "color": "Space Gray",
     "ram": "3GB",
     "year": 2019,
-    "image": "img/phones/ipad-mini-5th-generation/space-gray/00.jpg"
+    "image": "https://media.didi.ua/images/catalog/product_gallery/thumb/C6jWaZNsQEA3.png"
   },
   {
     "id": "4",
@@ -57,6 +57,66 @@
     "color": "Space Gray",
     "ram": "3GB",
     "year": 2020,
-    "image": "img/phones/ipad-10-2-inch/space-gray/00.jpg"
+    "image": "https://iboom.store/image/cache/catalog/apple/Ipad/MK2K3/2081465-1000x1000.png"
+  },
+  {
+    "id": "5",
+    "category": "tablets",
+    "phoneId": "ipad-air-10-5-inch-256gb-wifi-rose-gold",
+    "itemId": "ipad-air-10-5-inch-256gb-wifi-rose-gold",
+    "name": "iPad Air 10.5-inch 256GB WiFi - Rose Gold",
+    "fullPrice": 699.00,
+    "price": 649.00,
+    "screen": "10.5 inches",
+    "capacity": "256GB",
+    "color": "Rose Gold",
+    "ram": "3GB",
+    "year": 2021,
+    "image": "https://apple-mania.com.ua/media/catalog/product/cache/e026f651b05122a6916299262b60c47d/i/p/ipad-air-select-wifi-gold-202009_1.png"
+  },
+  {
+    "id": "6",
+    "category": "tablets",
+    "phoneId": "ipad-pro-10-9-inch-256gb-wifi-sky-blue",
+    "itemId": "ipad-pro-10-9-inch-256gb-wifi-sky-blue",
+    "name": "iPad Pro 10-9-inch 256GB WiFi - Sky Blue",
+    "fullPrice": 899.00,
+    "price": 849.00,
+    "screen": "10.9 inches",
+    "capacity": "256GB",
+    "color": "Sky Blue",
+    "ram": "4GB",
+    "year": 2022,
+    "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-select-wifi-blue-202203?wid=940&hei=1112&fmt=png-alpha&.v=1645065732688"
+  },
+  {
+    "id": "7",
+    "category": "tablets",
+    "phoneId": "ipad-mini-8th-generation-64gb-wifi-starlight",
+    "itemId": "ipad-mini-8th-generation-64gb-wifi-starlight",
+    "name": "iPad mini 8th Generation 64GB WiFi - Starlight",
+    "fullPrice": 599.00,
+    "price": 549.00,
+    "screen": "7.9 inches",
+    "capacity": "64GB",
+    "color": "Starlight",
+    "ram": "3GB",
+    "year": 2019,
+    "image": "https://gstore.ua/content/images/37/480x480l50nn0/apple-ipad-mini-6-2021-wifi-cellular-64gb-starlight-mk8c3-32980043914401.png"
+  },
+  {
+    "id": "8",
+    "category": "tablets",
+    "phoneId": "ipad-pro-12-9-inch-256gb-wifi-silver",
+    "itemId": "ipad-pro-12-9-inch-256gb-wifi-silver",
+    "name": "iPad 12.9-inch 256GB WiFi - Silver",
+    "fullPrice": 999.00,
+    "price": 979.00,
+    "screen": "12.9 inches",
+    "capacity": "256GB",
+    "color": "Silver",
+    "ram": "4GB",
+    "year": 2020,
+    "image": "https://g-store.com.ua/image/cache/catalog/allprodvar/14650-700x700.png"
   }
 ]
