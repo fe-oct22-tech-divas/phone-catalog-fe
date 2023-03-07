@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 type Props = {
   categoryImg: string,
@@ -25,12 +25,12 @@ export const CategoryCard: React.FC<Props> = ({
       />
 
       <h4 className="category__title">
-        <Link
+        <NavLink
           to={categoryLink}
           className="category__link"
         >
           {categoryTitle}
-        </Link>
+        </NavLink>
       </h4>
 
       <p className="category__desc">

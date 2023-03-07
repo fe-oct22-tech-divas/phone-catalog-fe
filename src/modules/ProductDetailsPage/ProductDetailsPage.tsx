@@ -1,11 +1,26 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
+import img1 from './image1.png';
+import img2 from './image2.png';
+import img3 from './image3.png';
+import img4 from './image4.png';
 // import { useParams } from 'react-router-dom';
 
 export const ProductDetailsPage: React.FC = () => {
   // const { phoneId } = useParams();
   const [isAdded, setIsAdded] = useState(false);
   const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
+  const images = [
+    { id: 1, image: img1 },
+    { id: 2, image: img2 },
+    { id: 3, image: img3 },
+    { id: 4, image: img4 },
+  ];
+  const capacity = [
+    { id: 1, capacity: '64GB' },
+    { id: 2, capacity: '256GB' },
+    { id: 3, capacity: '512GB' },
+  ];
 
   const handleAdd = (event) => {
     event.preventDefault();
@@ -17,7 +32,7 @@ export const ProductDetailsPage: React.FC = () => {
   };
 
   return (
-    <div className="product grid grid--desktop">
+    <div className="product  main-container">
       <div className="product__direction">
         <a className="product__direction__link" href="/">
           <div className="product__direction__link--home-icon" />
@@ -44,44 +59,33 @@ export const ProductDetailsPage: React.FC = () => {
 
       <h2 className="product__title">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</h2>
 
-      <section className="product__container">
-        <div className="product__photo-block grid--descktop__item--1-12">
+      <section className="product__container grid grid--tablet grid--desktop">
+        <div className="product__photo-block grid--tablet grid--desktop">
           <div className="product__photo-block__small-images">
-            <img
-              src="./image1.jpg"
-              alt="iphone both sides"
-              className="product__photo-block__small-images__image"
-            />
-
-            <img
-              src="./image2.png"
-              alt="iphone screen side"
-              className="product__photo-block__small-images__image"
-            />
-
-            <img
-              src="./image3.png"
-              alt="iphone cameras"
-              className="product__photo-block__small-images__image"
-            />
-
-            <img
-              src="./image4.png"
-              alt="iphone back side"
-              className="product__photo-block__small-images__image"
-            />
+            {images.map((image) => (
+              <img
+                key={image.id}
+                src={image.image}
+                alt="iphone both sides"
+                className="product__photo-block__small-images__image"
+              />
+            ))}
           </div>
 
           <img
-            src="./image1.jpg"
-            alt="enlarged"
-            className="product__photo-block__small-images__enlargeg-photo"
+            src=""
+            alt=""
+            className="product__photo-block__small-images__enlargeg-photo grid grid--desktop"
           />
         </div>
 
         <div className="product__available-variant">
           <div className="product__available-variant__color">
-            <p className="product__available-variant product__direction--item">Available colors</p>
+            <div className="product__available-variant--wrap">
+              <p className="product__available-variant product__direction--item">Available colors</p>
+
+              <p className="product__direction--item">ID:802390</p>
+            </div>
 
             <div className="product__available-variant__container">
               <div className="product__available-variant__color--1" />
@@ -95,11 +99,15 @@ export const ProductDetailsPage: React.FC = () => {
             <p className="product__available-variant product__direction--item">Select capacity</p>
 
             <div className="product__available-variant__container">
-              <button type="button" className="product__available-variant__capacity--button">64GB</button>
-
-              <button type="button" className="product__available-variant__capacity--button">256GB</button>
-
-              <button type="button" className="product__available-variant__capacity--button">512GB</button>
+              {capacity.map((memory) => (
+                <button
+                  type="button"
+                  key={memory.id}
+                  className="product__available-variant__capacity--button"
+                >
+                  {memory.capacity}
+                </button>
+              ))}
             </div>
           </div>
 
@@ -164,11 +172,9 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
           </div>
         </div>
-
-        <p className="product__direction--item">ID:802390</p>
       </section>
 
-      <section className="product__about">
+      <section className="product__about grid grid--tablet grid--desktop">
         <div className="product__about__container">
           <h3 className="product__about__title">About</h3>
 
@@ -236,13 +242,13 @@ export const ProductDetailsPage: React.FC = () => {
             <div className="product__about__characteristic">
               <span className="product__about__characteristic--title">Zoom</span>
 
-              <span className="product__about__characteristic--value">Optical, 2x</span>
+              <span className="card__description__value">Optical, 2x</span>
             </div>
 
             <div className="product__about__characteristic">
               <span className="product__about__characteristic--title">Cell</span>
 
-              <span className="product__about__characteristic--value">GSM, LTE, UMTS</span>
+              <span className="card__description__value">GSM, LTE, UMTS</span>
             </div>
           </div>
         </div>

@@ -63,7 +63,7 @@ export const PhonesList: React.FC = () => {
     <>
       <div className="phones grid grid--tablet grid--desktop">
         <div className="phones__redirect">
-          <a className="phones__redirect-link" href="/">
+          <a className="phones__redirect-link" href="/#/">
             <div className="phones__redirect--homeIcon" />
           </a>
           <div className="phones__redirect--arrowIcon" />
