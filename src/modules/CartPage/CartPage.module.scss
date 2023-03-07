@@ -1,4 +1,14 @@
 .cart {
+  margin-bottom: 56px;
+
+  @include onTablet {
+    margin-bottom: $big-size;
+  }
+
+  @include onDesktop {
+    margin-bottom: 80px;
+  }
+
   &__back {
     display: flex;
 
@@ -34,15 +44,11 @@
     }
   }
 
-  &__item {
-
-  }
-
   &__checkout {
     padding: 24px;
 
     text-align: center;
-    border: 1px solid $color-gray;
+    border: $border;
 
     &__price {
       font-family: 'Mont-Bold';
