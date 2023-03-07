@@ -2,7 +2,9 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import classNames from 'classnames';
 import React, { useState } from 'react';
+
 import { NavLink } from 'react-router-dom';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { Phone } from '../../types/Phone';
 
 type Props = {
@@ -23,10 +25,18 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
 
   const [isAdded, setIsAdded] = useState(false);
   const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
+  const [, , addToLocalStorage, removeFromLocalStorage] = useLocalStorage();
 
   const handleAdd = (event: React.MouseEvent) => {
     event.preventDefault();
-    setIsAdded(!isAdded);
+    setIsAdded(true);
+    addToLocalStorage('cart', { ...phone, count: 1 });
+  };
+
+  const handleRemove = (event: React.MouseEvent) => {
+    event.preventDefault();
+    setIsAdded(true);
+    removeFromLocalStorage('cart', phoneId, 1);
   };
 
   const hadleAddToFavourite = () => {
@@ -83,7 +93,7 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
           <a
             href="/"
             className="card__buttons--add-button--is-added"
-            onClick={handleAdd}
+            onClick={handleRemove}
           >
             Added
           </a>

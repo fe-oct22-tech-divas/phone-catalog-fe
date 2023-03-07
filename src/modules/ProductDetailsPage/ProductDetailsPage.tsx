@@ -1,4 +1,6 @@
+
 /* eslint-disable no-console */
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
@@ -12,6 +14,7 @@ export const ProductDetailsPage: React.FC = () => {
   const [isAdded, setIsAdded] = useState(false);
   const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
   // const [setAvailableMemory] = useState(0);
+
   const params = useParams();
   const [isError, setIsError] = useState(false);
 
@@ -24,6 +27,7 @@ export const ProductDetailsPage: React.FC = () => {
         });
     }
   }, []);
+
 
   const handleAdd = (event: any) => {
     event.preventDefault();
