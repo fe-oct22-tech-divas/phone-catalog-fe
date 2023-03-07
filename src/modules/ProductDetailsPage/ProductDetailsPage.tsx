@@ -1,22 +1,16 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import classNames from 'classnames';
 import React, { useState } from 'react';
 import fullInfo from './iphoneData.json';
+import img1 from './image1.png';
+import img2 from './image2.png';
+import img3 from './image3.png';
+import img4 from './image4.png';
 // import { useParams } from 'react-router-dom';
 
 export const ProductDetailsPage: React.FC = () => {
   const [item] = useState(fullInfo);
-  const [isAdded, setIsAdded] = useState(false);
-  const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
-  // const [setAvailableMemory] = useState(0);
-
-  const handleAdd = (event) => {
-    event.preventDefault();
-    setIsAdded(!isAdded);
-  };
-
-  const hadleAddToFavourite = () => {
-    setIsAddedToFavorite(!isAddedToFavorite);
-  };
 
   const {
     // id,
@@ -28,7 +22,7 @@ export const ProductDetailsPage: React.FC = () => {
     priceDiscount,
     // "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
     // color,
-    images,
+    // images,
     description,
     screen,
     resolution,
@@ -38,6 +32,39 @@ export const ProductDetailsPage: React.FC = () => {
     zoom,
     cell,
   } = item;
+
+  const [isAdded, setIsAdded] = useState(false);
+  const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
+  const [memory, setMemory] = useState(`${capacity}`);
+
+  const images = [
+    { image: img1 },
+    { image: img2 },
+    { image: img3 },
+    { image: img4 },
+  ];
+
+  const handleAdd = (event) => {
+    event.preventDefault();
+    setIsAdded(!isAdded);
+  };
+
+  const hadleAddToFavourite = () => {
+    setIsAddedToFavorite(!isAddedToFavorite);
+  };
+
+  const [picture, setPicture] = useState(images[0]);
+
+  const click = (way:string) => {
+    setPicture(way);
+  };
+
+  const handleChangeCapacity = (value: string) => {
+    setMemory(value);
+  };
+
+  // eslint-disable-next-line no-console
+  console.log(memory);
 
   return (
     <div className="product  main-container">
@@ -76,12 +103,13 @@ export const ProductDetailsPage: React.FC = () => {
                 src={image}
                 alt="iphone both sides"
                 className="product__photo-block__small-images__image"
+                onClick={() => click(image)}
               />
             ))}
           </div>
 
           <img
-            src=""
+            src={picture}
             alt=""
             className="product__photo-block__small-images__enlargeg-photo grid grid--desktop"
           />
@@ -112,6 +140,7 @@ export const ProductDetailsPage: React.FC = () => {
                   type="button"
                   key={memory}
                   className="product__available-variant__capacity--button"
+                  onClick={() => handleChangeCapacity(memory)}
                 >
                   {memory}
                 </button>
