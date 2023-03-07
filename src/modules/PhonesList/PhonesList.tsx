@@ -64,7 +64,6 @@ export const PhonesList: React.FC = () => {
       <div className="phones grid grid--tablet grid--desktop">
         <div className="phones__redirect">
           <a className="phones__redirect-link" href="/#/">
-            <NavLink to={<HomePage />} className="phones__redirect--homeIcon" />
             <div className="phones__redirect--homeIcon" />
           </a>
           <div className="phones__redirect--arrowIcon" />
