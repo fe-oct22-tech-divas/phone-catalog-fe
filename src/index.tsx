@@ -26,7 +26,7 @@ ReactDOM.render(
             <Route index element={<PhonesPage />} />
             <Route path=":phoneId" element={<h1>Tablets</h1>} />
           </Route>
-          
+
           <Route path="tablets" element={<TabletsPage />} />
           <Route path="accessories" element={<ProductDetailsPage />} />
           <Route path="cart" element={<CartPage />} />
