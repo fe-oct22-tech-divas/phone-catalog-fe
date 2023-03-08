@@ -1,0 +1,73 @@
+.favourites {
+  margin-bottom: 56px;
+
+  @include onTablet {
+    margin-bottom: 64px;
+  }
+
+  @include onDesktop {
+    margin-bottom: 80px;
+  }
+
+  &__redirect {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+
+    &--homeIcon {
+      height: 14px;
+      width: 14px;
+      background-image: url('../../img/icon/home.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin-right: 13px;
+      padding-bottom: 5px;
+
+      &:hover {
+        transform: scale(1.2);
+        transition: transform 0.3s ease-in-out;
+      }
+    }
+    &--arrowIcon {
+      height: 14px;
+      width: 14px;
+      background-image: url('../../img/icon/arrow_right.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin-right: 13px;
+    }
+
+    &--title {
+      font-family: 'Mont-SemiBold', sans-serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15px;
+
+      color: $color-gray;
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+
+    font-family: 'Mont-Bold';
+    font-size: 48px;
+    line-height: 56px;
+
+    color: $color-white;
+  }
+
+  &__count {
+    margin-bottom: 32px;
+    font-family: 'Mont-Regular';
+    font-size: 14px;
+    line-height: 21px;
+
+    color: $color-gray;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+  }
+}

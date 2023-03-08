@@ -130,16 +130,17 @@
     }
   }
   &__container {
-    gap: 48px;
+    column-gap: 16px;
     margin: 0 auto;
-  
-    @each $cards, $size in $sizes {
-      @media (min-width:#{$size}) {
-        grid-template-columns: repeat(#{$cards}, $card-width);
-      }
+
+    @include onTablet {
+      grid-template-columns: repeat(2, $card-width);
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
-  
 }
 
 .option-value {
@@ -147,6 +148,4 @@
   background: #0F1121;
   height: 32px;
   padding: 0 16px;
-
-  
 }

@@ -75,6 +75,12 @@ export const ProductDetailsPage: React.FC = () => {
 
         <div className="product__direction--arrow" />
 
+        <a className="product__direction__link" href="/">
+          <p className="product__direction--category">Phones</p>
+        </a>
+
+        <div className="product__direction--arrow" />
+
         <p className="product__direction--item">{fullInfo?.name}</p>
       </div>
 
