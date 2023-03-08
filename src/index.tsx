@@ -12,6 +12,7 @@ import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import './main.scss';
 import { TabletsPage } from './modules/TabletsPage/TabletsPage';
 import { CartPage } from './modules/CartPage';
+import { FavouritesPage } from './modules/FavoritesPage';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -30,6 +31,7 @@ ReactDOM.render(
           <Route path="tablets" element={<TabletsPage />} />
           <Route path="accessories" element={<ProductDetailsPage />} />
           <Route path="cart" element={<CartPage />} />
+          <Route path="favorites" element={<FavouritesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

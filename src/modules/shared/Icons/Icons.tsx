@@ -12,8 +12,6 @@ type Props = {
 export const Icons: React.FC<Props> = ({ isForBurgerMenu }) => {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
 
-  window.console.log('open', isBurgerMenuOpen);
-
   return (
     <div className="icons">
 

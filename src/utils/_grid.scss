@@ -14,7 +14,6 @@
   }
   
   &--desktop {
-    
     @include onDesktop {
       grid-template-columns: repeat($desktop-columns, 1fr);
       column-gap: $gap;
