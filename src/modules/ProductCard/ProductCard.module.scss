@@ -10,7 +10,7 @@
   left: 16px;
   top: 16px;
 
-  background: #161827;
+  background: $color-darkGray;
 
   @include onTablet {
     min-width: 229px;
@@ -23,7 +23,7 @@
   &__image {
     height: $card-image-height;
     display: block;
-    margin-bottom: 24px;
+    margin-bottom: $small-size;
   }
 
   &__name {

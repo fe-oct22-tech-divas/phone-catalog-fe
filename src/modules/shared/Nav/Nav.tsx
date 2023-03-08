@@ -19,7 +19,19 @@ export const Nav: React.FC<Props> = ({ isForBurgerMenu }) => {
           nav__menu__list: isForBurgerMenu,
         })}
         >
-          {['home', 'phones', 'tablets', 'accessories'].map(
+          <NavLink
+            key="home"
+            to="/"
+            className={({ isActive }) => classNames({
+              nav__link: !isForBurgerMenu,
+              nav__menu__link: isForBurgerMenu,
+              nav__link__active: isActive,
+            })}
+          >
+            Home
+          </NavLink>
+
+          {['phones', 'tablets', 'accessories'].map(
             category => (
               <NavLink
                 key={category}

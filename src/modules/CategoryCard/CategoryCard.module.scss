@@ -4,7 +4,7 @@
     width: 100%;
     min-width: 288px;
     height: auto;
-    margin: 0 auto 24px;
+    margin: 0 auto $small-size;
     
     @include onTablet {
       min-width: 184px;
