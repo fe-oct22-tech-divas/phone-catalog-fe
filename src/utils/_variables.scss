@@ -7,8 +7,8 @@ $big-size: 64px;
 $medium-size: 48px;
 $small-size: 24px;
 
-$height-mob-tablet: calc(100vh - $medium-size);
-$height-desktop: calc(100vh - $big-size);
+$height-mob-tablet: calc(100vh - 48px);
+$height-desktop: calc(100vh - 64px);
 
 $mobile-columns: 4;
 $tablet-columns: 12;

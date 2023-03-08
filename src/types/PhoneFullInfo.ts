@@ -20,4 +20,5 @@ export interface PhoneFullInfo {
   ram: string,
   camera: string,
   zoom: string,
+  cell: string[],
 }
