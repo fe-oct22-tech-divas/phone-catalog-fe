@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import favourites from '../../../img/icon/heart.png';
-import cart from '../../../img/icon/cart.png';
 import menu from '../../../img/icon/menu.png';
 import cross from '../../../img/icon/cross.png';
+import { useLocalStorage } from '../../../hooks/useLocalStorage';
 
 type Props = {
   isForBurgerMenu?: boolean,
@@ -11,6 +10,7 @@ type Props = {
 
 export const Icons: React.FC<Props> = ({ isForBurgerMenu }) => {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
+  const [cart, favorites] = useLocalStorage();
 
   return (
     <div className="icons">
@@ -44,16 +44,28 @@ export const Icons: React.FC<Props> = ({ isForBurgerMenu }) => {
         <>
           <Link
             to="favorites"
-            className="icon icon--favourites"
+            className="icon--favourites"
           >
-            <img src={favourites} alt="Favourites" />
+            <div className="icon icon__favourites">
+              {favorites.length > 0 && (
+                <div className="icon__counter">
+                  {favorites.length}
+                </div>
+              )}
+            </div>
           </Link>
 
           <Link
             to="cart"
-            className="icon icon--cart"
+            className="icon--cart"
           >
-            <img src={cart} alt="Cart" />
+            <div className="icon icon__cart">
+              {cart.length > 0 && (
+                <div className="icon__counter">
+                  {cart.length}
+                </div>
+              )}
+            </div>
           </Link>
         </>
       )}

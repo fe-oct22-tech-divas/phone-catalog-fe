@@ -1,4 +1,3 @@
-
 /* eslint-disable no-console */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -27,7 +26,6 @@ export const ProductDetailsPage: React.FC = () => {
         });
     }
   }, []);
-
 
   const handleAdd = (event: any) => {
     event.preventDefault();
