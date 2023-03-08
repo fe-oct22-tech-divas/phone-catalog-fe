@@ -3,7 +3,7 @@
   margin-right: $medium-size;
 
   @include onDesktop {
-  width: 80px;
+  width: $large-size;
   }
 
   &__img {

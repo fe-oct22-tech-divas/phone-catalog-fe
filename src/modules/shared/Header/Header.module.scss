@@ -5,10 +5,11 @@
   overflow: hidden;
   position: sticky;
   top: 0;
+  z-index: 2;
 
   height: $medium-size;
 
-  padding: 19px 0 19px 24px;
+  padding: 19px 0 19px $small-size;
   margin-bottom: 32px;
   border-bottom: $border;
 

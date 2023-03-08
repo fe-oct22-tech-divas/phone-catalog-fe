@@ -1,7 +1,7 @@
 .burger {
   position: absolute;
   transform: translateX(100%);
-  height: calc(100vh - 64px);
+  height: $height-desktop;
   bottom: 0;
   left: 0;
   right: 0;
