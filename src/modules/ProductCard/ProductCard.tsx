@@ -2,15 +2,16 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import classNames from 'classnames';
 import React, { useState } from 'react';
+
+import { NavLink } from 'react-router-dom';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { Phone } from '../../types/Phone';
 
 type Props = {
   phone: Phone,
-  onClick: (phoneId: string) => void,
 };
 
-export const ProductCard: React.FC<Props> = React.memo(({ phone }, onClick) => {
+export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
   const {
     phoneId,
     name,
@@ -47,16 +48,17 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }, onClick) => {
   return (
 
     <div className="card" key={phoneId}>
-      <img
-        className="card__image"
-        alt={name}
-        src={image}
-        onClick={() => onClick(phoneId)}
-      />
+      <NavLink to={`/phones/${phoneId}`}>
+        <img
+          className="card__image"
+          alt={name}
+          src={image}
+        />
 
-      <p className="card__name">
-        {name}
-      </p>
+        <p className="card__name">
+          {name}
+        </p>
+      </NavLink>
 
       <div className="card__prices">
         <h3 className="card__price">{`$${price}`}</h3>

@@ -1,14 +1,33 @@
+
+/* eslint-disable no-console */
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import classNames from 'classnames';
-import React, { useState } from 'react';
-import fullInfo from './iphoneData.json';
-// import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+// import fullInfo from './iphoneData.json';
+import { getPhoneById } from '../../api/phones';
+import { PhoneFullInfo } from '../../types/PhoneFullInfo';
 
 export const ProductDetailsPage: React.FC = () => {
-  const [item] = useState(fullInfo);
+  const [fullInfo, setFullInfo] = useState<PhoneFullInfo>();
   const [isAdded, setIsAdded] = useState(false);
   const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
   // const [setAvailableMemory] = useState(0);
+
+  const params = useParams();
+  const [isError, setIsError] = useState(false);
+
+  useEffect(() => {
+    if (params.phoneId) {
+      getPhoneById(params.phoneId)
+        .then(setFullInfo)
+        .catch(() => {
+          setIsError(true);
+        });
+    }
+  }, []);
+
 
   const handleAdd = (event: any) => {
     event.preventDefault();
@@ -19,29 +38,11 @@ export const ProductDetailsPage: React.FC = () => {
     setIsAddedToFavorite(!isAddedToFavorite);
   };
 
-  const {
-    // id,
-    // namespaceId,
-    name,
-    capacityAvailable,
-    capacity,
-    priceRegular,
-    priceDiscount,
-    // "colorsAvailable": ["spacegray", "midnightgreen", "gold", "silver"],
-    // color,
-    images,
-    description,
-    screen,
-    resolution,
-    processor,
-    ram,
-    camera,
-    zoom,
-    cell,
-  } = item;
-
   return (
     <div className="product  main-container">
+      {isError && (
+        <p>Data Error</p>
+      )}
       <div className="product__direction">
         <a className="product__direction__link" href="/">
           <div className="product__direction__link--home-icon" />
@@ -55,7 +56,7 @@ export const ProductDetailsPage: React.FC = () => {
 
         <div className="product__direction--arrow" />
 
-        <p className="product__direction--item">{name}</p>
+        <p className="product__direction--item">{fullInfo?.name}</p>
       </div>
 
       <div className="product__redirect">
@@ -66,12 +67,12 @@ export const ProductDetailsPage: React.FC = () => {
         </a>
       </div>
 
-      <h2 className="product__title">{name}</h2>
+      <h2 className="product__title">{fullInfo?.name}</h2>
 
       <section className="product__container grid grid--tablet grid--desktop">
         <div className="product__photo-block grid--tablet grid--desktop">
           <div className="product__photo-block__small-images">
-            {images.map((image) => (
+            {fullInfo?.images.map((image) => (
               <img
                 key={image}
                 src={image}
@@ -108,7 +109,7 @@ export const ProductDetailsPage: React.FC = () => {
             <p className="product__available-variant product__direction--item">Select capacity</p>
 
             <div className="product__available-variant__container">
-              {capacityAvailable.map((memory) => (
+              {fullInfo?.capacityAvailable.map((memory: string) => (
                 <button
                   type="button"
                   key={memory}
@@ -121,9 +122,9 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
 
           <div className="product__available-variant__prices">
-            <h1 className="product__title">{priceDiscount}</h1>
+            <h1 className="product__title">{fullInfo?.priceDiscount}</h1>
 
-            <h3 className="product__available-variant__prices--full-price">{priceRegular}</h3>
+            <h3 className="product__available-variant__prices--full-price">{fullInfo?.priceRegular}</h3>
           </div>
 
           <div className="product__available-variant__buttons">
@@ -159,25 +160,25 @@ export const ProductDetailsPage: React.FC = () => {
             <div className="card__description">
               <span className="card__description__title">Screen</span>
 
-              <span className="card__description__value">{screen}</span>
+              <span className="card__description__value">{fullInfo?.screen}</span>
             </div>
 
             <div className="card__description">
               <span className="card__description__title">Resolution</span>
 
-              <span className="card__description__value">{resolution}</span>
+              <span className="card__description__value">{fullInfo?.resolution}</span>
             </div>
 
             <div className="card__description">
               <span className="card__description__title">Processor</span>
 
-              <span className="card__description__value">{processor}</span>
+              <span className="card__description__value">{fullInfo?.processor}</span>
             </div>
 
             <div className="card__description">
               <span className="card__description__title">RAM</span>
 
-              <span className="card__description__value">{ram}</span>
+              <span className="card__description__value">{fullInfo?.ram}</span>
             </div>
           </div>
         </div>
@@ -187,7 +188,7 @@ export const ProductDetailsPage: React.FC = () => {
         <div className="product__about__container">
           <h3 className="product__about__title">About</h3>
 
-          {description.map((element) => (
+          {fullInfo?.description.map((element) => (
             <>
               <h4 className="product__about__title--about">{element.title}</h4>
 
@@ -205,49 +206,49 @@ export const ProductDetailsPage: React.FC = () => {
             <div className="product__about__characteristic">
               <span className="product__about__characteristic--title">Screen</span>
 
-              <span className="product__about__characteristic--value">{screen}</span>
+              <span className="product__about__characteristic--value">{fullInfo?.screen}</span>
             </div>
 
             <div className="product__about__characteristic">
               <span className="product__about__characteristic--title">Resolution</span>
 
-              <span className="product__about__characteristic--value">{resolution}</span>
+              <span className="product__about__characteristic--value">{fullInfo?.resolution}</span>
             </div>
 
             <div className="product__about__characteristic">
               <span className="product__about__characteristic--title">Processor</span>
 
-              <span className="product__about__characteristic--value">{processor}</span>
+              <span className="product__about__characteristic--value">{fullInfo?.processor}</span>
             </div>
 
             <div className="product__about__characteristic">
               <span className="product__about__characteristic--title">RAM</span>
 
-              <span className="product__about__characteristic--value">{ram}</span>
+              <span className="product__about__characteristic--value">{fullInfo?.ram}</span>
             </div>
 
             <div className="product__about__characteristic">
               <span className="product__about__characteristic--title">Built in memory</span>
 
-              <span className="product__about__characteristic--value">{capacity}</span>
+              <span className="product__about__characteristic--value">{fullInfo?.capacity}</span>
             </div>
 
             <div className="product__about__characteristic">
               <span className="product__about__characteristic--title">Camera</span>
 
-              <span className="product__about__characteristic--value">{camera}</span>
+              <span className="product__about__characteristic--value">{fullInfo?.camera}</span>
             </div>
 
             <div className="product__about__characteristic">
               <span className="product__about__characteristic--title">Zoom</span>
 
-              <span className="card__description__value">{zoom}</span>
+              <span className="card__description__value">{fullInfo?.zoom}</span>
             </div>
 
             <div className="product__about__characteristic">
               <span className="product__about__characteristic--title">Cell</span>
 
-              <span className="card__description__value">{cell.join(', ')}</span>
+              <span className="card__description__value">{fullInfo?.cell.join(', ')}</span>
             </div>
           </div>
         </div>
