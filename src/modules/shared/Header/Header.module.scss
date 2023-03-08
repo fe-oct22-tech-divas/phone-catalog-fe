@@ -3,12 +3,16 @@
   align-items: center;
   justify-content: space-between;
   overflow: hidden;
+  position: sticky;
+  top: 0;
 
   height: $medium-size;
 
   padding: 19px 0 19px 24px;
   margin-bottom: 32px;
   border-bottom: $border;
+
+  background-color: $bc-color;
 
   @include onDesktop {
     height: $big-size;
