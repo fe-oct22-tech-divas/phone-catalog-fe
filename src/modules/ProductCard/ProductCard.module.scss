@@ -23,7 +23,8 @@
   &__image {
     height: $card-image-height;
     display: block;
-    margin-bottom: 24px;
+    border-radius: 10%;
+    margin: 0 auto 24px;
   }
 
   &__name {
