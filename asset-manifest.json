@@ -1,27 +1,28 @@
 {
   "files": {
-    "main.css": "/phone-catalog-fe/static/css/main.19d506d8.chunk.css",
-    "main.js": "/phone-catalog-fe/static/js/main.d250ae70.chunk.js",
-    "main.js.map": "/phone-catalog-fe/static/js/main.d250ae70.chunk.js.map",
+    "main.css": "/phone-catalog-fe/static/css/main.a4ee3b9a.chunk.css",
+    "main.js": "/phone-catalog-fe/static/js/main.fd4422b0.chunk.js",
+    "main.js.map": "/phone-catalog-fe/static/js/main.fd4422b0.chunk.js.map",
     "runtime-main.js": "/phone-catalog-fe/static/js/runtime-main.f9d40057.js",
     "runtime-main.js.map": "/phone-catalog-fe/static/js/runtime-main.f9d40057.js.map",
     "static/css/2.abcd5c43.chunk.css": "/phone-catalog-fe/static/css/2.abcd5c43.chunk.css",
-    "static/js/2.9e530033.chunk.js": "/phone-catalog-fe/static/js/2.9e530033.chunk.js",
-    "static/js/2.9e530033.chunk.js.map": "/phone-catalog-fe/static/js/2.9e530033.chunk.js.map",
+    "static/js/2.ec97d0e5.chunk.js": "/phone-catalog-fe/static/js/2.ec97d0e5.chunk.js",
+    "static/js/2.ec97d0e5.chunk.js.map": "/phone-catalog-fe/static/js/2.ec97d0e5.chunk.js.map",
     "index.html": "/phone-catalog-fe/index.html",
     "static/css/2.abcd5c43.chunk.css.map": "/phone-catalog-fe/static/css/2.abcd5c43.chunk.css.map",
-    "static/css/main.19d506d8.chunk.css.map": "/phone-catalog-fe/static/css/main.19d506d8.chunk.css.map",
-    "static/js/2.9e530033.chunk.js.LICENSE.txt": "/phone-catalog-fe/static/js/2.9e530033.chunk.js.LICENSE.txt",
+    "static/css/main.a4ee3b9a.chunk.css.map": "/phone-catalog-fe/static/css/main.a4ee3b9a.chunk.css.map",
+    "static/js/2.ec97d0e5.chunk.js.LICENSE.txt": "/phone-catalog-fe/static/js/2.ec97d0e5.chunk.js.LICENSE.txt",
     "static/media/Accessories.be856a19.jpg": "/phone-catalog-fe/static/media/Accessories.be856a19.jpg",
     "static/media/main.scss": "/phone-catalog-fe/static/media/vektor_right_disabled.90170297.svg",
     "static/media/Phones.78762c83.jpg": "/phone-catalog-fe/static/media/Phones.78762c83.jpg",
-    "static/media/Tablets.809e8a3c.jpg": "/phone-catalog-fe/static/media/Tablets.809e8a3c.jpg"
+    "static/media/Tablets.809e8a3c.jpg": "/phone-catalog-fe/static/media/Tablets.809e8a3c.jpg",
+    "static/media/emptyFav.ac5135e4.png": "/phone-catalog-fe/static/media/emptyFav.ac5135e4.png"
   },
   "entrypoints": [
     "static/js/runtime-main.f9d40057.js",
     "static/css/2.abcd5c43.chunk.css",
-    "static/js/2.9e530033.chunk.js",
-    "static/css/main.19d506d8.chunk.css",
-    "static/js/main.d250ae70.chunk.js"
+    "static/js/2.ec97d0e5.chunk.js",
+    "static/css/main.a4ee3b9a.chunk.css",
+    "static/js/main.fd4422b0.chunk.js"
   ]
 }
