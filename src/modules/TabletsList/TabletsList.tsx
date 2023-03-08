@@ -1,13 +1,41 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, {
+  useState,
+  useCallback,
+  useMemo,
+  useEffect,
+} from 'react';
 import { Phone } from '../../types/Phone';
 import { ProductCard } from '../ProductCard';
 import tabletsFromApi from '../../data/tablets.json';
+import { Loader } from '../Loader/Loader';
 
 export const TabletsList: React.FC = () => {
-  const [phones] = useState<Phone[]>(tabletsFromApi);
+  const [phones, setPhones] = useState<Phone[]>([]);
   const [chosenOption, setChosenOption] = useState('Newest');
   const [choosenQuantity, setChosenQuantity] = useState('16');
   const [currentPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+
+  const getTablets = useCallback((tablets) => {
+    setPhones(tablets);
+  }, []);
+
+  const loadGoods = async () => {
+    try {
+      setLoading(true);
+      await getTablets(tabletsFromApi);
+    } catch (err) {
+      throw new Error('Something went wrong');
+    } finally {
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+    }
+  };
+
+  useEffect(() => {
+    loadGoods();
+  }, []);
 
   const options = [
     { value: 'Newest', label: 'Newest' },
@@ -56,71 +84,75 @@ export const TabletsList: React.FC = () => {
 
   return (
     <>
-      <div className="phones grid grid--tablet grid--desktop">
-        <div className="phones__redirect">
-          <a className="phones__redirect-link" href="/">
-            <div className="phones__redirect--homeIcon" />
-          </a>
-          <div className="phones__redirect--arrowIcon" />
-          <p className="phones__redirect--title">Tablets</p>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="phones grid grid--tablet grid--desktop">
+          <div className="phones__redirect">
+            <a className="phones__redirect-link" href="/">
+              <div className="phones__redirect--homeIcon" />
+            </a>
+            <div className="phones__redirect--arrowIcon" />
+            <p className="phones__redirect--title">Tablets</p>
+          </div>
+
+          <h1 className="phones__title">Tablets</h1>
+
+          <p className="phones__amount">
+            {`${phones.length} models`}
+          </p>
+
+          <div className="phones__sort">
+            <span className="phones__sort__by">
+              <p className="phones__sort__by--name">Sort by</p>
+              <select
+                className="phones__sort__by--dropdown-1"
+                onChange={(event) => handleChangeSelectorOption(event.target.value)}
+              >
+                {options.map((option) => (
+                  <option
+                    value={option.value}
+                    className="option-value"
+                    key={option.value}
+
+                  >
+                    {option.value}
+                  </option>
+                ))}
+              </select>
+            </span>
+
+            <span className="phones__sort__by">
+              <p className="phones__sort__by--name">Items on page</p>
+              <select
+                className="phones__sort__by--dropdown-2"
+                onChange={(event) => handleChangeSelectorQuantity(event.target.value)}
+              >
+                {quantity.map((number) => (
+                  <option
+                    value={number.value}
+                    className="option-value"
+                    key={number.value}
+                  >
+                    {number.value}
+                  </option>
+                ))}
+              </select>
+            </span>
+          </div>
+
+          <div className="phones__container grid grid--desktop
+          grid--tablet"
+          >
+            {getSortedCards.map((phone => (
+              <ProductCard
+                phone={phone}
+                key={phone.id}
+              />
+            )))}
+          </div>
         </div>
-
-        <h1 className="phones__title">Tablets</h1>
-
-        <p className="phones__amount">
-          {`${phones.length} models`}
-        </p>
-
-        <div className="phones__sort">
-          <span className="phones__sort__by">
-            <p className="phones__sort__by--name">Sort by</p>
-            <select
-              className="phones__sort__by--dropdown-1"
-              onChange={(event) => handleChangeSelectorOption(event.target.value)}
-            >
-              {options.map((option) => (
-                <option
-                  value={option.value}
-                  className="option-value"
-                  key={option.value}
-
-                >
-                  {option.value}
-                </option>
-              ))}
-            </select>
-          </span>
-
-          <span className="phones__sort__by">
-            <p className="phones__sort__by--name">Items on page</p>
-            <select
-              className="phones__sort__by--dropdown-2"
-              onChange={(event) => handleChangeSelectorQuantity(event.target.value)}
-            >
-              {quantity.map((number) => (
-                <option
-                  value={number.value}
-                  className="option-value"
-                  key={number.value}
-                >
-                  {number.value}
-                </option>
-              ))}
-            </select>
-          </span>
-        </div>
-
-        <div className="phones__container grid grid--desktop
-        grid--tablet"
-        >
-          {getSortedCards.map((phone => (
-            <ProductCard
-              phone={phone}
-              key={phone.id}
-            />
-          )))}
-        </div>
-      </div>
+      )}
     </>
   );
 };

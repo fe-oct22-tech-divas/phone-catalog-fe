@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import arrow from '../../img/icon/arrow_right__white.png';
 import { CartItem } from '../CartItem';
+import phones from '../../data/phones.json';
 
 export const CartPage: React.FC = () => {
   return (
@@ -32,7 +33,9 @@ export const CartPage: React.FC = () => {
           grid__item--tablet-1-12
           grid__item--desktop-1-16"
         >
-          <CartItem />
+          {phones.slice(0, 3).map(phone => (
+            <CartItem phone={phone} key={phone.id} />
+          ))}
         </div>
 
         <div className="

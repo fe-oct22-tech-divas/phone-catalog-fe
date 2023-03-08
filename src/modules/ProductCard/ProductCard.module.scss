@@ -24,6 +24,7 @@
     height: $card-image-height;
     display: block;
     margin-bottom: 24px;
+    margin: auto;
   }
 
   &__name {
@@ -35,16 +36,25 @@
 
     color: $color-white;
   }
-
-  &__price {
+  &__prices {
+    display: flex;
+    gap: 8px;
     font-family: 'Mont-Bold', sans-serif;
     font-style: normal;
-    font-weight: 800;
     font-size: 22px;
     line-height: 31px;
     margin-bottom: 8px;
+  }
 
+  &__price {
+    font-weight: 800;
     color: $color-white;
+  }
+
+  &__fullPrice {
+    text-decoration-line: line-through;
+    font-weight: 600;
+    color: $color-gray;
   }
 
   &__divide-line {
