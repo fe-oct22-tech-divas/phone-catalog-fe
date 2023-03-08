@@ -12,9 +12,17 @@ export const App: React.FC = () => {
   return (
     <>
       <Header />
-      <BurgerMenu isBurgerVisible={isBurgerMenuOpen} />
-      <Outlet />
-      <Footer />
+
+      {isBurgerMenuOpen
+        ? (
+          <BurgerMenu isBurgerVisible={isBurgerMenuOpen} />
+        )
+        : (
+          <>
+            <Outlet />
+            <Footer />
+          </>
+        )}
     </>
   );
 };
