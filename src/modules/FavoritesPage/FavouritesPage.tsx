@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { ProductCard } from '../ProductCard';
+import emptyFav from '../../img/emptyFav.png';
 
 export const FavouritesPage: React.FC = () => {
   const [, favorites] = useLocalStorage();
@@ -31,13 +32,16 @@ export const FavouritesPage: React.FC = () => {
 
       {isEmpty
         ? (
-          <div className="favourites__empty">
+          <div className="cart__empty">
             <img
-              className="favourites__empty-img"
-              src="https://img.freepik.com/free-icon/heart_318-852562.jpg"
+              className="cart__empty-img"
+              src={emptyFav}
               alt="empty favourites"
             />
-            <h2 className="favourites__empty-title">Your favourites list is empty</h2>
+
+            <h2 className="cart__empty-title">
+              Your favourites list is empty
+            </h2>
           </div>
         )
         : (
