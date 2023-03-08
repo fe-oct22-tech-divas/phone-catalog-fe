@@ -1,11 +1,12 @@
-/* eslint-disable no-console */
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import arrow from '../../img/icon/arrow_right__white.png';
 import { CartItem } from '../CartItem';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { ModalWindow } from '../shared/ModalWindow';
 
 export const CartPage: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [cart] = useLocalStorage();
   const isEmpty = cart.length === 0;
   const productsTotal = cart.reduce(
@@ -14,6 +15,17 @@ export const CartPage: React.FC = () => {
   );
 
   const itemsNum = cart.reduce((total, product) => total + product.count, 0);
+
+  const handleCheckoutClick = () => {
+    setIsModalOpen(true);
+    cart.length = 0;
+
+    setTimeout(() => {
+      setIsModalOpen(false);
+
+      window.location.replace('https://fe-oct22-tech-divas.github.io/phone-catalog-fe/');
+    }, 6000);
+  };
 
   return (
     <div className="cart main-container">
@@ -43,7 +55,7 @@ export const CartPage: React.FC = () => {
             src="https://porubne.mydutyfree.net/images/empty-cart.png"
             alt="empty cart"
           />
-          <h2 className="cart__empty-title">Youre cart is empty</h2>
+          <h2 className="cart__empty-title">Your cart is empty</h2>
         </div>
       )}
 
@@ -79,11 +91,16 @@ export const CartPage: React.FC = () => {
             <button
               type="button"
               className="cart__checkout__btn"
+              onClick={handleCheckoutClick}
             >
               Checkout
             </button>
           </div>
         </div>
+      )}
+
+      {isModalOpen && (
+        <ModalWindow />
       )}
     </div>
   );
