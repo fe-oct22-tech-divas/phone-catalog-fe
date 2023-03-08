@@ -21,7 +21,7 @@ ReactDOM.render(
         <Route path="/" element={<App />}>
 
           <Route index element={<HomePage />} />
-          <Route path="/home" element={<Navigate to="/" replace />} />
+          <Route path="/" element={<Navigate to="/" replace />} />
 
           <Route path="phones">
             <Route index element={<PhonesPage />} />

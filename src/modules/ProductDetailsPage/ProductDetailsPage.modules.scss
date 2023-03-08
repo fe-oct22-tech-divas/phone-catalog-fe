@@ -96,7 +96,7 @@
     // justify-content: space-between;  ??
     width: 288px;
     margin-top: 40px;
-    margin-bottom: 80px;
+    margin-bottom: $large-size;
 
     @include onTablet {
       display:flex;
@@ -104,7 +104,7 @@
     // justify-content: space-between;  ??
     width: 237px;
     margin-top: 40px;
-    margin-bottom: 80px;
+    margin-bottom: $large-size;
     }
 
     @include onDesktop {
@@ -113,7 +113,7 @@
     // justify-content: space-between;  ??
     width: 320px;
     margin-top: 40px;
-    margin-bottom: 80px;
+    margin-bottom: $large-size;
     }
   }
 
@@ -170,8 +170,8 @@
     &__enlargeg-photo {
       width: 274px;
       height: 274px;
-      margin-bottom: 24px;
       border-radius: 10%;
+      margin-bottom: $small-size;
   
       @include onDesktop {
         width: 442px;
@@ -212,11 +212,11 @@
     &__color {
       display:flex;
       flex-direction: column;
-      margin-bottom:24px;
+      margin-bottom:$small-size;
 
       &:after {
         content:"";
-        margin-top:24px;
+        margin-top:$small-size;
         height: 1px;
         width: 100%;
         background-color:#3B3E4A;
@@ -226,7 +226,7 @@
         width:30px;
         height:30px;
         background: #FCDBC1;
-        border: 1px solid #0F1121;
+        border: 1px solid $bc-color;
         border-radius: 50%;
         padding:3px;
         margin-right: 8px;
@@ -240,7 +240,7 @@
         width:30px;
         height:30px;
         background: #5F7170;
-        border: 1px solid #0F1121;
+        border: 1px solid $bc-color;
         padding:3px;
         border-radius: 50%;
         margin-right: 8px;
@@ -253,7 +253,7 @@
         width:30px;
         height:30px;
         background: #4C4C4C;
-        border: 1px solid #0F1121;
+        border: 1px solid $bc-color;
         border-radius: 50%;
         padding:3px;
         margin-right: 8px;
@@ -267,7 +267,7 @@
         width:30px;
         height:30px;
         background: #F0F0F0;
-        border: 2px solid #0F1121;
+        border: 2px solid $bc-color;
         border-radius: 50%;
 
         &:hover {
@@ -282,7 +282,7 @@
 
       &:after {
         content:"";
-        margin-top:24px;
+        margin-top:$small-size;
         height: 1px;
         width: 100%;
         background-color:#3B3E4A;
@@ -301,7 +301,7 @@
 
         &:hover {
           background-color: $color-white;
-          color: #0F1121;
+          color: $bc-color;
         }
 
         &--is-active {
@@ -327,7 +327,7 @@
         line-height: 28px;
         text-decoration-line: line-through;
 
-        color: #75767F;
+        color: $color-gray;
       }
     }
 
@@ -344,7 +344,7 @@
         justify-content: center;
         align-items: center;
         width: 231px;
-        height: 48px;
+        height: $medium-size;
     
         background-color: #905BFF;
     
@@ -360,13 +360,13 @@
         transition: 0.3s, background-color 0.3s;
 
         @include onTablet {
-          width: 180px;
-          height: 48px;
+          width: 1$large-size;
+          height: $medium-size;
         }
 
         @include onDesktop {
           width: 263px;
-          height: 48px;
+          height: $medium-size;
         }
   
         &--is-added {
@@ -376,7 +376,7 @@
           justify-content: center;
           align-items: center;
           width: 263px;
-          height: 48px;
+          height: $medium-size;
       
           font-family: 'Mont-Regular', sans-serif;
           font-style: normal;
@@ -396,8 +396,8 @@
       }
   
       &--like-button {
-        height: 48px;
-        width: 48px;
+        height: $medium-size;
+        width: $medium-size;
         border-color: #323542;
         background-color: #323542;
         background-image: url('../../img/icon/heart.png');
@@ -409,8 +409,8 @@
         transition: 0.3s, background-color 0.3s;
   
         &--is-added {
-          height: 48px;
-          width: 48px;
+          height: $medium-size;
+          width: $medium-size;
           border-color: #323542;
           background-color: #323542;
           background-image: url('../../img/icon/heart_filled.png');
@@ -455,7 +455,7 @@
       }
 
        &:first-of-type {
-        margin-right: 64px;
+        margin-right: $big-size;
        }
     }
 
@@ -496,7 +496,7 @@
         line-height: 21px;
         margin-bottom: 32px;
 
-        color: #75767F;
+        color: $color-gray;
       }
     }
 
@@ -513,7 +513,7 @@
         line-height: 21px;
         margin-bottom: 8px;
 
-        color: #75767F;
+        color: $color-gray;
       }
       &--value {
         font-family: 'Mont-SemiBold', sans-serif;

@@ -6,7 +6,7 @@
   }
 
   @include onDesktop {
-    margin-bottom: 80px;
+    margin-bottom: $large-size;
   }
 
   &__title {

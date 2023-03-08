@@ -33,25 +33,60 @@
 }
 
 .icon {
+  position: relative;
   padding: 17px;
   height: $medium-size;
-
-  border-left: $border;
+  width: $medium-size;
 
   background-repeat: no-repeat;
   background-position: center;
 
   cursor: pointer;
 
+  @include onTablet {
+    border-left: $border;
+  }
+
   @include onDesktop {
-  padding: 24px;
+  padding: $small-size;
 
   height: $big-size;
   }
 
+  &__counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    z-index: 1;
+    top: 25%;
+    left: 50%;
+    height: 0.9rem;
+    width: 0.9rem;
+
+    font-family: 'Mont-Regular';
+    font-size: 0.6rem;
+    color: $color-white;
+
+    background-color: #EB5757;
+    border: 1px solid $bc-color;
+    border-radius: 50%;
+  }
+
+  &__cart {
+    background-image: url('../../../img/icon/cart.png');
+  }
+
+  &__favourites {
+    background-image: url('../../../img/icon/heart.png');
+  }
+
   &__burger--footer {
     position: relative;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     background-repeat: no-repeat;
     background-position: center;
@@ -61,16 +96,6 @@
     transition: all 0.3 ease-in-out;
     width: 50%;
     text-align: center;
-    
-    &--favourites,
-    &--cart {
-      line-height: calc(64px - 2px);
-      border-bottom: 2px solid transparent;
-
-      &:hover {
-        border-color: $color-white;
-      }
-    }
   }
 
   &--favourites,
