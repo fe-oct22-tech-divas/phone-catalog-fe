@@ -1,22 +1,28 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 // import fullInfo from './iphoneData.json';
 import { getPhoneById } from '../../api/phones';
 import { PhoneFullInfo } from '../../types/PhoneFullInfo';
 
 export const ProductDetailsPage: React.FC = () => {
+  const params = useParams();
+  const { phoneId = '0' } = params;
+
   const [fullInfo, setFullInfo] = useState<PhoneFullInfo>();
+  const [prevFullInfo, setPrevFullInfo] = useState(phoneId);
   const [isAdded, setIsAdded] = useState(false);
   const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
-  const [itemCapacity, setItemcapacity] = useState(fullInfo?.capacity);
+  const [itemCapacity] = useState(fullInfo?.capacity);
   const [picture, setPicture] = useState(fullInfo?.images[0]);
-
-  const params = useParams();
   const [isError, setIsError] = useState(false);
+
+  const pageHistory = useNavigate();
 
   useEffect(() => {
     if (params.phoneId) {
@@ -25,8 +31,28 @@ export const ProductDetailsPage: React.FC = () => {
         .catch(() => {
           setIsError(true);
         });
+      if (prevFullInfo !== phoneId) {
+        pageHistory(`/phones/${prevFullInfo}`);
+      }
     }
-  }, []);
+  }, [prevFullInfo, pageHistory]);
+
+  if (fullInfo === null) {
+    return null;
+  }
+
+  const replaceIdWithNewId = (id: string, newId: string) => {
+    const splitted = id.split('-');
+
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < splitted.length; i++) {
+      if (splitted[i].includes('gb')) {
+        splitted[i] = newId.toLowerCase();
+      }
+    }
+
+    return splitted.join('-');
+  };
 
   const handleAdd = (event: any) => {
     event.preventDefault();
@@ -37,24 +63,12 @@ export const ProductDetailsPage: React.FC = () => {
     setIsAddedToFavorite(!isAddedToFavorite);
   };
 
-  const handleChangeCapacity = (capacity: any) => {
-    setItemcapacity(capacity);
-  };
-
-  // eslint-disable-next-line consistent-return
-  function replaceCapacity() {
-    if (fullInfo?.id !== undefined || itemCapacity !== undefined) {
-      return fullInfo?.id.replace(
-        fullInfo.capacity.toLocaleLowerCase(), itemCapacity?.toLocaleLowerCase(),
-      );
-    }
-  }
-
-  // eslint-disable-next-line no-console
-  console.log(replaceCapacity());
-
   const handleChangePicture = (way: string) => {
     setPicture(way);
+  };
+
+  const handleChangeCapacity = (capacityToChange: string) => {
+    setPrevFullInfo(replaceIdWithNewId(prevFullInfo, capacityToChange));
   };
 
   return (
@@ -126,6 +140,7 @@ export const ProductDetailsPage: React.FC = () => {
 
             <div className="product__available-variant__container">
               {fullInfo?.capacityAvailable.map((memory: string) => (
+                // <NavLink to={`/phones/${replaced}`} key={memory}>
                 <button
                   type="button"
                   key={memory}
@@ -134,6 +149,7 @@ export const ProductDetailsPage: React.FC = () => {
                 >
                   {memory}
                 </button>
+                // </NavLink>
               ))}
             </div>
           </div>

@@ -42,3 +42,5 @@
   "zoom": "Digital, 10x / Optical, 2x",
   "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
 }
+
+colorsAvailable":["black","rosegold","gold","silver", "spacegray","midnightgreen" "white","yellow","red","coral"
