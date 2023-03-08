@@ -1,0 +1,36 @@
+.carousel {
+    margin: 0 auto 56px;
+  
+    @include onTablet {
+      margin-bottom: $big-size;
+    }
+  
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+
+    &__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__buttons {
+      display: flex;
+      align-items: center;
+    }
+
+    &__title {
+    font-family: 'Mont-Bold', sans-serif;
+    font-size: 32px;
+    letter-spacing: -0.01em;
+    color: $color-white;
+  }
+
+  &__container {
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+  }
+}

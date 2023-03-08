@@ -24,11 +24,11 @@ ReactDOM.render(
 
           <Route path="phones">
             <Route index element={<PhonesPage />} />
-            <Route path=":phoneId" element={<h1>Tablets</h1>} />
+            <Route path=":phoneId" element={<ProductDetailsPage />} />
           </Route>
 
           <Route path="tablets" element={<TabletsPage />} />
-          <Route path="accessories" element={<ProductDetailsPage />} />
+          <Route path="accessories" element={<NotFoundPage />} />
           <Route path="cart" element={<CartPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>

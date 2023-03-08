@@ -2,19 +2,22 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import classNames from 'classnames';
 import React, { useState } from 'react';
+
+import { NavLink } from 'react-router-dom';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { Phone } from '../../types/Phone';
 
 type Props = {
   phone: Phone,
-  onClick: (phoneId: string) => void,
 };
 
-export const ProductCard: React.FC<Props> = React.memo(({ phone }, onClick) => {
+export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
   const {
     phoneId,
     name,
     ram,
     capacity,
+    price,
     fullPrice,
     screen,
     image,
@@ -22,10 +25,18 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }, onClick) => {
 
   const [isAdded, setIsAdded] = useState(false);
   const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
+  const [, , addToLocalStorage, removeFromLocalStorage] = useLocalStorage();
 
   const handleAdd = (event: React.MouseEvent) => {
     event.preventDefault();
-    setIsAdded(!isAdded);
+    setIsAdded(true);
+    addToLocalStorage('cart', { ...phone, count: 1 });
+  };
+
+  const handleRemove = (event: React.MouseEvent) => {
+    event.preventDefault();
+    setIsAdded(true);
+    removeFromLocalStorage('cart', phoneId, 1);
   };
 
   const hadleAddToFavourite = () => {
@@ -37,19 +48,21 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }, onClick) => {
   return (
 
     <div className="card" key={phoneId}>
-      <img
-        className="card__image"
-        alt={name}
-        src={image}
-        onClick={() => onClick(phoneId)}
-      />
+      <NavLink to={`/phones/${phoneId}`}>
+        <img
+          className="card__image"
+          alt={name}
+          src={image}
+        />
 
-      <p className="card__name">
-        {name}
-      </p>
+        <p className="card__name">
+          {name}
+        </p>
+      </NavLink>
 
-      <div className="card__price">
-        <h3>{`$${fullPrice}`}</h3>
+      <div className="card__prices">
+        <h3 className="card__price">{`$${price}`}</h3>
+        <h3 className="card__fullPrice">{`$${fullPrice}`}</h3>
       </div>
 
       <div className="card__divide-line" />
@@ -80,7 +93,7 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }, onClick) => {
           <a
             href="/"
             className="card__buttons--add-button--is-added"
-            onClick={handleAdd}
+            onClick={handleRemove}
           >
             Added
           </a>

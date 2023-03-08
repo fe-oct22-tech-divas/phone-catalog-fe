@@ -1,4 +1,14 @@
 .cart {
+  margin-bottom: 56px;
+
+  @include onTablet {
+    margin-bottom: $big-size;
+  }
+
+  @include onDesktop {
+    margin-bottom: 80px;
+  }
+
   &__back {
     display: flex;
 
@@ -34,15 +44,12 @@
     }
   }
 
-  &__item {
-
-  }
-
   &__checkout {
+    height: 190px;
     padding: 24px;
 
     text-align: center;
-    border: 1px solid $color-gray;
+    border: $border;
 
     &__price {
       font-family: 'Mont-Bold';
@@ -85,6 +92,23 @@
       &:focus {
         background-color: #323542;
       }
+    }
+  }
+
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &-img {
+      width: 200px;
+      height: 230px;
+    }
+    &-title {
+      font-family: 'Mont-Regular';
+      font-size: 24px;
+      color: $color-white;
     }
   }
 }
