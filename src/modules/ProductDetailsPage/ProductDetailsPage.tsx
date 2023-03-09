@@ -1,6 +1,8 @@
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
@@ -18,6 +20,8 @@ export const ProductDetailsPage: React.FC = () => {
   const [itemCapacity] = useState(fullInfo?.capacity);
   const [picture, setPicture] = useState(fullInfo?.images[0]);
   const [isError, setIsError] = useState(false);
+
+  console.log('prevInfo', prevFullInfo, 'fullInfo', fullInfo);
 
   function getHexColor(colorName: string) {
     const colorsAvailable = [
@@ -73,7 +77,7 @@ export const ProductDetailsPage: React.FC = () => {
   };
 
   const replaceIdWithNewColor = (id: string, newColor:string) => {
-    const colorsAvailable = ['black', 'rosegold', 'gold', 'silver', 'spacegray', 'midnightgreen', 'white', 'yellow', 'red', 'coral', 'purple'];
+    const colorsAvailable = ['black', 'rosegold', 'gold', 'silver', 'spacegray', 'midnightgreen', 'white', 'yellow', 'red', 'coral', 'purple', 'green'];
     const splitted = id.split('-');
 
     // eslint-disable-next-line no-plusplus
@@ -265,13 +269,13 @@ export const ProductDetailsPage: React.FC = () => {
           <h3 className="product__about__title">About</h3>
 
           {fullInfo?.description.map((element) => (
-            <>
+            <React.Fragment key={element.title}>
               <h4 className="product__about__title--about">{element.title}</h4>
 
               <p className="product__about__title--description">
                 {element.text}
               </p>
-            </>
+            </React.Fragment>
           ))}
         </div>
         <div className="product__about__container">
