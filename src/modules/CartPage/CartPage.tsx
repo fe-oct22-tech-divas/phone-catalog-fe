@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import arrow from '../../img/icon/arrow_right__white.png';
 import { CartItem } from '../CartItem';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { ModalWindow } from '../shared/ModalWindow';
 
-export const CartPage: React.FC = () => {
+export const CartPage: React.FC = React.memo(() => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [cart] = useLocalStorage();
-  const isEmpty = cart.length === 0;
+  const [isEmpty, setIsEmpty] = useState(cart.length === 0);
   const productsTotal = cart.reduce(
     (total, product) => total + product.price * product.count,
     0,
@@ -16,16 +16,16 @@ export const CartPage: React.FC = () => {
 
   const itemsNum = cart.reduce((total, product) => total + product.count, 0);
 
-  const handleCheckoutClick = () => {
+  const handleCheckoutClick = useCallback(() => {
     setIsModalOpen(true);
-    cart.length = 0;
-
+    setIsEmpty(true);
+    localStorage.removeItem('cart');
     setTimeout(() => {
       setIsModalOpen(false);
 
       window.location.replace('https://fe-oct22-tech-divas.github.io/phone-catalog-fe/');
-    }, 6000);
-  };
+    }, 5000);
+  }, []);
 
   return (
     <div className="cart main-container">
@@ -104,4 +104,4 @@ export const CartPage: React.FC = () => {
       )}
     </div>
   );
-};
+});

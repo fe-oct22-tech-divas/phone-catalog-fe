@@ -17,25 +17,27 @@ export const CategoryCard: React.FC<Props> = ({
   categoryDesc,
 }) => {
   return (
-    <div className="category">
-      <img
-        src={categoryImg}
-        alt={categoryImgAlt}
-        className="category__img"
-      />
+    <NavLink
+      to={categoryLink}
+      className="category__link"
+      onClick={() => window.scrollTo({ top: 0 })}
+    >
+      <div className="category">
+        <img
+          src={categoryImg}
+          alt={categoryImgAlt}
+          className="category__img"
+        />
 
-      <h4 className="category__title">
-        <NavLink
-          to={categoryLink}
-          className="category__link"
-        >
+        <h4 className="category__title">
+
           {categoryTitle}
-        </NavLink>
-      </h4>
+        </h4>
 
-      <p className="category__desc">
-        {categoryDesc}
-      </p>
-    </div>
+        <p className="category__desc">
+          {categoryDesc}
+        </p>
+      </div>
+    </NavLink>
   );
 };
