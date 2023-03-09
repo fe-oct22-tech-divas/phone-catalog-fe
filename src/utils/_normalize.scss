@@ -22,15 +22,17 @@ html {
 }
 
 .main-container {
-  max-width: 1200px;
+  max-width: 640px;
   margin: 0 auto;
   padding: 0 16px;
-
+  
   @include onTablet {
-    padding: 0 $small-size;
+  min-width: 640px;
+  padding: 0 $small-size;
   }
-
+  
   @include onDesktop {
+    min-width: 1200px;
     padding: 0 32px;
   }
 }
