@@ -5,6 +5,12 @@
   margin: 0 auto $large-size;
   padding: 0 32px;
 
+  &__top {
+    width: 592px;
+    @include onTablet {
+      width: 1136px;
+    }
+  }
   &__redirect {
     display: flex;
     align-items: center;

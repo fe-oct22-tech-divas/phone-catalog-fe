@@ -49,8 +49,6 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
     removeFromLocalStorage('favorites', phone.id, 1);
   };
 
-  // eslint-disable-next-line no-console
-
   return (
 
     <div className="card" key={phoneId}>

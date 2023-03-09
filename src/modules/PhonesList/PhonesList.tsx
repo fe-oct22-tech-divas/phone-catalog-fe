@@ -42,8 +42,16 @@ export const PhonesList: React.FC = () => {
     { value: '48', label: '48' },
   ];
 
+  const toTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   const handlePageChange = (page:number) => {
     setCurrentPage(page);
+    toTop();
   };
 
   const handleChangeSelectorOption = useCallback((option: string) => {
@@ -79,16 +87,8 @@ export const PhonesList: React.FC = () => {
 
   return (
     <>
-      {isLoading && (
-        <Loader />
-      )}
-
-      {isError && (
-        <p>Error message</p>
-      )}
-
-      {!isLoading && !isError && (
-        <div className="phones grid grid--tablet grid--desktop">
+      <div className="phones grid grid--tablet grid--desktop">
+        <div className="phones__top">
           <div className="phones__redirect">
             <a className="phones__redirect-link" href="/#/">
               <div className="phones__redirect--homeIcon" />
@@ -141,28 +141,40 @@ export const PhonesList: React.FC = () => {
               </select>
             </span>
           </div>
-
-          <div className="phones__container grid grid--desktop
-        grid--tablet"
-          >
-            {getSortedCards.map((phone => (
-              <ProductCard
-                phone={phone}
-                key={phone.id}
-                chosenOption={chosenOption}
-                choosenQuantity={+choosenQuantity}
-              />
-            )))}
-          </div>
-
-          <Pagination
-            total={phones.length}
-            perPage={+choosenQuantity}
-            currentPage={+currentPage}
-            onPageChange={handlePageChange}
-          />
         </div>
-      )}
+
+        {isLoading && (
+          <Loader />
+        )}
+
+        {isError && (
+          <p>Error message</p>
+        )}
+
+        {!isLoading && !isError && (
+          <>
+            <div className="phones__container grid grid--desktop
+        grid--tablet"
+            >
+              {getSortedCards.map((phone => (
+                <ProductCard
+                  phone={phone}
+                  key={phone.id}
+                  chosenOption={chosenOption}
+                  choosenQuantity={+choosenQuantity}
+                />
+              )))}
+            </div>
+
+            <Pagination
+              total={phones.length}
+              perPage={+choosenQuantity}
+              currentPage={+currentPage}
+              onPageChange={handlePageChange}
+            />
+          </>
+        )}
+      </div>
     </>
   );
 };
