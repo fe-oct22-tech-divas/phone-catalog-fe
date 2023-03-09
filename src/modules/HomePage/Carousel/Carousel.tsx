@@ -1,7 +1,9 @@
-import React, { useMemo, useState } from 'react';
-import phonesFromApi from '../../../data/phones.json';
+/* eslint-disable no-console */
+import React, { useEffect, useMemo, useState } from 'react';
+import { getPhones } from '../../../api/phones';
 import { Phone } from '../../../types/Phone';
 import { ProductCard } from '../../ProductCard';
+import { Loader } from '../../Loader/Loader';
 
 type Props = {
   title: string,
@@ -9,7 +11,24 @@ type Props = {
 };
 
 export const Carousel: React.FC<Props> = ({ title, choosenOption }) => {
-  const [phones] = useState<Phone[]>(phonesFromApi);
+  const [phones, setPhones] = useState<Phone[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    getPhones()
+      .then(setPhones)
+      .catch(() => {
+        setIsError(true);
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
+
+  console.log(isLoading);
+  console.log(isError);
+  console.log(phones);
+
   const [currentPage, setCurrentPage] = useState(1);
   const cardAmount = 4;
 
@@ -56,16 +75,27 @@ export const Carousel: React.FC<Props> = ({ title, choosenOption }) => {
           </button>
         </div>
       </div>
-      <div className="carousel__container grid grid--desktop
+
+      {isLoading && (
+        <Loader />
+      )}
+
+      {isError && (
+        <p>Error message</p>
+      )}
+
+      {!isLoading && !isError && (
+        <div className="carousel__container grid grid--desktop
         grid--tablet"
-      >
-        {currentCards.map((phone => (
-          <ProductCard
-            phone={phone}
-            key={phone.id}
-          />
-        )))}
-      </div>
+        >
+          {currentCards.map((phone => (
+            <ProductCard
+              phone={phone}
+              key={phone.id}
+            />
+          )))}
+        </div>
+      )}
     </div>
   );
 };

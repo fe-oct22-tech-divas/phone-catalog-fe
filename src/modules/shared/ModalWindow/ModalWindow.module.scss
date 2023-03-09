@@ -1,0 +1,35 @@
+
+@keyframes anima {
+  from {opacity: 0;}
+  to {opacity: 100%;}
+}
+
+.modal {
+  position: fixed;
+  top: 35%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  width: 50%;
+  height: 40%;
+
+  margin: 0 auto;
+
+  text-align: center;
+
+  background-color: $color-darkGray;
+  border: $border;
+
+  animation-name: anima;
+  animation-duration: 3s;
+  
+  &__text {
+    font-family: 'Mont-SemiBold';
+    font-size: $small-size;
+    line-height: 1100%;
+    letter-spacing: -0.01em;
+    
+    color: $color-white;
+  }
+}

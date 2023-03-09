@@ -7,7 +7,7 @@ type Props = {
   total: number;
   perPage: number,
   currentPage: number,
-  onPageChange: (page: string) => void,
+  onPageChange: (page: number) => void,
 };
 
 export const Pagination: FC<Props> = ({
@@ -32,14 +32,23 @@ export const Pagination: FC<Props> = ({
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === Math.ceil(total / perPage);
 
+  const toTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   const PrevNextPage = (direction: string) => {
     if (!isLastPage && direction === 'next') {
-      onPageChange(`${currentPage + 1}`);
+      onPageChange(currentPage + 1);
     }
 
     if (!isFirstPage && direction === 'prev') {
-      onPageChange(`${currentPage - 1}`);
+      onPageChange(currentPage - 1);
     }
+
+    toTop();
   };
 
   return (
@@ -66,7 +75,7 @@ export const Pagination: FC<Props> = ({
                 cn('pagination__links',
                   { 'pagination__links-isActive': currentPage === page })
               }
-              onClick={() => onPageChange(`${page}`)}
+              onClick={() => onPageChange(page)}
             >
               {page}
             </Link>

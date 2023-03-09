@@ -8,13 +8,12 @@
 
     @include onTablet {
       grid-template-columns: repeat($tablet-columns, 1fr);
-      column-gap: 24px;
+      column-gap: $small-size;
       display: grid;
     }
   }
   
   &--desktop {
-    
     @include onDesktop {
       grid-template-columns: repeat($desktop-columns, 1fr);
       column-gap: $gap;

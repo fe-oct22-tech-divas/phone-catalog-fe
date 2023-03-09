@@ -27,9 +27,7 @@ export const TabletsList: React.FC = () => {
     } catch (err) {
       throw new Error('Something went wrong');
     } finally {
-      setTimeout(() => {
-        setLoading(false);
-      }, 1000);
+      setLoading(false);
     }
   };
 

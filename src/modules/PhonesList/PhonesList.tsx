@@ -7,7 +7,7 @@ import React, {
 import { Phone } from '../../types/Phone';
 import { ProductCard } from '../ProductCard';
 import { Pagination } from '../Pagination';
-import phonesFromApi from '../../data/phones.json';
+import { getPhones } from '../../api/phones';
 import { Loader } from '../Loader/Loader';
 
 export const PhonesList: React.FC = () => {
@@ -15,27 +15,17 @@ export const PhonesList: React.FC = () => {
   const [chosenOption, setChosenOption] = useState('Newest');
   const [choosenQuantity, setChosenQuantity] = useState('16');
   const [currentPage, setCurrentPage] = useState(1);
-  const [loading, setLoading] = useState(false);
-
-  const getPhones = useCallback((tablets) => {
-    setPhones(tablets);
-  }, []);
-
-  const loadGoods = async () => {
-    try {
-      setLoading(true);
-      await getPhones(phonesFromApi);
-    } catch (err) {
-      throw new Error('Something went wrong');
-    } finally {
-      setTimeout(() => {
-        setLoading(false);
-      }, 1000);
-    }
-  };
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    loadGoods();
+    setIsLoading(true);
+    getPhones()
+      .then(setPhones)
+      .catch(() => {
+        setIsError(true);
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
   const options = [
@@ -52,8 +42,16 @@ export const PhonesList: React.FC = () => {
     { value: '48', label: '48' },
   ];
 
+  const toTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   const handlePageChange = (page:number) => {
     setCurrentPage(page);
+    toTop();
   };
 
   const handleChangeSelectorOption = useCallback((option: string) => {
@@ -61,7 +59,7 @@ export const PhonesList: React.FC = () => {
   }, []);
 
   const handleChangeSelectorQuantity = useCallback((option: string) => {
-    setChosenQuantity(+option);
+    setChosenQuantity(option);
   }, []);
 
   const lastIndex = currentPage * +choosenQuantity;
@@ -89,10 +87,8 @@ export const PhonesList: React.FC = () => {
 
   return (
     <>
-      {loading ? (
-        <Loader />
-      ) : (
-        <div className="phones grid grid--tablet grid--desktop">
+      <div className="phones grid grid--tablet grid--desktop">
+        <div className="phones__top">
           <div className="phones__redirect">
             <a className="phones__redirect-link" href="/#/">
               <div className="phones__redirect--homeIcon" />
@@ -145,28 +141,40 @@ export const PhonesList: React.FC = () => {
               </select>
             </span>
           </div>
-
-          <div className="phones__container grid grid--desktop
-        grid--tablet"
-          >
-            {getSortedCards.map((phone => (
-              <ProductCard
-                phone={phone}
-                key={phone.id}
-                chosenOption={chosenOption}
-                choosenQuantity={+choosenQuantity}
-              />
-            )))}
-          </div>
-
-          <Pagination
-            total={phones.length}
-            perPage={+choosenQuantity}
-            currentPage={+currentPage}
-            onPageChange={handlePageChange}
-          />
         </div>
-      )}
+
+        {isLoading && (
+          <Loader />
+        )}
+
+        {isError && (
+          <p>Error message</p>
+        )}
+
+        {!isLoading && !isError && (
+          <>
+            <div className="phones__container grid grid--desktop
+        grid--tablet"
+            >
+              {getSortedCards.map((phone => (
+                <ProductCard
+                  phone={phone}
+                  key={phone.id}
+                  chosenOption={chosenOption}
+                  choosenQuantity={+choosenQuantity}
+                />
+              )))}
+            </div>
+
+            <Pagination
+              total={phones.length}
+              perPage={+choosenQuantity}
+              currentPage={+currentPage}
+              onPageChange={handlePageChange}
+            />
+          </>
+        )}
+      </div>
     </>
   );
 };

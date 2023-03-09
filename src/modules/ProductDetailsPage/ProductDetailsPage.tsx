@@ -1,28 +1,57 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import classNames from 'classnames';
-import React, { useState } from 'react';
-import img1 from './image1.png';
-import img2 from './image2.png';
-import img3 from './image3.png';
-import img4 from './image4.png';
-// import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
+import { getPhoneById } from '../../api/phones';
+import { PhoneFullInfo } from '../../types/PhoneFullInfo';
 
 export const ProductDetailsPage: React.FC = () => {
-  // const { phoneId } = useParams();
+  const params = useParams();
+  const { phoneId = '0' } = params;
+
+  const [fullInfo, setFullInfo] = useState<PhoneFullInfo>();
+  const [prevFullInfo, setPrevFullInfo] = useState(phoneId);
   const [isAdded, setIsAdded] = useState(false);
   const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
-  const images = [
-    { id: 1, image: img1 },
-    { id: 2, image: img2 },
-    { id: 3, image: img3 },
-    { id: 4, image: img4 },
-  ];
-  const capacity = [
-    { id: 1, capacity: '64GB' },
-    { id: 2, capacity: '256GB' },
-    { id: 3, capacity: '512GB' },
-  ];
+  const [itemCapacity] = useState(fullInfo?.capacity);
+  const [picture, setPicture] = useState(fullInfo?.images[0]);
+  const [isError, setIsError] = useState(false);
 
-  const handleAdd = (event) => {
+  const pageHistory = useNavigate();
+
+  useEffect(() => {
+    if (params.phoneId) {
+      getPhoneById(params.phoneId)
+        .then(setFullInfo)
+        .catch(() => {
+          setIsError(true);
+        });
+      if (prevFullInfo !== phoneId) {
+        pageHistory(`/phones/${prevFullInfo}`);
+      }
+    }
+  }, [prevFullInfo, pageHistory]);
+
+  if (fullInfo === null) {
+    return null;
+  }
+
+  const replaceIdWithNewId = (id: string, newId: string) => {
+    const splitted = id.split('-');
+
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < splitted.length; i++) {
+      if (splitted[i].includes('gb')) {
+        splitted[i] = newId.toLowerCase();
+      }
+    }
+
+    return splitted.join('-');
+  };
+
+  const handleAdd = (event: any) => {
     event.preventDefault();
     setIsAdded(!isAdded);
   };
@@ -31,62 +60,71 @@ export const ProductDetailsPage: React.FC = () => {
     setIsAddedToFavorite(!isAddedToFavorite);
   };
 
+  const handleChangePicture = (way: string) => {
+    setPicture(way);
+  };
+
+  const handleChangeCapacity = (capacityToChange: string) => {
+    setPrevFullInfo(replaceIdWithNewId(prevFullInfo, capacityToChange));
+  };
+
   return (
     <div className="product  main-container">
+      {isError && (
+        <p>Data Error</p>
+      )}
       <div className="product__direction">
         <a className="product__direction__link" href="/">
           <div className="product__direction__link--home-icon" />
         </a>
+        <div className="product__direction--arrow" />
+        <NavLink to="/phones">
+          <a className="product__direction__link" href="/">
+            <p className="product__direction--category">Phones</p>
+          </a>
+        </NavLink>
 
         <div className="product__direction--arrow" />
 
-        <a className="product__direction__link" href="/">
-          <p className="product__direction--category">Phones</p>
-        </a>
-
-        <div className="product__direction--arrow" />
-
-        <p className="product__direction--item">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</p>
+        <p className="product__direction--item">{fullInfo?.name}</p>
       </div>
 
       <div className="product__redirect">
         <div className="product__redirect--arrow" />
-
-        <a className="product__direction__link" href="/">
-          <p className="product__direction--category">Back</p>
-        </a>
+        <NavLink to="/phones">
+          <a className="product__direction__link" href="/">
+            <p className="product__direction--category">Back</p>
+          </a>
+        </NavLink>
       </div>
 
-      <h2 className="product__title">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</h2>
+      <h2 className="product__title">{fullInfo?.name}</h2>
 
       <section className="product__container grid grid--tablet grid--desktop">
         <div className="product__photo-block grid--tablet grid--desktop">
           <div className="product__photo-block__small-images">
-            {images.map((image) => (
+            {fullInfo?.images.map((image) => (
               <img
-                key={image.id}
-                src={image.image}
+                key={image}
+                src={image}
                 alt="iphone both sides"
                 className="product__photo-block__small-images__image"
+                onClick={() => handleChangePicture(image)}
               />
             ))}
           </div>
-
           <img
-            src=""
+            src={picture === undefined ? fullInfo?.images[0] : picture}
             alt=""
             className="product__photo-block__small-images__enlargeg-photo grid grid--desktop"
           />
         </div>
-
         <div className="product__available-variant">
           <div className="product__available-variant__color">
             <div className="product__available-variant--wrap">
               <p className="product__available-variant product__direction--item">Available colors</p>
-
               <p className="product__direction--item">ID:802390</p>
             </div>
-
             <div className="product__available-variant__container">
               <div className="product__available-variant__color--1" />
               <div className="product__available-variant__color--2" />
@@ -94,27 +132,29 @@ export const ProductDetailsPage: React.FC = () => {
               <div className="product__available-variant__color--4" />
             </div>
           </div>
-
           <div className="product__available-variant__capacity">
             <p className="product__available-variant product__direction--item">Select capacity</p>
 
             <div className="product__available-variant__container">
-              {capacity.map((memory) => (
+              {fullInfo?.capacityAvailable.map((memory: string) => (
+                // <NavLink to={`/phones/${replaced}`} key={memory}>
                 <button
                   type="button"
-                  key={memory.id}
-                  className="product__available-variant__capacity--button"
+                  key={memory}
+                  className={classNames({ 'product__available-variant__capacity--button--is-active': itemCapacity === memory }, { 'product__available-variant__capacity--button': itemCapacity !== memory })}
+                  onClick={() => handleChangeCapacity(memory)}
                 >
-                  {memory.capacity}
+                  {memory}
                 </button>
+                // </NavLink>
               ))}
             </div>
           </div>
 
           <div className="product__available-variant__prices">
-            <h1 className="product__title">$799</h1>
+            <h1 className="product__title">{fullInfo?.priceDiscount}</h1>
 
-            <h3 className="product__available-variant__prices--full-price">$1199</h3>
+            <h3 className="product__available-variant__prices--full-price">{fullInfo?.priceRegular}</h3>
           </div>
 
           <div className="product__available-variant__buttons">
@@ -135,7 +175,6 @@ export const ProductDetailsPage: React.FC = () => {
                 Added
               </a>
             )}
-
             <button
               type="button"
               className={classNames(!isAddedToFavorite
@@ -145,110 +184,96 @@ export const ProductDetailsPage: React.FC = () => {
             >
             </button>
           </div>
-
           <div className="product__available-variant__characteristicks">
             <div className="card__description">
               <span className="card__description__title">Screen</span>
 
-              <span className="card__description__value">6.5” OLED</span>
+              <span className="card__description__value">{fullInfo?.screen}</span>
             </div>
 
             <div className="card__description">
               <span className="card__description__title">Resolution</span>
 
-              <span className="card__description__value">2688x1242</span>
+              <span className="card__description__value">{fullInfo?.resolution}</span>
             </div>
 
             <div className="card__description">
               <span className="card__description__title">Processor</span>
 
-              <span className="card__description__value">Apple A12 Bionic</span>
+              <span className="card__description__value">{fullInfo?.processor}</span>
             </div>
 
             <div className="card__description">
               <span className="card__description__title">RAM</span>
 
-              <span className="card__description__value">3 GB</span>
+              <span className="card__description__value">{fullInfo?.ram}</span>
             </div>
           </div>
         </div>
       </section>
-
       <section className="product__about grid grid--tablet grid--desktop">
         <div className="product__about__container">
           <h3 className="product__about__title">About</h3>
 
-          <h4 className="product__about__title--about">And then there was Pro</h4>
+          {fullInfo?.description.map((element) => (
+            <>
+              <h4 className="product__about__title--about">{element.title}</h4>
 
-          <p className="product__about__title--description">
-            A transformative triple‑camera system that adds tons of capability without complexity.
-
-            An unprecedented leap in battery life. And a mind‑blowing chip that
-          </p>
-
-          <h4 className="product__about__title--about">Camera</h4>
-
-          <p className="product__about__title--description">
-            Meet the first triple‑camera system to combine cutting‑edge technology
-          </p>
-
-          <h4 className="product__about__title--about">Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.</h4>
-
-          <p className="product__about__title--description">
-            iPhone 11 Pro lets you capture videos that are beautifully true to life
-          </p>
+              <p className="product__about__title--description">
+                {element.text}
+              </p>
+            </>
+          ))}
         </div>
-
         <div className="product__about__container">
           <h3 className="product__about__title">Tech specs</h3>
-
           <div className="product__about__characteristics">
             <div className="product__about__characteristic">
               <span className="product__about__characteristic--title">Screen</span>
 
-              <span className="product__about__characteristic--value">6.5” OLED</span>
+              <span className="product__about__characteristic--value">{fullInfo?.screen}</span>
             </div>
 
             <div className="product__about__characteristic">
               <span className="product__about__characteristic--title">Resolution</span>
 
-              <span className="product__about__characteristic--value">2688x1242</span>
+              <span className="product__about__characteristic--value">{fullInfo?.resolution}</span>
             </div>
 
             <div className="product__about__characteristic">
               <span className="product__about__characteristic--title">Processor</span>
 
-              <span className="product__about__characteristic--value">Apple A12 Bionic</span>
+              <span className="product__about__characteristic--value">{fullInfo?.processor}</span>
             </div>
 
             <div className="product__about__characteristic">
               <span className="product__about__characteristic--title">RAM</span>
 
-              <span className="product__about__characteristic--value">3 GB</span>
+              <span className="product__about__characteristic--value">{fullInfo?.ram}</span>
             </div>
 
             <div className="product__about__characteristic">
               <span className="product__about__characteristic--title">Built in memory</span>
 
-              <span className="product__about__characteristic--value">64 GB</span>
+              <span className="product__about__characteristic--value">{fullInfo?.capacity}</span>
             </div>
 
             <div className="product__about__characteristic">
               <span className="product__about__characteristic--title">Camera</span>
 
-              <span className="product__about__characteristic--value">12 Mp + 12 Mp + 12 Mp (Triple)</span>
+              <span className="product__about__characteristic--value">{fullInfo?.camera}</span>
             </div>
 
             <div className="product__about__characteristic">
               <span className="product__about__characteristic--title">Zoom</span>
 
-              <span className="card__description__value">Optical, 2x</span>
+              <span className="card__description__value">{fullInfo?.zoom}</span>
             </div>
 
             <div className="product__about__characteristic">
               <span className="product__about__characteristic--title">Cell</span>
 
-              <span className="card__description__value">GSM, LTE, UMTS</span>
+              <span className="card__description__value">{fullInfo?.cell.join(', ')}</span>
             </div>
           </div>
         </div>
