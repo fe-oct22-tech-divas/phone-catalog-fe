@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: auto;
   justify-content: center;
-  margin: 0 auto 80px;
+  margin: 0 auto $large-size;
   padding: 0 32px;
 
   &__redirect {
@@ -47,7 +47,7 @@
     font-family: 'Mont', sans-serif;
     font-style: normal;
     font-weight: 800;
-    font-size: 48px;
+    font-size: $medium-size;
     line-height: 56px;
     margin-bottom: 8px;
 
@@ -60,6 +60,7 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
+    margin-bottom: 40px;
 
     color: $color-gray;
   }
@@ -67,7 +68,7 @@
   &__sort {
     display: flex;
     flex-direction: row;
-    margin-bottom: 24px;
+    margin-bottom: $small-size;
 
     &__by {
       &:first-child {
@@ -95,7 +96,7 @@
         background-size: auto;
         background-repeat: no-repeat;
         background-position: 90% 50%;
-        color: #F1F2F9;
+        color: $color-white;
         padding: 0 10px;
         border: none;
 
@@ -117,7 +118,7 @@
         background-size: auto;
         background-repeat: no-repeat;
         background-position: 90% 50%;
-        color: #F1F2F9;
+        color: $color-white;
         padding: 0 10px;
 
         transform: 0.3s, background-color 0.3s;
@@ -129,23 +130,22 @@
     }
   }
   &__container {
-    gap: 48px;
+    column-gap: 16px;
     margin: 0 auto;
-  
-    @each $cards, $size in $sizes {
-      @media (min-width:#{$size}) {
-        grid-template-columns: repeat(#{$cards}, $card-width);
-      }
+
+    @include onTablet {
+      grid-template-columns: repeat(2, $card-width);
+    }
+
+    @include onDesktop {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
-  
 }
 
 .option-value {
   display: flex;
-  background: #0F1121;
+  background: $bc-color;
   height: 32px;
   padding: 0 16px;
-
-  
 }

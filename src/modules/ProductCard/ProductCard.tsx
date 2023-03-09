@@ -1,14 +1,19 @@
-import classNames from 'classnames';
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
+
+import { NavLink } from 'react-router-dom';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { Phone } from '../../types/Phone';
 
 type Props = {
-  phone: Phone
+  phone: Phone,
+  onClick?: (phoneId: string) => void,
 };
 
 export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
   const {
-    id,
+    phoneId,
     name,
     ram,
     capacity,
@@ -20,28 +25,46 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
 
   const [isAdded, setIsAdded] = useState(false);
   const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
+  const [, , addToLocalStorage, removeFromLocalStorage] = useLocalStorage();
 
   const handleAdd = (event: React.MouseEvent) => {
     event.preventDefault();
-    setIsAdded(!isAdded);
+    setIsAdded(true);
+    addToLocalStorage('cart', { ...phone, count: 1 });
   };
 
-  const hadleAddToFavourite = () => {
-    setIsAddedToFavorite(!isAddedToFavorite);
+  const handleRemove = (event: React.MouseEvent) => {
+    event.preventDefault();
+    setIsAdded(false);
+    removeFromLocalStorage('cart', phone.id, 1);
   };
+
+  const handleAddToFavourite = () => {
+    setIsAddedToFavorite(true);
+    addToLocalStorage('favorites', { ...phone });
+  };
+
+  const handleRemoveFromFavourite = () => {
+    setIsAddedToFavorite(false);
+    removeFromLocalStorage('favorites', phone.id, 1);
+  };
+
+  // eslint-disable-next-line no-console
 
   return (
 
-    <div className="card" key={id}>
-      <img
-        className="card__image"
-        alt="Apple iPhone Xs 64GB Silver (iMT9G2FS/A)"
-        src={image}
-      />
+    <div className="card" key={phoneId}>
+      <NavLink to={`/phones/${phoneId}`}>
+        <img
+          className="card__image"
+          alt={name}
+          src={image}
+        />
 
-      <p className="card__name">
-        {name}
-      </p>
+        <p className="card__name">
+          {name}
+        </p>
+      </NavLink>
 
       <div className="card__prices">
         <h3 className="card__price">{`$${price}`}</h3>
@@ -76,20 +99,27 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
           <a
             href="/"
             className="card__buttons--add-button--is-added"
-            onClick={handleAdd}
+            onClick={handleRemove}
           >
             Added
           </a>
         )}
 
-        <button
-          type="button"
-          className={classNames(!isAddedToFavorite
-            ? 'card__buttons--like-button'
-            : 'card__buttons--like-button--is-added')}
-          onClick={hadleAddToFavourite}
-        >
-        </button>
+        {!isAddedToFavorite ? (
+          <button
+            type="button"
+            className="card__buttons--like-button"
+            onClick={handleAddToFavourite}
+          >
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="card__buttons--like-button--is-added"
+            onClick={handleRemoveFromFavourite}
+          >
+          </button>
+        )}
       </div>
     </div>
   );

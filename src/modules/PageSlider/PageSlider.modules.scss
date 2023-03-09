@@ -13,7 +13,7 @@
 
     @include onTablet {
       margin: 32px 0 32px 0;
-      font-size: 48px;
+      font-size: $medium-size;
       line-height: 56px;
       width: 500px;
     }

@@ -1,4 +1,5 @@
-const BASE_URL = 'https://phone-catalog-api-production.up.railway.app/';
+// const BASE_URL = 'https://phone-catalog-api-production.up.railway.app/';
+const BASE_URL = 'http://localhost:5000';
 
 type RequestMethod = 'GET';
 

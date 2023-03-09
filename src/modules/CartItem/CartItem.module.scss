@@ -11,7 +11,7 @@
   height: 160px;
 
   border: $border;
-  background-color: #161827;
+  background-color: $color-darkGray;
 
   &:last-child {
     margin-bottom: 32px;
@@ -28,7 +28,7 @@
     flex-direction: row;
     align-items: center;
     min-width: 100%;
-    gap: 24px;
+    gap: $small-size;
 
     @include onTablet {
       justify-content: space-between;
