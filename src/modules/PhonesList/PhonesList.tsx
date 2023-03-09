@@ -7,7 +7,7 @@ import React, {
 import { Phone } from '../../types/Phone';
 import { ProductCard } from '../ProductCard';
 import { Pagination } from '../Pagination';
-import phonesFromApi from '../../data/phones.json';
+import { getPhones } from '../../api/phones';
 import { Loader } from '../Loader/Loader';
 
 export const PhonesList: React.FC = () => {
@@ -15,29 +15,18 @@ export const PhonesList: React.FC = () => {
   const [chosenOption, setChosenOption] = useState('Newest');
   const [choosenQuantity, setChosenQuantity] = useState('16');
   const [currentPage, setCurrentPage] = useState(1);
-  const [loading, setLoading] = useState(false);
-
-  const getPhones = useCallback((tablets) => {
-    setPhones(tablets);
-  }, []);
-
-  const loadGoods = async () => {
-    try {
-      setLoading(true);
-      await getPhones(phonesFromApi);
-    } catch (err) {
-      throw new Error('Something went wrong');
-    } finally {
-      setTimeout(() => {
-        setLoading(false);
-      }, 1000);
-    }
-  };
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    loadGoods();
+    setIsLoading(true);
+    getPhones()
+      .then(setPhones)
+      .catch(() => {
+        setIsError(true);
+      })
+      .finally(() => setIsLoading(false));
   }, []);
-  const [phoneSlug, setPhoneSlug] = useState('');
 
   const options = [
     { value: 'Newest', label: 'Newest' },
@@ -52,13 +41,6 @@ export const PhonesList: React.FC = () => {
     { value: '32', label: '32' },
     { value: '48', label: '48' },
   ];
-
-  const hadleClick = (id: string) => {
-    setPhoneSlug(id);
-  };
-
-  // eslint-disable-next-line no-console
-  console.log(phoneSlug);
 
   const handlePageChange = (page:number) => {
     setCurrentPage(page);
@@ -97,9 +79,15 @@ export const PhonesList: React.FC = () => {
 
   return (
     <>
-      {loading ? (
+      {isLoading && (
         <Loader />
-      ) : (
+      )}
+
+      {isError && (
+        <p>Error message</p>
+      )}
+
+      {!isLoading && !isError && (
         <div className="phones grid grid--tablet grid--desktop">
           <div className="phones__redirect">
             <a className="phones__redirect-link" href="/#/">

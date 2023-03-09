@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Phones from '../../img/categoriesCards/Phones.jpg';
 import Tablets from '../../img/categoriesCards/Tablets.jpg';
 import Accessories from '../../img/categoriesCards/Accessories.jpg';
 import { CategoryCard } from '../CategoryCard';
-import phonesCount from '../../data/phones.json';
+import { getPhones } from '../../api/phones';
+import { Phone } from '../../types/Phone';
+import tabletsFromApi from '../../data/tablets.json';
 
 export const Categories: React.FC = () => {
+  const [phones, setPhones] = useState<Phone[]>([]);
+
+  useEffect(() => {
+    getPhones()
+      .then(setPhones);
+  }, []);
+
+  const phonesCount = phones.length;
+  const tabletsCount = tabletsFromApi.length;
+
   return (
     <div className="categories">
       <h2 className="categories__title">
@@ -24,7 +36,7 @@ export const Categories: React.FC = () => {
             categoryImgAlt="Phones"
             categoryLink="/phones"
             categoryTitle="Phones"
-            categoryDesc={`${phonesCount.length} phones`}
+            categoryDesc={`${phonesCount} phones`}
           />
         </div>
 
@@ -39,7 +51,7 @@ export const Categories: React.FC = () => {
             categoryImgAlt="Tablets"
             categoryLink="/tablets"
             categoryTitle="Tablets"
-            categoryDesc={`${phonesCount.length} phones`}
+            categoryDesc={`${tabletsCount} tablets`}
           />
         </div>
 
@@ -54,7 +66,7 @@ export const Categories: React.FC = () => {
             categoryImgAlt="Accessories"
             categoryLink="/accessories"
             categoryTitle="Accessories"
-            categoryDesc={`${phonesCount.length} phones`}
+            categoryDesc="0 accessories"
           />
         </div>
       </div>
