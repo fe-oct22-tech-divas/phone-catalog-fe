@@ -9,25 +9,26 @@
     border: none;
     cursor: pointer;
 
-    &--left {
+    &__left {
       background: no-repeat center/auto url('../../icons/arow-left.svg');
       background-color: #323542;
-      margin-right: 16px;
 
-      &:disabled {
+      &_disabled {
         background: no-repeat center/auto url('../../icons/arrow_left_disabled.svg');
         border: 1px solid #3B3E4A;
+        pointer-events: none;
       }
     }
 
-    &--right {
+    &__right {
       background: no-repeat center/auto url('../../icons/arow-right.svg');
       background-color: #323542;
       margin-left: 8px;
 
-      &:disabled {
+      &_disabled {
         background: no-repeat center/auto url('../../icons/vektor_right_disabled.svg');
         border: 1px solid #3B3E4A;
+        pointer-events: none;
       }
     }
   }
@@ -53,5 +54,9 @@
       background-color: #905BFF;
       pointer-events: none;
     }
+  }
+
+  &__test {
+    margin-right: 16px;
   }
 }
