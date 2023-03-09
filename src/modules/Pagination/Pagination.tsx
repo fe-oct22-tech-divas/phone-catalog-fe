@@ -16,7 +16,7 @@ export const Pagination: FC<Props> = ({
   currentPage,
   onPageChange,
 }) => {
-  const [searchParams] = useSearchParams(currentPage);
+  const [searchParams] = useSearchParams();
 
   const getPageNumber = (start: number, end: number) => {
     const numbers = [];
@@ -32,36 +32,21 @@ export const Pagination: FC<Props> = ({
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === Math.ceil(total / perPage);
 
-  const toTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
-  const PrevNextPage = (direction: string) => {
-    if (!isLastPage && direction === 'next') {
-      onPageChange(currentPage + 1);
-    }
-
-    if (!isFirstPage && direction === 'prev') {
-      onPageChange(currentPage - 1);
-    }
-
-    toTop();
-  };
-
   return (
     <ul className="pagination">
 
       <li>
-        <button
-          type="button"
-          className="pagination__button pagination__button--left"
-          onClick={() => PrevNextPage('prev')}
-          disabled={isFirstPage}
+        <Link
+          className={cn(
+            'pagination__links', 'pagination__button__left', 'pagination__test',
+            { pagination__button__left_disabled: isFirstPage },
+          )}
+          to={{
+            search: searchBy(searchParams, { page: `${currentPage - 1}` }),
+          }}
+          onClick={() => onPageChange(currentPage - 1)}
         >
-        </button>
+        </Link>
       </li>
 
       {
@@ -84,13 +69,17 @@ export const Pagination: FC<Props> = ({
       }
 
       <li>
-        <button
-          type="button"
-          className="pagination__button pagination__button--right"
-          onClick={() => PrevNextPage('next')}
-          disabled={isLastPage}
+        <Link
+          className={cn(
+            'pagination__links', 'pagination__button__right',
+            { pagination__button__right_disabled: isLastPage },
+          )}
+          to={{
+            search: searchBy(searchParams, { page: `${currentPage + 1}` }),
+          }}
+          onClick={() => onPageChange(currentPage + 1)}
         >
-        </button>
+        </Link>
       </li>
     </ul>
   );
