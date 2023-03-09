@@ -29,8 +29,10 @@
   &__image {
     display: block;
     object-fit: cover;
-
-    content: url('./Banner1.jpg');
+    content: url('./Banner2.png');
+    @include onTablet {
+      content: url('./Banner1.jpg');
+    }
   }
 }
 

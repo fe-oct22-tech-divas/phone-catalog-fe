@@ -1,7 +1,7 @@
 .product {
   display: flex;
   flex-direction: column;
-  margin-bottom: 200px;
+  margin-bottom: 80px;
   width: 238px;
 
   @include onTablet {

@@ -57,10 +57,11 @@
 
   &__list {
     display: flex;
+    
   }
 
   &__link {
-    margin-right: $big-size;
+    margin-right: $medium-size;
   }
 }
 

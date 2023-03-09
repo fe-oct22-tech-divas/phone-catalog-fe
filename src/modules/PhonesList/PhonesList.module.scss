@@ -6,9 +6,11 @@
   padding: 0 32px;
 
   &__top {
-    width: 592px;
     @include onTablet {
-      width: 1136px;
+      min-width: 592px;
+    }
+    @include onDesktop {
+      min-width: 1136px;
     }
   }
   &__redirect {
@@ -137,10 +139,13 @@
   }
   &__container {
     column-gap: 16px;
-    margin: 0 auto;
 
     @include onTablet {
-      grid-template-columns: repeat(2, $card-width);
+      grid-template-columns: repeat(auto-fill, $card-width);
+    }
+
+    @media (min-width: 900px) {
+      grid-template-columns: repeat(3, $card-width);
     }
 
     @include onDesktop {

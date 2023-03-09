@@ -56,14 +56,14 @@ export const Carousel: React.FC<Props> = ({ title, choosenOption }) => {
         <div className="carousel__buttons">
           <button
             type="button"
-            className="pagination__button pagination__button--left"
+            className="pagination__button pagination__button__left"
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
           >
           </button>
           <button
             type="button"
-            className="pagination__button pagination__button--right"
+            className="pagination__button pagination__button__right"
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === lastPage}
           >

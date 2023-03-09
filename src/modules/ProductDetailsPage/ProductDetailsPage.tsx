@@ -4,20 +4,45 @@
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
-import { getPhoneById } from '../../api/phones';
+import { getPhoneById, getPhones } from '../../api/phones';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { Phone } from '../../types/Phone';
 import { PhoneFullInfo } from '../../types/PhoneFullInfo';
+import { Carousel } from '../HomePage/Carousel';
 
 export const ProductDetailsPage: React.FC = () => {
+  const [phones, setPhones] = useState<Phone[]>([]);
   const params = useParams();
   const { phoneId = '0' } = params;
 
   const [fullInfo, setFullInfo] = useState<PhoneFullInfo>();
   const [prevFullInfo, setPrevFullInfo] = useState(phoneId);
-  const [isAdded, setIsAdded] = useState(false);
-  const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
   const [itemCapacity] = useState(fullInfo?.capacity);
   const [picture, setPicture] = useState(fullInfo?.images[0]);
   const [isError, setIsError] = useState(false);
+  const [cart, favorites, addToLocalStorage] = useLocalStorage();
+  const [isAdded, setIsAdded] = useState(Boolean(
+    cart.find((el) => el.phoneId === fullInfo?.id),
+  ));
+  const [isAddedToFavorite, setIsAddedToFavorite] = useState(Boolean(
+    favorites.find((el) => el.phoneId === fullInfo?.id),
+  ));
+
+  useEffect(() => {
+    getPhones()
+      .then(setPhones)
+      .catch(() => {
+        setIsError(true);
+      });
+  }, []);
+
+  const findedPhone = phones.find(phone => phone.id === phoneId) || {
+    id: '100',
+    phoneId,
+    name: fullInfo?.name || 'a',
+    image: picture || 'a',
+    price: fullInfo?.priceDiscount || 1,
+  };
 
   function getHexColor(colorName: string) {
     const colorsAvailable = [
@@ -86,13 +111,15 @@ export const ProductDetailsPage: React.FC = () => {
     return splitted.join('-');
   };
 
-  const handleAdd = (event: any) => {
+  const handleAdd = (event: React.MouseEvent) => {
     event.preventDefault();
-    setIsAdded(!isAdded);
+    setIsAdded(true);
+    addToLocalStorage('cart', { ...findedPhone, count: 1 });
   };
 
-  const hadleAddToFavourite = () => {
-    setIsAddedToFavorite(!isAddedToFavorite);
+  const handleAddToFavourite = () => {
+    setIsAddedToFavorite(true);
+    addToLocalStorage('favorites', { ...findedPhone, count: 1 });
   };
 
   const handleChangePicture = (way: string) => {
@@ -229,7 +256,7 @@ export const ProductDetailsPage: React.FC = () => {
               className={classNames(!isAddedToFavorite
                 ? 'product__available-variant__buttons--like-button'
                 : 'product__available-variant__buttons--like-button--is-added')}
-              onClick={hadleAddToFavourite}
+              onClick={handleAddToFavourite}
             >
             </button>
           </div>
@@ -327,6 +354,7 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
         </div>
       </section>
+      <Carousel title="You may also like" choosenOption="??" />
     </div>
   );
 };
