@@ -29,6 +29,7 @@ export const PageSlider: React.FC = () => {
         breakpoint: 640,
         settings: {
           arrows: false,
+          centerPadding: '10px',
         },
       },
     ],

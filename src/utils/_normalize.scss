@@ -22,8 +22,6 @@ html {
 }
 
 .main-container {
-  max-width: 640px;
-  margin: 0 auto;
   padding: 0 16px;
   
   @include onTablet {
@@ -32,6 +30,7 @@ html {
   }
   
   @include onDesktop {
+    margin: 0 auto;
     min-width: 1200px;
     padding: 0 32px;
   }

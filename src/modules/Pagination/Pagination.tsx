@@ -38,8 +38,8 @@ export const Pagination: FC<Props> = ({
       <li>
         <Link
           className={cn(
-            'pagination__links', 'pagination__button__left', 'pagination__test',
-            { pagination__button__left_disabled: isFirstPage },
+            'pagination__links', 'pagination__button__left',
+            { pagination__button_left_disabled: isFirstPage },
           )}
           to={{
             search: searchBy(searchParams, { page: `${currentPage - 1}` }),
