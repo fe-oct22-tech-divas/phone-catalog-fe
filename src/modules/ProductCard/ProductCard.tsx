@@ -9,6 +9,7 @@ import { Phone } from '../../types/Phone';
 type Props = {
   phone: Phone,
   onClick?: (phoneId: string) => void,
+  added?: boolean
 };
 
 export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
@@ -23,9 +24,13 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
     image,
   } = phone;
 
-  const [isAdded, setIsAdded] = useState(false);
-  const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
-  const [, , addToLocalStorage, removeFromLocalStorage] = useLocalStorage();
+  const [cart, favorites, addToLocalStorage, removeFromLocalStorage] = useLocalStorage();
+  const [isAdded, setIsAdded] = useState(Boolean(
+    cart.find((el) => el.id === phone.id),
+  ));
+  const [isAddedToFavorite, setIsAddedToFavorite] = useState(Boolean(
+    favorites.find((el) => el.id === phone.id),
+  ));
 
   const handleAdd = (event: React.MouseEvent) => {
     event.preventDefault();

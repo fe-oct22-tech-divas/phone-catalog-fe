@@ -160,8 +160,6 @@ export const PhonesList: React.FC = () => {
                 <ProductCard
                   phone={phone}
                   key={phone.id}
-                  chosenOption={chosenOption}
-                  choosenQuantity={+choosenQuantity}
                 />
               )))}
             </div>
