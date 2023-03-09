@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/phone-catalog-fe/static/css/main.e3e16100.chunk.css",
-    "main.js": "/phone-catalog-fe/static/js/main.733a55ef.chunk.js",
-    "main.js.map": "/phone-catalog-fe/static/js/main.733a55ef.chunk.js.map",
+    "main.css": "/phone-catalog-fe/static/css/main.cb3dc228.chunk.css",
+    "main.js": "/phone-catalog-fe/static/js/main.04a93265.chunk.js",
+    "main.js.map": "/phone-catalog-fe/static/js/main.04a93265.chunk.js.map",
     "runtime-main.js": "/phone-catalog-fe/static/js/runtime-main.f9d40057.js",
     "runtime-main.js.map": "/phone-catalog-fe/static/js/runtime-main.f9d40057.js.map",
     "static/css/2.abcd5c43.chunk.css": "/phone-catalog-fe/static/css/2.abcd5c43.chunk.css",
-    "static/js/2.12d3a762.chunk.js": "/phone-catalog-fe/static/js/2.12d3a762.chunk.js",
-    "static/js/2.12d3a762.chunk.js.map": "/phone-catalog-fe/static/js/2.12d3a762.chunk.js.map",
+    "static/js/2.ef04090b.chunk.js": "/phone-catalog-fe/static/js/2.ef04090b.chunk.js",
+    "static/js/2.ef04090b.chunk.js.map": "/phone-catalog-fe/static/js/2.ef04090b.chunk.js.map",
     "index.html": "/phone-catalog-fe/index.html",
     "static/css/2.abcd5c43.chunk.css.map": "/phone-catalog-fe/static/css/2.abcd5c43.chunk.css.map",
-    "static/css/main.e3e16100.chunk.css.map": "/phone-catalog-fe/static/css/main.e3e16100.chunk.css.map",
-    "static/js/2.12d3a762.chunk.js.LICENSE.txt": "/phone-catalog-fe/static/js/2.12d3a762.chunk.js.LICENSE.txt",
+    "static/css/main.cb3dc228.chunk.css.map": "/phone-catalog-fe/static/css/main.cb3dc228.chunk.css.map",
+    "static/js/2.ef04090b.chunk.js.LICENSE.txt": "/phone-catalog-fe/static/js/2.ef04090b.chunk.js.LICENSE.txt",
     "static/media/Accessories.be856a19.jpg": "/phone-catalog-fe/static/media/Accessories.be856a19.jpg",
     "static/media/main.scss": "/phone-catalog-fe/static/media/vektor_right_disabled.90170297.svg",
     "static/media/Phones.78762c83.jpg": "/phone-catalog-fe/static/media/Phones.78762c83.jpg",
@@ -21,8 +21,8 @@
   "entrypoints": [
     "static/js/runtime-main.f9d40057.js",
     "static/css/2.abcd5c43.chunk.css",
-    "static/js/2.12d3a762.chunk.js",
-    "static/css/main.e3e16100.chunk.css",
-    "static/js/main.733a55ef.chunk.js"
+    "static/js/2.ef04090b.chunk.js",
+    "static/css/main.cb3dc228.chunk.css",
+    "static/js/main.04a93265.chunk.js"
   ]
 }
