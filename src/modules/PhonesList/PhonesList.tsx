@@ -1,14 +1,42 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, {
+  useState,
+  useCallback,
+  useMemo,
+  useEffect,
+} from 'react';
 import { Phone } from '../../types/Phone';
 import { ProductCard } from '../ProductCard';
 import { Pagination } from '../Pagination';
 import phonesFromApi from '../../data/phones.json';
+import { Loader } from '../Loader/Loader';
 
 export const PhonesList: React.FC = () => {
-  const [phones] = useState<Phone[]>(phonesFromApi);
+  const [phones, setPhones] = useState<Phone[]>([]);
   const [chosenOption, setChosenOption] = useState('Newest');
   const [choosenQuantity, setChosenQuantity] = useState('16');
   const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+
+  const getPhones = useCallback((tablets) => {
+    setPhones(tablets);
+  }, []);
+
+  const loadGoods = async () => {
+    try {
+      setLoading(true);
+      await getPhones(phonesFromApi);
+    } catch (err) {
+      throw new Error('Something went wrong');
+    } finally {
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+    }
+  };
+
+  useEffect(() => {
+    loadGoods();
+  }, []);
   const [phoneSlug, setPhoneSlug] = useState('');
 
   const options = [
@@ -69,81 +97,84 @@ export const PhonesList: React.FC = () => {
 
   return (
     <>
-      <div className="phones grid grid--tablet grid--desktop">
-        <div className="phones__redirect">
-          <a className="phones__redirect-link" href="/#/">
-            <div className="phones__redirect--homeIcon" />
-          </a>
-          <div className="phones__redirect--arrowIcon" />
-          <p className="phones__redirect--title">Phones</p>
-        </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="phones grid grid--tablet grid--desktop">
+          <div className="phones__redirect">
+            <a className="phones__redirect-link" href="/#/">
+              <div className="phones__redirect--homeIcon" />
+            </a>
+            <div className="phones__redirect--arrowIcon" />
+            <p className="phones__redirect--title">Phones</p>
+          </div>
 
-        <h1 className="phones__title">Mobile phones</h1>
+          <h1 className="phones__title">Mobile phones</h1>
 
-        <p className="phones__amount">
-          {`${phones.length} models`}
-        </p>
+          <p className="phones__amount">
+            {`${phones.length} models`}
+          </p>
 
-        <div className="phones__sort">
-          <span className="phones__sort__by">
-            <p className="phones__sort__by--name">Sort by</p>
-            <select
-              className="phones__sort__by--dropdown-1"
-              onChange={(event) => handleChangeSelectorOption(event.target.value)}
-            >
-              {options.map((option) => (
-                <option
-                  value={option.value}
-                  className="option-value"
-                  key={option.value}
+          <div className="phones__sort">
+            <span className="phones__sort__by">
+              <p className="phones__sort__by--name">Sort by</p>
+              <select
+                className="phones__sort__by--dropdown-1"
+                onChange={(event) => handleChangeSelectorOption(event.target.value)}
+              >
+                {options.map((option) => (
+                  <option
+                    value={option.value}
+                    className="option-value"
+                    key={option.value}
 
-                >
-                  {option.value}
-                </option>
-              ))}
-            </select>
-          </span>
+                  >
+                    {option.value}
+                  </option>
+                ))}
+              </select>
+            </span>
 
-          <span className="phones__sort__by">
-            <p className="phones__sort__by--name">Items on page</p>
-            <select
-              className="phones__sort__by--dropdown-2"
-              onChange={(event) => handleChangeSelectorQuantity(event.target.value)}
-            >
-              {quantity.map((number) => (
-                <option
-                  value={number.value}
-                  className="option-value"
-                  key={number.value}
-                >
-                  {number.value}
-                </option>
-              ))}
-            </select>
-          </span>
-        </div>
+            <span className="phones__sort__by">
+              <p className="phones__sort__by--name">Items on page</p>
+              <select
+                className="phones__sort__by--dropdown-2"
+                onChange={(event) => handleChangeSelectorQuantity(event.target.value)}
+              >
+                {quantity.map((number) => (
+                  <option
+                    value={number.value}
+                    className="option-value"
+                    key={number.value}
+                  >
+                    {number.value}
+                  </option>
+                ))}
+              </select>
+            </span>
+          </div>
 
-        <div className="phones__container grid grid--desktop
+          <div className="phones__container grid grid--desktop
         grid--tablet"
-        >
-          {getSortedCards.map((phone => (
-            <ProductCard
-              phone={phone}
-              key={phone.phoneId}
-              chosenOption={chosenOption}
-              choosenQuantity={+choosenQuantity}
-              onClick={() => hadleClick}
-            />
-          )))}
-        </div>
+          >
+            {getSortedCards.map((phone => (
+              <ProductCard
+                phone={phone}
+                key={phone.id}
+                chosenOption={chosenOption}
+                choosenQuantity={+choosenQuantity}
+              />
+            )))}
+          </div>
 
-        <Pagination
-          total={phones.length}
-          perPage={+choosenQuantity}
-          currentPage={+currentPage}
-          onPageChange={handlePageChange}
-        />
-      </div>
+          <Pagination
+            total={phones.length}
+            perPage={+choosenQuantity}
+            currentPage={+currentPage}
+            onPageChange={handlePageChange}
+          />
+        </div>
+      )}
     </>
   );
 };
