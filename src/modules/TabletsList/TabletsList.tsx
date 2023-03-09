@@ -146,6 +146,7 @@ export const TabletsList: React.FC = () => {
               <ProductCard
                 phone={phone}
                 key={phone.id}
+                isAvailable={false}
               />
             )))}
           </div>
