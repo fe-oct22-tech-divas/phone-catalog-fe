@@ -1,21 +1,28 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-console */
-
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 // import fullInfo from './iphoneData.json';
 import { getPhoneById } from '../../api/phones';
 import { PhoneFullInfo } from '../../types/PhoneFullInfo';
 
 export const ProductDetailsPage: React.FC = () => {
+  const params = useParams();
+  const { phoneId = '0' } = params;
+
   const [fullInfo, setFullInfo] = useState<PhoneFullInfo>();
+  const [prevFullInfo, setPrevFullInfo] = useState(phoneId);
   const [isAdded, setIsAdded] = useState(false);
   const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
-  // const [setAvailableMemory] = useState(0);
-
-  const params = useParams();
+  const [itemCapacity] = useState(fullInfo?.capacity);
+  const [picture, setPicture] = useState(fullInfo?.images[0]);
   const [isError, setIsError] = useState(false);
+
+  const pageHistory = useNavigate();
 
   useEffect(() => {
     if (params.phoneId) {
@@ -24,8 +31,28 @@ export const ProductDetailsPage: React.FC = () => {
         .catch(() => {
           setIsError(true);
         });
+      if (prevFullInfo !== phoneId) {
+        pageHistory(`/phones/${prevFullInfo}`);
+      }
     }
-  }, []);
+  }, [prevFullInfo, pageHistory]);
+
+  if (fullInfo === null) {
+    return null;
+  }
+
+  const replaceIdWithNewId = (id: string, newId: string) => {
+    const splitted = id.split('-');
+
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < splitted.length; i++) {
+      if (splitted[i].includes('gb')) {
+        splitted[i] = newId.toLowerCase();
+      }
+    }
+
+    return splitted.join('-');
+  };
 
   const handleAdd = (event: any) => {
     event.preventDefault();
@@ -34,6 +61,14 @@ export const ProductDetailsPage: React.FC = () => {
 
   const hadleAddToFavourite = () => {
     setIsAddedToFavorite(!isAddedToFavorite);
+  };
+
+  const handleChangePicture = (way: string) => {
+    setPicture(way);
+  };
+
+  const handleChangeCapacity = (capacityToChange: string) => {
+    setPrevFullInfo(replaceIdWithNewId(prevFullInfo, capacityToChange));
   };
 
   return (
@@ -45,12 +80,12 @@ export const ProductDetailsPage: React.FC = () => {
         <a className="product__direction__link" href="/">
           <div className="product__direction__link--home-icon" />
         </a>
-
         <div className="product__direction--arrow" />
-
-        <a className="product__direction__link" href="/">
-          <p className="product__direction--category">Phones</p>
-        </a>
+        <NavLink to="/phones">
+          <a className="product__direction__link" href="/">
+            <p className="product__direction--category">Phones</p>
+          </a>
+        </NavLink>
 
         <div className="product__direction--arrow" />
 
@@ -59,10 +94,11 @@ export const ProductDetailsPage: React.FC = () => {
 
       <div className="product__redirect">
         <div className="product__redirect--arrow" />
-
-        <a className="product__direction__link" href="/">
-          <p className="product__direction--category">Back</p>
-        </a>
+        <NavLink to="/phones">
+          <a className="product__direction__link" href="/">
+            <p className="product__direction--category">Back</p>
+          </a>
+        </NavLink>
       </div>
 
       <h2 className="product__title">{fullInfo?.name}</h2>
@@ -76,25 +112,22 @@ export const ProductDetailsPage: React.FC = () => {
                 src={image}
                 alt="iphone both sides"
                 className="product__photo-block__small-images__image"
+                onClick={() => handleChangePicture(image)}
               />
             ))}
           </div>
-
           <img
-            src=""
+            src={picture === undefined ? fullInfo?.images[0] : picture}
             alt=""
             className="product__photo-block__small-images__enlargeg-photo grid grid--desktop"
           />
         </div>
-
         <div className="product__available-variant">
           <div className="product__available-variant__color">
             <div className="product__available-variant--wrap">
               <p className="product__available-variant product__direction--item">Available colors</p>
-
               <p className="product__direction--item">ID:802390</p>
             </div>
-
             <div className="product__available-variant__container">
               <div className="product__available-variant__color--1" />
               <div className="product__available-variant__color--2" />
@@ -102,19 +135,21 @@ export const ProductDetailsPage: React.FC = () => {
               <div className="product__available-variant__color--4" />
             </div>
           </div>
-
           <div className="product__available-variant__capacity">
             <p className="product__available-variant product__direction--item">Select capacity</p>
 
             <div className="product__available-variant__container">
               {fullInfo?.capacityAvailable.map((memory: string) => (
+                // <NavLink to={`/phones/${replaced}`} key={memory}>
                 <button
                   type="button"
                   key={memory}
-                  className="product__available-variant__capacity--button"
+                  className={classNames({ 'product__available-variant__capacity--button--is-active': itemCapacity === memory }, { 'product__available-variant__capacity--button': itemCapacity !== memory })}
+                  onClick={() => handleChangeCapacity(memory)}
                 >
                   {memory}
                 </button>
+                // </NavLink>
               ))}
             </div>
           </div>
@@ -143,7 +178,6 @@ export const ProductDetailsPage: React.FC = () => {
                 Added
               </a>
             )}
-
             <button
               type="button"
               className={classNames(!isAddedToFavorite
@@ -153,7 +187,6 @@ export const ProductDetailsPage: React.FC = () => {
             >
             </button>
           </div>
-
           <div className="product__available-variant__characteristicks">
             <div className="card__description">
               <span className="card__description__title">Screen</span>
@@ -181,7 +214,6 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
         </div>
       </section>
-
       <section className="product__about grid grid--tablet grid--desktop">
         <div className="product__about__container">
           <h3 className="product__about__title">About</h3>
@@ -196,10 +228,8 @@ export const ProductDetailsPage: React.FC = () => {
             </>
           ))}
         </div>
-
         <div className="product__about__container">
           <h3 className="product__about__title">Tech specs</h3>
-
           <div className="product__about__characteristics">
             <div className="product__about__characteristic">
               <span className="product__about__characteristic--title">Screen</span>

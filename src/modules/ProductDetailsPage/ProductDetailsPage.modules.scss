@@ -61,7 +61,6 @@
       font-weight: 700;
       font-size: 12px;
       line-height: 15px;
-      margin-bottom: 8px;
 
       color: $color-gray;
     }
@@ -151,6 +150,7 @@
         padding: 5px;
         border: 1px solid #3B3E4A;
         margin-bottom: 16px;
+        border-radius: 10%;
 
         @include onTablet {
           height: 34px;
@@ -170,6 +170,7 @@
     &__enlargeg-photo {
       width: 274px;
       height: 274px;
+      border-radius: 10%;
       margin-bottom: $small-size;
   
       @include onDesktop {
@@ -205,6 +206,7 @@
     &__container {
       display: flex;
       flex-direction: row;
+      margin-top: 8px;
       }
 
     &__color {
@@ -300,6 +302,11 @@
         &:hover {
           background-color: $color-white;
           color: $bc-color;
+        }
+
+        &--is-active {
+          background-color: $color-white;
+          color: #0F1121;
         }
       }
     }

@@ -29,7 +29,7 @@ ReactDOM.render(
           </Route>
 
           <Route path="tablets" element={<TabletsPage />} />
-          <Route path="accessories" element={<ProductDetailsPage />} />
+          <Route path="accessories" element={<NotFoundPage />} />
           <Route path="cart" element={<CartPage />} />
           <Route path="favorites" element={<FavouritesPage />} />
           <Route path="*" element={<NotFoundPage />} />
