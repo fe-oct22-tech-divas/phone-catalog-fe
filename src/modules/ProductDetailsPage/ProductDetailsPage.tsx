@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -20,8 +19,6 @@ export const ProductDetailsPage: React.FC = () => {
   const [itemCapacity] = useState(fullInfo?.capacity);
   const [picture, setPicture] = useState(fullInfo?.images[0]);
   const [isError, setIsError] = useState(false);
-
-  console.log('prevInfo', prevFullInfo, 'fullInfo', fullInfo);
 
   function getHexColor(colorName: string) {
     const colorsAvailable = [
