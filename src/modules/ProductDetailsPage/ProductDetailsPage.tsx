@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 import classNames from 'classnames';
 import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
@@ -73,7 +74,7 @@ export const ProductDetailsPage: React.FC = () => {
   };
 
   const replaceIdWithNewColor = (id: string, newColor:string) => {
-    const colorsAvailable = ['black', 'rosegold', 'gold', 'silver', 'spacegray', 'midnightgreen', 'white', 'yellow', 'red', 'coral', 'purple'];
+    const colorsAvailable = ['black', 'rosegold', 'gold', 'silver', 'spacegray', 'midnightgreen', 'white', 'yellow', 'red', 'coral', 'purple', 'green'];
     const splitted = id.split('-');
 
     // eslint-disable-next-line no-plusplus
@@ -246,8 +247,36 @@ export const ProductDetailsPage: React.FC = () => {
                 <div className="product__about__characteristic">
                   <span className="product__about__characteristic--title">Screen</span>
 
-                  <span className="product__about__characteristic--value">{fullInfo.screen}</span>
-                </div>
+            <div className="card__description">
+              <span className="card__description__title">RAM</span>
+
+              <span className="card__description__value">{fullInfo.ram}</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="product__about grid grid--tablet grid--desktop">
+        <div className="product__about__container">
+          <h3 className="product__about__title">About</h3>
+
+          {fullInfo.description.map((element) => (
+            <React.Fragment key={element.title}>
+              <h4 className="product__about__title--about">{element.title}</h4>
+
+              <p className="product__about__title--description">
+                {element.text}
+              </p>
+            </React.Fragment>
+          ))}
+        </div>
+        <div className="product__about__container">
+          <h3 className="product__about__title">Tech specs</h3>
+          <div className="product__about__characteristics">
+            <div className="product__about__characteristic">
+              <span className="product__about__characteristic--title">Screen</span>
+
+              <span className="product__about__characteristic--value">{fullInfo.screen}</span>
+            </div>
 
                 <div className="product__about__characteristic">
                   <span className="product__about__characteristic--title">Resolution</span>
