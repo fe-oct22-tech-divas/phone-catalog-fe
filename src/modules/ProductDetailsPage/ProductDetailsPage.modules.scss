@@ -80,7 +80,7 @@
     font-style: normal;
     font-weight: 800;
     font-size: 32px;
-    line-height: 41px;
+    // line-height: 41px;
 
     color: $color-white;
   }
@@ -189,9 +189,21 @@
     display: flex;
     flex-direction: column;
 
+    @include onTablet {
+      width: 237px;
+    }
+
+    @include onDesktop {
+      width: 320px;
+     }
+
      &--wrap {
       display:flex;
       justify-content: space-between;
+
+      // @include onTablet {
+      //   width: 237px;
+      // }
 
       @include onDesktop {
         width: 512px;
@@ -326,7 +338,7 @@
         transition: 0.3s, background-color 0.3s;
 
         @include onTablet {
-          width: 1$large-size;
+          width: 180px;
           height: $medium-size;
         }
 
