@@ -203,9 +203,9 @@ export const ProductDetailsPage: React.FC = () => {
               </div>
 
               <div className="product__available-variant__prices">
-                <h1 className="product__title">{fullInfo.priceDiscount}</h1>
+                <h1 className="product__title">{`$${fullInfo.priceDiscount}`}</h1>
 
-                <h3 className="product__available-variant__prices--full-price">{fullInfo.priceRegular}</h3>
+                <h3 className="product__available-variant__prices--full-price">{`$${fullInfo.priceRegular}`}</h3>
               </div>
 
               <ProductPageButton fullInfo={fullInfo} />

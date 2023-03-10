@@ -111,7 +111,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 160px;
+      width: 220px;
       height: 40px;
   
       background-color: #905BFF;
@@ -127,13 +127,17 @@
   
       transition: 0.3s, background-color 0.3s;
 
+      @include onTablet {
+        width: 155px;
+      }
+
       &--is-added {
         height: 40px;
   
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 160px;
+        width: 260px;
         height: 40px;
     
         font-family: 'Mont-Regular', sans-serif;
@@ -146,6 +150,10 @@
 
         color: $color-white;
         background-color: #323542;
+
+        @include onTablet {
+          width: 155px;
+        }
       }
     }
   
