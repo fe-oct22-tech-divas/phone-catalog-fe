@@ -8,6 +8,7 @@ import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { getPhoneById } from '../../api/phones';
 import { PhoneFullInfo } from '../../types/PhoneFullInfo';
 import { Carousel } from '../HomePage/Carousel';
+import { Loader } from '../Loader/Loader';
 import { ProductPageButton } from './ProductPageButton/ProductPageButton';
 
 export const ProductDetailsPage: React.FC = () => {
@@ -102,7 +103,10 @@ export const ProductDetailsPage: React.FC = () => {
   return (
     <div className="product  main-container">
       {(isError || !fullInfo) ? (
-        <p>Data Error</p>
+        <>
+          <p>Data Error</p>
+          <Loader />
+        </>
       ) : (
         <>
           <div className="product__direction">
@@ -227,35 +231,7 @@ export const ProductDetailsPage: React.FC = () => {
               </div>
             </div>
           </section>
-          <section className="product__about grid grid--tablet grid--desktop">
-            <div className="product__about__container">
-              <h3 className="product__about__title">About</h3>
 
-              {fullInfo?.description.map((element) => (
-                <>
-                  <h4 className="product__about__title--about">{element.title}</h4>
-
-                  <p className="product__about__title--description">
-                    {element.text}
-                  </p>
-                </>
-              ))}
-            </div>
-            <div className="product__about__container">
-              <h3 className="product__about__title">Tech specs</h3>
-              <div className="product__about__characteristics">
-                <div className="product__about__characteristic">
-                  <span className="product__about__characteristic--title">Screen</span>
-
-                  <div className="card__description">
-                    <span className="card__description__title">RAM</span>
-
-                    <span className="card__description__value">{fullInfo.ram}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
           <section className="product__about grid grid--tablet grid--desktop">
             <div className="product__about__container">
               <h3 className="product__about__title">About</h3>
@@ -323,9 +299,9 @@ export const ProductDetailsPage: React.FC = () => {
               </div>
             </div>
           </section>
+          <Carousel title="You may also like" choosenOption="??" />
         </>
       )}
-      <Carousel title="You may also like" choosenOption="??" />
     </div>
   );
 };
