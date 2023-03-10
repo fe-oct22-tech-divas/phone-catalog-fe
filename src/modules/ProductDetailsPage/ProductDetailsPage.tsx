@@ -247,36 +247,37 @@ export const ProductDetailsPage: React.FC = () => {
                 <div className="product__about__characteristic">
                   <span className="product__about__characteristic--title">Screen</span>
 
-            <div className="card__description">
-              <span className="card__description__title">RAM</span>
+                  <div className="card__description">
+                    <span className="card__description__title">RAM</span>
 
-              <span className="card__description__value">{fullInfo.ram}</span>
+                    <span className="card__description__value">{fullInfo.ram}</span>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
-      <section className="product__about grid grid--tablet grid--desktop">
-        <div className="product__about__container">
-          <h3 className="product__about__title">About</h3>
+          </section>
+          <section className="product__about grid grid--tablet grid--desktop">
+            <div className="product__about__container">
+              <h3 className="product__about__title">About</h3>
 
-          {fullInfo.description.map((element) => (
-            <React.Fragment key={element.title}>
-              <h4 className="product__about__title--about">{element.title}</h4>
+              {fullInfo.description.map((element) => (
+                <React.Fragment key={element.title}>
+                  <h4 className="product__about__title--about">{element.title}</h4>
 
-              <p className="product__about__title--description">
-                {element.text}
-              </p>
-            </React.Fragment>
-          ))}
-        </div>
-        <div className="product__about__container">
-          <h3 className="product__about__title">Tech specs</h3>
-          <div className="product__about__characteristics">
-            <div className="product__about__characteristic">
-              <span className="product__about__characteristic--title">Screen</span>
-
-              <span className="product__about__characteristic--value">{fullInfo.screen}</span>
+                  <p className="product__about__title--description">
+                    {element.text}
+                  </p>
+                </React.Fragment>
+              ))}
             </div>
+            <div className="product__about__container">
+              <h3 className="product__about__title">Tech specs</h3>
+              <div className="product__about__characteristics">
+                <div className="product__about__characteristic">
+                  <span className="product__about__characteristic--title">Screen</span>
+
+                  <span className="product__about__characteristic--value">{fullInfo.screen}</span>
+                </div>
 
                 <div className="product__about__characteristic">
                   <span className="product__about__characteristic--title">Resolution</span>
