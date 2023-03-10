@@ -19,6 +19,27 @@ export const ProductDetailsPage: React.FC = () => {
   const [picture, setPicture] = useState(fullInfo?.images[0]);
   const [isError, setIsError] = useState(false);
 
+  function getHexColor(colorName: string) {
+    const colorsAvailable = [
+      { black: '#000000' },
+      { rosegold: '#B76E79' },
+      { gold: '#FFD700' },
+      { silver: '#c0c0c0' },
+      { spacegray: '#343d46' },
+      { midnightgreen: '#004953' },
+      { white: '#f5f5f5' },
+      { yellow: '#ffff27' },
+      { red: '#ff1414' },
+      { coral: '#FF7F50' },
+      { purple: '#A020F0' },
+      { green: '#00ff00' },
+    ];
+
+    const colorObj = colorsAvailable.find(color => color[colorName.toLowerCase()]);
+
+    return colorObj ? colorObj[colorName.toLowerCase()] : null;
+  }
+
   const pageHistory = useNavigate();
 
   useEffect(() => {
@@ -51,6 +72,20 @@ export const ProductDetailsPage: React.FC = () => {
     return splitted.join('-');
   };
 
+  const replaceIdWithNewColor = (id: string, newColor:string) => {
+    const colorsAvailable = ['black', 'rosegold', 'gold', 'silver', 'spacegray', 'midnightgreen', 'white', 'yellow', 'red', 'coral', 'purple'];
+    const splitted = id.split('-');
+
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < splitted.length; i++) {
+      if (colorsAvailable.includes(splitted[i])) {
+        splitted[i] = newColor;
+      }
+    }
+
+    return splitted.join('-');
+  };
+
   const handleAdd = (event: any) => {
     event.preventDefault();
     setIsAdded(!isAdded);
@@ -66,6 +101,10 @@ export const ProductDetailsPage: React.FC = () => {
 
   const handleChangeCapacity = (capacityToChange: string) => {
     setPrevFullInfo(replaceIdWithNewId(prevFullInfo, capacityToChange));
+  };
+
+  const handleChangeColor = (colorToChange: string) => {
+    setPrevFullInfo(replaceIdWithNewColor(prevFullInfo, colorToChange));
   };
 
   return (
@@ -126,10 +165,22 @@ export const ProductDetailsPage: React.FC = () => {
               <p className="product__direction--item">ID:802390</p>
             </div>
             <div className="product__available-variant__container">
-              <div className="product__available-variant__color--1" />
-              <div className="product__available-variant__color--2" />
-              <div className="product__available-variant__color--3" />
-              <div className="product__available-variant__color--4" />
+              {fullInfo?.colorsAvailable.map((color) => (
+                <button
+                  type="button"
+                  color={color}
+                  key={color}
+                  className="product__available-variant__color--button"
+                  onClick={() => handleChangeColor(color)}
+                >
+                  <div
+                    className={classNames('product__available-variant__color--1', {
+                      color: color === fullInfo.color,
+                    })}
+                    style={{ backgroundColor: getHexColor(color) }}
+                  />
+                </button>
+              ))}
             </div>
           </div>
           <div className="product__available-variant__capacity">
@@ -137,7 +188,6 @@ export const ProductDetailsPage: React.FC = () => {
 
             <div className="product__available-variant__container">
               {fullInfo?.capacityAvailable.map((memory: string) => (
-                // <NavLink to={`/phones/${replaced}`} key={memory}>
                 <button
                   type="button"
                   key={memory}
@@ -146,7 +196,6 @@ export const ProductDetailsPage: React.FC = () => {
                 >
                   {memory}
                 </button>
-                // </NavLink>
               ))}
             </div>
           </div>

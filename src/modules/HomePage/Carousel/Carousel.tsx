@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useEffect, useMemo, useState } from 'react';
 import { getPhones } from '../../../api/phones';
 import { Phone } from '../../../types/Phone';
@@ -24,10 +23,6 @@ export const Carousel: React.FC<Props> = ({ title, choosenOption }) => {
       })
       .finally(() => setIsLoading(false));
   }, []);
-
-  console.log(isLoading);
-  console.log(isError);
-  console.log(phones);
 
   const [currentPage, setCurrentPage] = useState(1);
   const cardAmount = 4;

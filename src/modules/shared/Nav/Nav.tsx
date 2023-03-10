@@ -27,6 +27,7 @@ export const Nav: React.FC<Props> = ({ isForBurgerMenu }) => {
               nav__menu__link: isForBurgerMenu,
               nav__link__active: isActive,
             })}
+            onClick={() => window.scrollTo({ top: 0 })}
           >
             Home
           </NavLink>
@@ -41,6 +42,7 @@ export const Nav: React.FC<Props> = ({ isForBurgerMenu }) => {
                   nav__menu__link: isForBurgerMenu,
                   nav__link__active: isActive,
                 })}
+                onClick={() => window.scrollTo({ top: 0 })}
               >
                 {category}
               </NavLink>

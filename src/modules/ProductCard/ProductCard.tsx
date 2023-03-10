@@ -8,10 +8,10 @@ import { Phone } from '../../types/Phone';
 
 type Props = {
   phone: Phone,
-  onClick?: (phoneId: string) => void,
+  isAvailable?: boolean
 };
 
-export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
+export const ProductCard: React.FC<Props> = React.memo(({ phone, isAvailable = true }) => {
   const {
     phoneId,
     name,
@@ -23,9 +23,13 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
     image,
   } = phone;
 
-  const [isAdded, setIsAdded] = useState(false);
-  const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
-  const [, , addToLocalStorage, removeFromLocalStorage] = useLocalStorage();
+  const [cart, favorites, addToLocalStorage, removeFromLocalStorage] = useLocalStorage();
+  const [isAdded, setIsAdded] = useState(Boolean(
+    cart.find((el) => el.id === phone.id),
+  ));
+  const [isAddedToFavorite, setIsAddedToFavorite] = useState(Boolean(
+    favorites.find((el) => el.id === phone.id),
+  ));
 
   const handleAdd = (event: React.MouseEvent) => {
     event.preventDefault();
@@ -52,7 +56,10 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
   return (
 
     <div className="card" key={phoneId}>
-      <NavLink to={`/phones/${phoneId}`}>
+      <NavLink
+        to={`/phones/${phoneId}`}
+        onClick={() => window.scrollTo({ top: 0 })}
+      >
         <img
           className="card__image"
           alt={name}
@@ -83,42 +90,45 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
         <span className="card__description__title">RAM</span>
         <span className="card__description__value">{ram}</span>
       </div>
+      {!isAvailable ? (
+        <p className="card__price">Not available</p>
+      ) : (
+        <div className="card__buttons">
+          {!isAdded ? (
+            <a
+              href="/"
+              className="card__buttons--add-button"
+              onClick={handleAdd}
+            >
+              Add to cart
+            </a>
+          ) : (
+            <a
+              href="/"
+              className="card__buttons--add-button--is-added"
+              onClick={handleRemove}
+            >
+              Added
+            </a>
+          )}
 
-      <div className="card__buttons">
-        {!isAdded ? (
-          <a
-            href="/"
-            className="card__buttons--add-button"
-            onClick={handleAdd}
-          >
-            Add to cart
-          </a>
-        ) : (
-          <a
-            href="/"
-            className="card__buttons--add-button--is-added"
-            onClick={handleRemove}
-          >
-            Added
-          </a>
-        )}
-
-        {!isAddedToFavorite ? (
-          <button
-            type="button"
-            className="card__buttons--like-button"
-            onClick={handleAddToFavourite}
-          >
-          </button>
-        ) : (
-          <button
-            type="button"
-            className="card__buttons--like-button--is-added"
-            onClick={handleRemoveFromFavourite}
-          >
-          </button>
-        )}
-      </div>
+          {!isAddedToFavorite ? (
+            <button
+              type="button"
+              className="card__buttons--like-button"
+              onClick={handleAddToFavourite}
+            >
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="card__buttons--like-button--is-added"
+              onClick={handleRemoveFromFavourite}
+            >
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 });
