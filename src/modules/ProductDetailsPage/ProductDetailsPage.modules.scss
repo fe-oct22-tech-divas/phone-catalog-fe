@@ -109,6 +109,19 @@
     }
   }
 
+  &__mainImg-container {
+    display: flex;
+    justify-content: center;
+    background-color: #0F1121;
+    width: 274px;
+    height: 274px;
+      
+    @include onDesktop {
+      width: 442px;
+      height: 442px;
+    }
+  }
+
   &__photo-block {
     display: flex;
     flex-direction: column-reverse;
@@ -160,13 +173,11 @@
       }
 
     &__enlargeg-photo {
-      width: 274px;
       height: 274px;
       border-radius: 10%;
       margin-bottom: $small-size;
   
       @include onDesktop {
-        width: 442px;
         height: 442px;
         padding: 11px;
       }
@@ -207,19 +218,24 @@
       }
 
       &--button {
-        border: 1px solid $bc-color;
+        position: relative;
+        border: 2px solid $color-white;
         border-radius: 50%;
+        width:36px;
+        height:36px;
         padding:3px;
         margin-right: 8px;
+        background-color: $bc-color;
 
-        transition: 0.3s, border 0.3s;
-
-          &:hover {
-            border: 1px solid $color-white;
+        &_active {
+          border: 2px solid #905bff;
         }
       }
 
       &--1 {
+        position: absolute;
+        top: 1px;
+        left: 1px;
         width:30px;
         height:30px;
         border: 1px solid $bc-color;
@@ -284,7 +300,6 @@
 
     &__buttons {
       display: flex;
-      justify-content: space-between;
       width: 100%;
       margin-bottom:32px;
   

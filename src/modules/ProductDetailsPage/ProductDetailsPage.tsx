@@ -149,11 +149,14 @@ export const ProductDetailsPage: React.FC = () => {
                   />
                 ))}
               </div>
-              <img
-                src={picture === undefined ? fullInfo.images[0] : picture}
-                alt=""
-                className="product__photo-block__small-images__enlargeg-photo grid grid--desktop"
-              />
+              <div className="product__mainImg-container">
+                <img
+                  src={picture === undefined ? fullInfo.images[0] : picture}
+                  alt=""
+                  className="product__photo-block__small-images__enlargeg-photo grid grid--desktop"
+                />
+
+              </div>
             </div>
             <div className="product__available-variant">
               <div className="product__available-variant__color">
@@ -167,7 +170,9 @@ export const ProductDetailsPage: React.FC = () => {
                       type="button"
                       color={color}
                       key={color}
-                      className="product__available-variant__color--button"
+                      className={classNames('product__available-variant__color--button', {
+                        'product__available-variant__color--button_active': color === fullInfo.color,
+                      })}
                       onClick={() => handleChangeColor(color)}
                     >
                       <div
@@ -188,7 +193,7 @@ export const ProductDetailsPage: React.FC = () => {
                     <button
                       type="button"
                       key={memory}
-                      className={classNames({ 'product__available-variant__capacity--button--is-active': itemCapacity === memory }, { 'product__available-variant__capacity--button': itemCapacity !== memory })}
+                      className={classNames({ 'product__available-variant__capacity--button--is-active': fullInfo.capacity === memory }, { 'product__available-variant__capacity--button': itemCapacity !== memory })}
                       onClick={() => handleChangeCapacity(memory)}
                     >
                       {memory}
